@@ -3,9 +3,9 @@ import { createStore, applyMiddleware, compose } from 'redux'
 
 import rootReducer from './root-reducer'
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
-function configureStore(initialState={}) {
+function configureStore(initialState?: {}) {
 	return createStore(rootReducer, initialState, composeEnhancers(applyMiddleware(thunk)))
 }
 
