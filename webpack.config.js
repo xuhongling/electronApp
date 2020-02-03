@@ -152,7 +152,7 @@ module.exports = {
 	plugins: [
 		// html 模板插件
 		new htmlWebpackPlugin({
-			title: 'Typescript配置 App',
+			title: '车辆下线诊断系统',
 			favicon: __dirname + '/public/favicon.ico',
 			template: __dirname + '/public/index.html'
 		}),

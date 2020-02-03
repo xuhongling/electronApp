@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { hot } from 'react-hot-loader'
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
+import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 
 import HomePage from 'pages/HomePage'
 

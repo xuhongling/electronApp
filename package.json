@@ -1,39 +1,18 @@
 {
   "name": "diagnosisSystem",
   "version": "1.0.0",
-  "description": "",
+  "description": "A minimal Electron application",
   "main": "main.js",
-  "author": {
-    "name": "Hongling Xu",
-    "email": "xuhongling@live.cn"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --mode development --open --config webpack.config.js",
-    "build": "webpack --mode production --config webpack.config.prod.js",
-    "dev": "electron .",
-    "pack": "electron-builder --dir",
-    "dist": "electron-builder"
-  },
-  "build": {
-    "productName": "diagnosisSystem",
-    "appId": "com.diagnosisSystem.app",
-    "copyright": "Copyright © 2019 ${author}",
-    "mac": {
-      "category": "your.app.category.type"
-    },
-    "directories": {
-      "output": "dist"
-    },
-    "files": [
-      "build/**/*"
-    ],
+    "build": "webpack --mode production --config webpack.config.prod.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "XuHongling",
   "license": "ISC",
   "dependencies": {
-    "@ant-design/codemod-v4": "^1.0.0-alpha.13",
+    "@ant-design/codemod-v4": "^1.0.0-alpha.14",
     "@types/echarts": "^4.4.1",
     "@types/react": "^16.9.15",
     "@types/react-dom": "^16.9.4",
@@ -65,8 +44,6 @@
     "css-loader": "^2.1.1",
     "cssnano": "^4.1.10",
     "cssnano-preset-advanced": "^4.0.7",
-    "electron": "^7.1.10",
-    "electron-builder": "^22.2.0",
     "eslint": "^6.7.2",
     "eslint-config-react-app": "^5.1.0",
     "eslint-plugin-flowtype": "^3.13.0",

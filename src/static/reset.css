@@ -3,7 +3,7 @@
 body,ul,ol,h1,h2,h3,h4,h5,dl,dd,form,input,textarea,select,p{padding: 0; margin: 0; font-family: Arial, "Microsoft Yahei", sans-serif; font-size: 14px; }
 select::-ms-expand {display: none;}
 select {appearance: none; -moz-appearance: none; -webkit-appearance: none; outline: none;}
-input, textarea {margin: 0; padding: 0; border: none; outline: none;}
+input, textarea, button {margin: 0; padding: 0; border: none; outline: none;}
 textarea {resize: none; overflow: auto;}
 em,i{font-style: normal;}
 ul, li {list-style: none;}
@@ -18,7 +18,7 @@ html,body{
 	height: 100%;
 	-webkit-font-smoothing: antialiased;
 }
-*{-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+*{-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;-webkit-user-select:none;}
 /*清浮动*/
 .clearfix:before, .clearfix:after {
     display: table;
@@ -35,48 +35,10 @@ html,body{
 .el-date-editor .el-range-separator{
 	padding: 0;
 }
-.ol-popup {
-  position: absolute;
-  background-color: white;
-  -webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
-  filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
-  padding: 15px;
-  border-radius: 10px;
-  border: 1px solid #cccccc;
-  bottom: 12px;
-  left: -50px;
-  min-width: 280px;
-}
-.ol-popup:after, .ol-popup:before {
-  top: 100%;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-}
-.ol-popup:after {
-  border-top-color: white;
-  border-width: 10px;
-  left: 48px;
-  margin-left: -10px;
-}
-.ol-popup:before {
-  border-top-color: #cccccc;
-  border-width: 11px;
-  left: 48px;
-  margin-left: -11px;
-}
-.ol-popup-closer {
-  text-decoration: none;
-  position: absolute;
-  top: 4px;
-  right: 10px;
-  z-index: 1000;
-  cursor: pointer;
-}
-.ol-popup-closer:after {
-  content: "✖";
-  font-size: 17px;
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
 }
