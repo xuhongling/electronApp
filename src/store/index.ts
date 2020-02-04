@@ -3,7 +3,7 @@ import { StateType } from 'typesafe-actions'
 
 import rootReducer from './root-reducer'
 import * as userActions from './user/actions'
-import * as globalMapActions from './globalMap/actions'
+import * as fileDataActions from './fileData/actions'
 
 
 export { default } from './store'
@@ -11,6 +11,6 @@ export { default as rootReducer } from './root-reducer'
 
 export const actions = {
 	user: userActions,
-	globalMap: globalMapActions
+	fileData: fileDataActions
 }
 export type RootState = StateType<typeof rootReducer>

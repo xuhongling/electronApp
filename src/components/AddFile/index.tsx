@@ -1,11 +1,30 @@
 import React from 'react'
 import { message } from 'antd'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { RootState, actions } from '@/store'
 import styles from './style.less'
 
-export default class AddFile extends React.Component {
+type Props = ReturnType<typeof bindActionCreators> & {
+  history: any
+}
+
+// @ts-ignore: 不可达代码错误。 用装饰器简写方式
+@connect(
+  (state: RootState) => ({ fileData: state.fileData.fileData }),
+  dispatch => ({
+    ...bindActionCreators(
+      {
+        setFileData: (fileData: any[]) => actions.fileData.setFileData(fileData)
+      },
+      dispatch
+    )
+  })
+)
+export default class AddFile extends React.Component<Props> {
 	myRefInput: React.RefObject<HTMLInputElement>
 
-	constructor(props:any) {
+	constructor(props:Props) {
 		super(props)
 		this.myRefInput = React.createRef()
 	}
@@ -35,7 +54,10 @@ export default class AddFile extends React.Component {
 					fileDataArr.push(obj)
 				}
 			}
-			console.log(fileDataArr,'fileDataArr')
+			// 把 fileData 数据设置全局访问
+			this.props.setFileData(fileDataArr)
+			// 跳转展示图表页面
+			this.props.history.push('/showChart')
 		}
 	}
 

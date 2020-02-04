@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux'
 
 import user from './user/reducer'
-import globalMap from './globalMap/reducer'
+import fileData from './fileData/reducer'
 
 const rootReducer = combineReducers({
 	user,
-	globalMap
+	fileData
 })
 
 export default rootReducer
