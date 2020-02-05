@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { RootState } from '@/store'
 import { bindActionCreators } from 'redux'
+import CreateChart from 'components/CreateChart'
 import styles from './style.less'
 
 type Props = ReturnType<typeof bindActionCreators>
@@ -24,7 +25,7 @@ export default class ShowChart extends React.Component<Props> {
 	public render() {
 		return (
 			<div className={styles.showChart}>
-				kjhkh
+				<CreateChart/>
 			</div>
 		)
 	}

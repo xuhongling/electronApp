@@ -47,6 +47,9 @@ export default class CreateChart extends React.Component<Props,State> {
     }
     setTimeout(()=>{
       this.initChart()
+      window.onresize = ()=>{
+        this.state.myChart.resize()
+      }
     },100)
   }
 
@@ -55,7 +58,7 @@ export default class CreateChart extends React.Component<Props,State> {
     let myChart = echarts.init(myRefChart)
     let option:any = null
     option = {
-      color: ['#FF6900','#fcb900', '#7BDCB5', '#F44336', '#03a9f4','#0693E3', '#EB144C', '#F78DA7','#9900EF'],
+      color: ['#dd6b66','#759aa0','#e69d87','#8dc1a9','#ea7e53','#eedd78','#73a373','#73b9bc','#7289ab', '#91ca8c','#f49f42'],
       title: {
         text: '折线图堆叠'
       },
@@ -63,7 +66,10 @@ export default class CreateChart extends React.Component<Props,State> {
         trigger: 'axis'
       },
       legend: {
-        data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
+        data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎'],
+        textStyle: {
+          color: "#c6c9cd"
+        }
       },
       grid: {
         left: 120,
@@ -79,32 +85,55 @@ export default class CreateChart extends React.Component<Props,State> {
       xAxis: {
         type: 'category',
         boundaryGap: false,
-        data: ['周一','周二','周三','周四','周五','周六','周日']
+        data: ['周一','周二','周三','周四','周五','周六','周日'],
+        axisLine: {
+          lineStyle: {
+            color: "#c6c9cd",
+          }
+        },
       },
       yAxis: [
         {
           type: 'value',
           name: '邮件营销',
           position: 'left',
-          itemStyle: {   
+          itemStyle: {
             normal:{
               color:'#2C9AFB'
             },
             emphasis:{
               color:'#9EE734'
             }
-          }
+          },
+          axisLine: {
+            lineStyle: {
+              color: "#c6c9cd",
+            }
+          },
+          splitLine :{ lineStyle:{ type:'dashed',color: "#777" } } 
         },{
           type: 'value',
           name: '联盟广告',
           position: 'left',
-          offset: 70
+          offset: 70,
+          axisLine: {
+            lineStyle: {
+              color: "#c6c9cd",
+            }
+          },
+          splitLine :{ lineStyle:{ type:'dashed',color: "#777" } } 
         },{
           type: 'value',
           name: '视频广告',
           position: 'left',
-          offset: 140
-        }
+          offset: 140,
+          axisLine: {
+            lineStyle: {
+              color: "#c6c9cd",
+            }
+          },
+          splitLine :{ lineStyle:{ type:'dashed',color: "#777" } } 
+        },
       ],
       series: [
         {
@@ -177,27 +206,52 @@ export default class CreateChart extends React.Component<Props,State> {
           emphasis:{
             color:'#9EE734'
           }
+        },
+        axisLine: {
+          lineStyle: {
+            color: "#c6c9cd",
+          }
         }
       },{
         type: 'value',
         name: '联盟广告',
         position: 'left',
-        offset: 70
+        offset: 70,
+        axisLine: {
+          lineStyle: {
+            color: "#c6c9cd",
+          }
+        }
       },{
         type: 'value',
         name: '视频广告',
         position: 'left',
-        offset: 140
+        offset: 140,
+        axisLine: {
+          lineStyle: {
+            color: "#c6c9cd",
+          }
+        }
       },{
         type: 'value',
         name: '直接访问',
         position: 'left',
-        offset: 210
+        offset: 210,
+        axisLine: {
+          lineStyle: {
+            color: "#c6c9cd",
+          }
+        }
       },{
         type: 'value',
         name: '搜索引擎',
         position: 'left',
-        offset: 280
+        offset: 280,
+        axisLine: {
+          lineStyle: {
+            color: "#c6c9cd",
+          }
+        }
       }
     ]
     option.series = [
