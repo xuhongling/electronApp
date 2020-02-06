@@ -1,40 +1,19 @@
 import React from 'react'
 import echarts from 'echarts'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { RootState, actions } from '@/store'
-import { Button } from 'antd'
 import styles from './style.less'
 
-type Props = ReturnType<typeof bindActionCreators>
+type Props = {}
 type State = {
   option: {} | null,
   myChart: any
 }
 
-// @ts-ignore: 不可达代码错误。 用装饰器简写方式
-@connect(
-  (state: RootState) => ({ isAuth: state.user.isAuthenticated }),
-  dispatch => ({
-    ...bindActionCreators(
-      {
-        logIn: () => actions.user.logIn(),
-        setUsername: (username: string) => actions.user.setUsername(username)
-      },
-      dispatch
-    )
-  })
-)
 export default class CreateChart extends React.Component<Props,State> {
-  myRefChart: React.RefObject<HTMLDivElement>
-  contextMenu: React.RefObject<HTMLDivElement>
-  /*private myRefChart = React.createRef<HTMLDivElement>()
-  private contextMenu = React.createRef<HTMLDivElement>()*/
-  
-  constructor(props: any) {
+	myRefChart: React.RefObject<HTMLDivElement>
+
+  constructor(props:any) {
     super(props)
     this.myRefChart = React.createRef()
-    this.contextMenu = React.createRef()
     this.state = {
       option: null,
       myChart: null
@@ -42,7 +21,7 @@ export default class CreateChart extends React.Component<Props,State> {
   }
 
   componentDidMount() {
-    document.oncontextmenu = (e)=> {
+  	document.oncontextmenu = (e)=> {
       return false;
     }
     setTimeout(()=>{
@@ -54,7 +33,7 @@ export default class CreateChart extends React.Component<Props,State> {
   }
 
   initChart(){
-    let myRefChart:any = this.myRefChart.current
+		let myRefChart:any = this.myRefChart.current
     let myChart = echarts.init(myRefChart)
     let option:any = null
     option = {
@@ -191,128 +170,10 @@ export default class CreateChart extends React.Component<Props,State> {
     })
   }
 
-  handleClickAddY = ()=>{
-    console.log(this.state.option)
-    let option:any = this.state.option
-    option.yAxis = [
-      {
-        type: 'value',
-        name: '邮件营销',
-        position: 'left',
-        itemStyle: {   
-          normal:{
-            color:'#2C9AFB'
-          },
-          emphasis:{
-            color:'#9EE734'
-          }
-        },
-        axisLine: {
-          lineStyle: {
-            color: "#c6c9cd",
-          }
-        }
-      },{
-        type: 'value',
-        name: '联盟广告',
-        position: 'left',
-        offset: 70,
-        axisLine: {
-          lineStyle: {
-            color: "#c6c9cd",
-          }
-        }
-      },{
-        type: 'value',
-        name: '视频广告',
-        position: 'left',
-        offset: 140,
-        axisLine: {
-          lineStyle: {
-            color: "#c6c9cd",
-          }
-        }
-      },{
-        type: 'value',
-        name: '直接访问',
-        position: 'left',
-        offset: 210,
-        axisLine: {
-          lineStyle: {
-            color: "#c6c9cd",
-          }
-        }
-      },{
-        type: 'value',
-        name: '搜索引擎',
-        position: 'left',
-        offset: 280,
-        axisLine: {
-          lineStyle: {
-            color: "#c6c9cd",
-          }
-        }
-      }
-    ]
-    option.series = [
-      {
-        name:'邮件营销',
-        type:'line',
-        stack: '总量',
-        yAxisIndex:'0', //使用第一个y轴，序号从0开始
-        data:[120, 132, 101, 134, 90, 230, 210],
-        itemStyle: {
-          color: "red",
-        },
-      },
-      {
-        name:'联盟广告',
-        type:'line',
-        stack: '总量',
-        yAxisIndex:'1', //使用第二个y轴
-        data:[220, 182, 191, 234, 290, 330, 310]
-      },
-      {
-        name:'视频广告',
-        type:'line',
-        stack: '总量',
-        yAxisIndex:'2',
-        data:[150, 232, 201, 154, 190, 330, 410]
-      },
-      {
-        name:'直接访问',
-        type:'line',
-        stack: '总量',
-        yAxisIndex:'3',
-        data:[320, 332, 301, 334, 390, 330, 320]
-      },
-      {
-        name:'搜索引擎',
-        type:'line',
-        stack: '总量',
-        yAxisIndex:'4',
-        data:[820, 932, 901, 934, 1290, 1330, 1320]
-      }
-    ]
-    option.grid.left = option.yAxis.length * 40
-    console.log(this.state.myChart,option)
-    let myChart:any = this.state.myChart
-    myChart.setOption(option, true)
-  }
-
   public render() {
     return (
       <div className={styles.createChart}>
-        <div className={styles.controlBtn}>
-          <Button onClick={this.handleClickAddY}>添加Y轴</Button>
-        </div>
         <div className={styles.container} ref={this.myRefChart}></div>
-        <div className={styles.contextmenu} ref={this.contextMenu}>
-          <h2 className={styles.setColorTitle}>设置颜色</h2>
-          <div className={styles.contextmenuContent}>
-            hfhfhf
-          </div>
-        </div>
       </div>
     )
   }
