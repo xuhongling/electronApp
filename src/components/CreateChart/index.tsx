@@ -1,5 +1,6 @@
 import React from 'react'
 import echarts from 'echarts'
+import yAxisCommon from './yAxisCommon'
 import styles from './style.less'
 
 type Props = {}
@@ -21,6 +22,7 @@ export default class CreateChart extends React.Component<Props,State> {
   }
 
   componentDidMount() {
+  	yAxisCommon()
   	document.oncontextmenu = (e)=> {
       return false;
     }
@@ -28,7 +30,7 @@ export default class CreateChart extends React.Component<Props,State> {
       this.initChart()
       window.onresize = ()=>{
         this.state.myChart.resize()
-      }
+      }   
     },100)
   }
 
@@ -38,21 +40,20 @@ export default class CreateChart extends React.Component<Props,State> {
     let option:any = null
     option = {
       color: ['#dd6b66','#759aa0','#e69d87','#8dc1a9','#ea7e53','#eedd78','#73a373','#73b9bc','#7289ab', '#91ca8c','#f49f42'],
-      title: {
-        text: '折线图堆叠'
-      },
       tooltip: {
         trigger: 'axis'
       },
       legend: {
-        data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎'],
+        data:['邮件营销','联盟广告','视频广告'],
+        top: 16,
         textStyle: {
           color: "#c6c9cd"
         }
       },
       grid: {
-        left: 120,
-        right: '4%',
+      	top: 76,
+        left: 150,
+        right: 30,
         bottom: '3%',
         containLabel: true
       },
@@ -145,29 +146,6 @@ export default class CreateChart extends React.Component<Props,State> {
     if (option && typeof option === "object") {
       myChart.setOption(option, true)
     }
-
-    myChart.on('click', (params: { color: string; })=> {
-      let contextMenu:any = this.contextMenu.current
-      contextMenu.style.display = 'none'
-      console.log(params)
-      params.color = '#ff0000'
-      //option.series[2].itemStyle.color = '#ff00ff'
-      console.log(option.series[0].itemStyle.color)
-      option.series[0].itemStyle.color = '#00A4FF'
-      myChart.setOption(option,false)
-    })
-    myChart.on('contextmenu', (params:any)=> {
-      params.event.event.preventDefault()
-      let contextMenu:any = this.contextMenu.current
-      contextMenu.style.display = 'block'
-      contextMenu.style.left = params.event.offsetX + 'px'
-      contextMenu.style.top = params.event.offsetY + 'px'
-      
-      var pointInPixel= [params.offsetX, params.offsetY]
-      if (myChart.containPixel('grid',pointInPixel)) {
-        console.log('dasda')
-      }
-    })
   }
 
   public render() {
