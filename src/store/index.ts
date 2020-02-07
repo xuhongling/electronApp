@@ -4,6 +4,7 @@ import { StateType } from 'typesafe-actions'
 import rootReducer from './root-reducer'
 import * as userActions from './user/actions'
 import * as fileDataActions from './fileData/actions'
+import * as chartDataActions from './chartData/actions'
 
 
 export { default } from './store'
@@ -11,6 +12,7 @@ export { default as rootReducer } from './root-reducer'
 
 export const actions = {
 	user: userActions,
-	fileData: fileDataActions
+	fileData: fileDataActions,
+	chartData: chartDataActions
 }
 export type RootState = StateType<typeof rootReducer>

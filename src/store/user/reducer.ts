@@ -1,6 +1,6 @@
 import * as users from './actions'
 import { ActionType, getType } from 'typesafe-actions'
-import { User } from "./types"
+import { User } from './types'
 
 const defaultState: User = {
   isAuthenticated: false,

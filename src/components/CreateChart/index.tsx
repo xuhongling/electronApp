@@ -1,14 +1,23 @@
 import React from 'react'
 import echarts from 'echarts'
-import yAxisCommon from './yAxisCommon'
+import { connect } from 'react-redux'
+import { RootState } from '@/store'
+import { bindActionCreators } from 'redux'
+import yAxisCommon from './chartOption/yAxisCommon'
 import styles from './style.less'
 
-type Props = {}
+type Props = ReturnType<typeof bindActionCreators>
 type State = {
   option: {} | null,
-  myChart: any
+  myChart: any,
+  legendData: any[]
 }
 
+// @ts-ignore: 不可达代码错误。 用装饰器简写方式
+@connect(
+  (state: RootState) => ({ chartData: state.chartData.chartData }),
+  dispatch => ({})
+)
 export default class CreateChart extends React.Component<Props,State> {
 	myRefChart: React.RefObject<HTMLDivElement>
 
@@ -17,12 +26,12 @@ export default class CreateChart extends React.Component<Props,State> {
     this.myRefChart = React.createRef()
     this.state = {
       option: null,
-      myChart: null
+      myChart: null,
+      legendData: ['邮件营销','联盟广告','视频广告']
     }
   }
 
   componentDidMount() {
-  	yAxisCommon()
   	document.oncontextmenu = (e)=> {
       return false;
     }
@@ -44,7 +53,7 @@ export default class CreateChart extends React.Component<Props,State> {
         trigger: 'axis'
       },
       legend: {
-        data:['邮件营销','联盟广告','视频广告'],
+        data: this.state.legendData,
         top: 16,
         textStyle: {
           color: "#c6c9cd"
@@ -72,49 +81,7 @@ export default class CreateChart extends React.Component<Props,State> {
           }
         },
       },
-      yAxis: [
-        {
-          type: 'value',
-          name: '邮件营销',
-          position: 'left',
-          itemStyle: {
-            normal:{
-              color:'#2C9AFB'
-            },
-            emphasis:{
-              color:'#9EE734'
-            }
-          },
-          axisLine: {
-            lineStyle: {
-              color: "#c6c9cd",
-            }
-          },
-          splitLine :{ lineStyle:{ type:'dashed',color: "#777" } } 
-        },{
-          type: 'value',
-          name: '联盟广告',
-          position: 'left',
-          offset: 70,
-          axisLine: {
-            lineStyle: {
-              color: "#c6c9cd",
-            }
-          },
-          splitLine :{ lineStyle:{ type:'dashed',color: "#777" } } 
-        },{
-          type: 'value',
-          name: '视频广告',
-          position: 'left',
-          offset: 140,
-          axisLine: {
-            lineStyle: {
-              color: "#c6c9cd",
-            }
-          },
-          splitLine :{ lineStyle:{ type:'dashed',color: "#777" } } 
-        },
-      ],
+      yAxis: yAxisCommon(this.state.legendData),
       series: [
         {
           name:'邮件营销',
