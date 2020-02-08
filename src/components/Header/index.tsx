@@ -36,7 +36,21 @@ export default class Header extends React.Component<Props, State> {
 	}
 
 	onChangeCheckbox = (checkedValues:any) => {
-    console.log('radio checked', checkedValues)
+		let legendData = ['邮件营销','联盟广告','视频广告']
+    for (let i = 0; i < checkedValues.length; i++) {
+    	if (checkedValues[i] === '增加Y1轴') {
+    		legendData = ['邮件营销','联盟广告','视频广告']
+    		this.props.setFileData(legendData)
+    	}
+    	if (checkedValues[i] === '增加Y2轴') {
+    		legendData = ['联盟广告','邮件营销','视频广告']
+    		this.props.setFileData(legendData)
+    	}
+    	if (checkedValues[i] === '增加Y3轴') {
+    		legendData = ['视频广告','邮件营销','联盟广告']
+    		this.props.setFileData(legendData)
+    	}
+    }
   }
 	
 	public render() {

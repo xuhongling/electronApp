@@ -1,5 +1,6 @@
 const axisCommon = (data:any[])=> {
 	let legendData:any[] = data
+  console.log(data,'1111')
 	let legendDataAll:any[] = []
 	for (let i = 0; i < legendData.length; i++) {
 		let option = {
