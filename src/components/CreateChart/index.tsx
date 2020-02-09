@@ -1,8 +1,8 @@
 import React from 'react'
 import echarts from 'echarts'
 import { connect } from 'react-redux'
-import { RootState } from '@/store'
 import { bindActionCreators } from 'redux'
+import { RootState, actions } from '@/store'
 import yAxisCommon from './chartOption/yAxisCommon'
 import styles from './style.less'
 
@@ -16,7 +16,14 @@ type State = {
 // @ts-ignore: 不可达代码错误。 用装饰器简写方式
 @connect(
   (state: RootState) => ({ chartData: state.chartData.chartData }),
-  dispatch => ({})
+  dispatch => ({
+    ...bindActionCreators(
+      {
+        setGlobalChart: (globalChart: object) => actions.globalChart.setGlobalChart(globalChart)
+      },
+      dispatch
+    )
+  })
 )
 export default class CreateChart extends React.Component<Props,State> {
 	myRefChart: React.RefObject<HTMLDivElement>
@@ -62,6 +69,8 @@ export default class CreateChart extends React.Component<Props,State> {
   initChart(){
 		let myRefChart:any = this.myRefChart.current
     let myChart = echarts.init(myRefChart)
+    // 全把 eChart 对象放到store全局，方便访问
+    this.props.setGlobalChart(myChart)
     let option:any = null
     option = {
       color: ['#dd6b66','#759aa0','#e69d87','#8dc1a9','#ea7e53','#eedd78','#73a373','#73b9bc','#7289ab', '#91ca8c','#f49f42'],

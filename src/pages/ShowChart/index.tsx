@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { RootState } from '@/store'
 import { bindActionCreators } from 'redux'
 import CreateChart from 'components/CreateChart'
+import ColorPickers from 'components/ColorPickers'
 import Header from 'components/Header'
 import styles from './style.less'
 
@@ -19,7 +20,7 @@ export default class ShowChart extends React.Component<Props> {
 		super(props)
 	}
 
-	componentDidMount() {
+	componentDidMount() { 
 		console.log(this.props.fileData,'fileData')
 	}
 
@@ -28,6 +29,7 @@ export default class ShowChart extends React.Component<Props> {
 			<div className={styles.showChart}>
 				<Header/>
 				<CreateChart/>
+				<ColorPickers/>
 			</div>
 		)
 	}
