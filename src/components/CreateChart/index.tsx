@@ -42,6 +42,22 @@ export default class CreateChart extends React.Component<Props,State> {
       }   
     },100)
   }
+  static getDerivedStateFromProps(nextProps:any) {
+    const { chartData } = nextProps
+    // 当传入的type发生变化的时候，更新state
+    if (chartData !== null && chartData.length > 0) {
+      return {
+        legendData: chartData
+      }
+    }
+    // 否则，对于state不进行任何操作
+    return null
+  }
+  componentDidUpdate(prevProps:any, prevState:any) {
+    if (this.props.chartData !== prevProps.chartData) {
+      this.initChart()
+    }
+  }
 
   initChart(){
 		let myRefChart:any = this.myRefChart.current
