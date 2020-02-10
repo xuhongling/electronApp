@@ -14,7 +14,10 @@ type State = {
 
 // @ts-ignore: 不可达代码错误。 用装饰器简写方式
 @connect(
-  (state: RootState) => ({ globalChart: state.globalChart.globalChart }),
+  (state: RootState) => ({
+  	globalChart: state.globalChart.globalChart,
+  	showColorPickers: state.showColorPickers.showColorPickers
+  }),
   dispatch => ({})
 )
 export default class ColorPickers extends React.Component<Props,State> {
@@ -27,7 +30,8 @@ export default class ColorPickers extends React.Component<Props,State> {
 		}
 	}
   handleChangeComplete = (color:any) => {
-    this.setState({ background: color.hex });
+  	console.log(this.props.showColorPickers,'this.props.showColorPickers')
+    this.setState({ background: color.hex })
   }
 
 	public render() {
