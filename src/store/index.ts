@@ -6,7 +6,7 @@ import * as userActions from './user/actions'
 import * as fileDataActions from './fileData/actions'
 import * as chartDataActions from './chartData/actions'
 import * as globalChartActions from './globalChart/actions'
-import * as showColorPickersActions from './showColorPickers/actions'
+import * as chartColorList from './chartColorList/actions'
 
 export { default } from './store'
 export { default as rootReducer } from './root-reducer'
@@ -16,6 +16,6 @@ export const actions = {
 	fileData: fileDataActions,
 	chartData: chartDataActions,
 	globalChart: globalChartActions,
-	showColorPickers: showColorPickersActions
+	chartColorList: chartColorList
 }
 export type RootState = StateType<typeof rootReducer>

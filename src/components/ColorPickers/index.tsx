@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { RootState } from '@/store'
 import { bindActionCreators } from 'redux'
+import { RootState, actions } from '@/store'
 import { SketchPicker } from 'react-color'
 import classnames from 'classnames'
 import styles from './style.less'
@@ -10,16 +10,24 @@ type Props = ReturnType<typeof bindActionCreators>
 type State = {
 	isShowColorPickers: boolean,
 	background: any,
-	globalChart: object | null
+	globalChart: object | null,
+	seriesIndex: number
 }
 
 // @ts-ignore: 不可达代码错误。 用装饰器简写方式
 @connect(
   (state: RootState) => ({
   	globalChart: state.globalChart.globalChart,
-  	showColorPickers: state.showColorPickers.showColorPickers
+  	chartColorList: state.chartColorList.chartColorList
   }),
-  dispatch => ({})
+  dispatch => ({
+    ...bindActionCreators(
+      {
+        setChartColorList: (chartColor: string[]) => actions.chartColorList.setChartColorList(chartColor)
+      },
+      dispatch
+    )
+  })
 )
 export default class ColorPickers extends React.Component<Props,State> {
 	colorPickers: React.RefObject<HTMLDivElement>
@@ -30,7 +38,8 @@ export default class ColorPickers extends React.Component<Props,State> {
 		this.state = {
 			isShowColorPickers: false,
 			background: '#fff',
-			globalChart: null
+			globalChart: null,
+			seriesIndex: 0
 		}
 	}
 
@@ -51,24 +60,30 @@ export default class ColorPickers extends React.Component<Props,State> {
 	}
 
 	handleGlobalChart = ()=>{
-	  console.log(this.props.globalChart,'this.props.globalChart')
-	  console.log(this.state.globalChart,'this.state.globalChart')
 	  let globalChart:any = this.props.globalChart
-	  globalChart.on('click', (params: { color: string })=> {
-	  	console.log(params,'params')
-	  	let aparams:any = params
-	  	aparams.color = '#3DC150'
-	  	//globalChart.setOption(aparams,false)
-    })
-    document.body.onclick = ()=> {
-    	this.setState({isShowColorPickers: false})
-    }
 	  globalChart.on('contextmenu', (params:any)=> {
       params.event.event.preventDefault()
+      console.log(params,'params')
       let colorPickers:any = this.colorPickers.current
-      colorPickers.style.left = params.event.offsetX + 'px'
-      colorPickers.style.top = params.event.offsetY + 'px'
-      this.setState({isShowColorPickers: true})
+      let clientWidth = document.body.clientWidth
+			let clientHeight = document.body.clientHeight
+			let rangeWidth = clientWidth - params.event.offsetX
+			let rangeHeight = clientHeight - params.event.offsetY
+
+			if (rangeWidth < 300) {
+				colorPickers.style.left = params.event.offsetX-200 + 'px'
+			}else {
+				colorPickers.style.left = params.event.offsetX+10 + 'px'
+			}
+			if (rangeHeight < 300) {
+      	 colorPickers.style.top = params.event.offsetY-200 + 'px'
+      }else{
+      	 colorPickers.style.top = params.event.offsetY+50 + 'px'
+      }
+      this.setState({
+      	isShowColorPickers: true,
+      	seriesIndex: params.seriesIndex
+      })
       
       var pointInPixel= [params.offsetX, params.offsetY]
       if (globalChart.containPixel('grid',pointInPixel)) {
@@ -76,16 +91,21 @@ export default class ColorPickers extends React.Component<Props,State> {
       }
     })
 	}
-
-  handleChangeComplete = (color:any) => {
-  	console.log(this.props.showColorPickers,'this.props.showColorPickers')
-    this.setState({ background: color.hex })
-  }
+	handleClose = ()=> {
+		this.setState({isShowColorPickers: false})
+	}
+	handleChangeColor = (color:any)=> {
+		this.setState({ background: color.hex })
+		let chartColor = ['#dd6b66','#759aa0','#e69d87','#8dc1a9','#ea7e53','#eedd78','#73a373','#73b9bc','#7289ab', '#91ca8c','#f49f42']
+		chartColor[this.state.seriesIndex] = `${color.hex}`
+		this.props.setChartColorList(chartColor)
+	}
 
 	public render() {
 		return (
 			<div className={classnames(styles.colorPickers, {[`${styles.showColorPickers}`]: this.state.isShowColorPickers})} ref={this.colorPickers}>
-				<SketchPicker color={this.state.background} onChangeComplete={ this.handleChangeComplete } />
+				<div className={styles.cover} onClick={ this.handleClose }/>
+				<SketchPicker color={this.state.background} onChange={ this.handleChangeColor }/>
 			</div>
 		)
 	}

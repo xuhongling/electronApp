@@ -15,7 +15,10 @@ type State = {
 
 // @ts-ignore: 不可达代码错误。 用装饰器简写方式
 @connect(
-  (state: RootState) => ({ chartData: state.chartData.chartData }),
+  (state: RootState) => ({ 
+    chartData: state.chartData.chartData,
+    chartColorList: state.chartColorList.chartColorList
+  }),
   dispatch => ({
     ...bindActionCreators(
       {
@@ -46,7 +49,7 @@ export default class CreateChart extends React.Component<Props,State> {
       this.initChart()
       window.onresize = ()=>{
         this.state.myChart.resize()
-      }   
+      }
     },100)
   }
   static getDerivedStateFromProps(nextProps:any) {
@@ -61,7 +64,7 @@ export default class CreateChart extends React.Component<Props,State> {
     return null
   }
   componentDidUpdate(prevProps:any, prevState:any) {
-    if (this.props.chartData !== prevProps.chartData) {
+    if (this.props.chartData !== prevProps.chartData || this.props.chartColorList !== prevProps.chartColorList) {
       this.initChart()
     }
   }
@@ -73,7 +76,7 @@ export default class CreateChart extends React.Component<Props,State> {
     this.props.setGlobalChart(myChart)
     let option:any = null
     option = {
-      color: ['#dd6b66','#759aa0','#e69d87','#8dc1a9','#ea7e53','#eedd78','#73a373','#73b9bc','#7289ab', '#91ca8c','#f49f42'],
+      color: this.props.chartColorList,
       tooltip: {
         trigger: 'axis' 
       },
@@ -113,9 +116,12 @@ export default class CreateChart extends React.Component<Props,State> {
           type:'line',
           stack: '总量',
           yAxisIndex:'0', //使用第一个y轴，序号从0开始
-          data:[120, 132, 101, 134, 90, 230, 210],
+          data:[20, 32, 101, 134, 90, 230, 210],
           itemStyle: {
-            color: "red",
+            color: (params:any)=> {
+              let colorList = this.props.chartColorList
+              return colorList[params.seriesIndex]
+            }
           },
         },
         {
@@ -123,14 +129,26 @@ export default class CreateChart extends React.Component<Props,State> {
           type:'line',
           stack: '总量',
           yAxisIndex:'1', //使用第二个y轴
-          data:[220, 182, 191, 234, 290, 330, 310]
+          data:[220, 182, 191, 234, 290, 330, 310],
+          itemStyle: {
+            color: (params:any)=> {
+              let colorList = this.props.chartColorList
+              return colorList[params.seriesIndex]
+            }
+          },
         },
         {
           name:'视频广告',
           type:'line',
           stack: '总量',
           yAxisIndex:'2',
-          data:[150, 232, 201, 154, 190, 330, 410]
+          data:[150, 232, 201, 154, 190, 330, 410],
+          itemStyle: {
+            color: (params:any)=> {
+              let colorList = this.props.chartColorList
+              return colorList[params.seriesIndex]
+            }
+          },
         }
       ]
     }
