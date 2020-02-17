@@ -38,7 +38,7 @@ export default class AddFile extends React.Component<Props> {
 			return
 		}
 		let reader = new FileReader() 	//new一个FileReader对象实例
-		reader.readAsText(file,'gb2312')  //读取csv文件.
+		reader.readAsText(file,'utf-8')  //读取csv文件.
 		reader.onload = () => {		//读取成功完成后出发事件
 			let fileData:any = reader.result	 //获取读取的数据
 			let relArr = fileData.split("\r\n")
