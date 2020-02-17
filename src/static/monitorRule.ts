@@ -1,6 +1,6 @@
 let monitorRule = [
 	{
-		"_id": "1",
+		"id": "1",
 		"name": "驱动电机1使能MCU",
 		"type": "1",
 		"type_name": "整车",
@@ -21,7 +21,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "2",
+		"id": "2",
 		"name": "驱动电机1模式请求",
 		"type": "1",
 		"type_name": "整车",
@@ -35,10 +35,10 @@ let monitorRule = [
 		"value_array": "\"000:自由模式;"
 	},
 	{
-		"_id": "001:扭矩模式;"
+		"id": "001:扭矩模式;"
 	},
 	{
-		"_id": "010:转速模式\"",
+		"id": "010:转速模式\"",
 		"name": "",
 		"type": "",
 		"type_name": "10",
@@ -48,7 +48,7 @@ let monitorRule = [
 		"scale": "11"
 	},
 	{
-		"_id": "3",
+		"id": "3",
 		"name": "请求驱动电机1转速",
 		"type": "1",
 		"type_name": "整车",
@@ -69,7 +69,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "4",
+		"id": "4",
 		"name": "请求驱动电机1转矩",
 		"type": "1",
 		"type_name": "整车",
@@ -90,7 +90,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "5",
+		"id": "5",
 		"name": "驱动电机1最大允许转矩",
 		"type": "1",
 		"type_name": "整车",
@@ -111,7 +111,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "6",
+		"id": "6",
 		"name": "主驱1正预充接触器控制指令",
 		"type": "1",
 		"type_name": "整车",
@@ -132,7 +132,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "7",
+		"id": "7",
 		"name": "主驱1接触器控制指令",
 		"type": "1",
 		"type_name": "整车",
@@ -153,7 +153,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "8",
+		"id": "8",
 		"name": "总负接触器控制指令",
 		"type": "1",
 		"type_name": "整车",
@@ -174,7 +174,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "9",
+		"id": "9",
 		"name": "液压正预充接触器控制指令",
 		"type": "1",
 		"type_name": "整车",
@@ -195,7 +195,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "10",
+		"id": "10",
 		"name": "液压正接触器控制指令",
 		"type": "1",
 		"type_name": "整车",
@@ -216,7 +216,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "11",
+		"id": "11",
 		"name": "气泵继电器控制指令",
 		"type": "1",
 		"type_name": "整车",
@@ -237,7 +237,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "12",
+		"id": "12",
 		"name": "DCDC使能信号",
 		"type": "1",
 		"type_name": "整车",
@@ -258,7 +258,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "13",
+		"id": "13",
 		"name": "四合一通讯状态值",
 		"type": "1",
 		"type_name": "整车",
@@ -279,7 +279,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "14",
+		"id": "14",
 		"name": "液压电机使能信号",
 		"type": "1",
 		"type_name": "整车",
@@ -300,7 +300,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "15",
+		"id": "15",
 		"name": "液压电机通讯状态值",
 		"type": "1",
 		"type_name": "整车",
@@ -321,7 +321,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "16",
+		"id": "16",
 		"name": "气泵电机使能信号",
 		"type": "1",
 		"type_name": "整车",
@@ -342,7 +342,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "17",
+		"id": "17",
 		"name": "气泵电机通讯状态值",
 		"type": "1",
 		"type_name": "整车",
@@ -363,7 +363,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "18",
+		"id": "18",
 		"name": "高压上下电指令",
 		"type": "1",
 		"type_name": "整车",
@@ -384,7 +384,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "19",
+		"id": "19",
 		"name": "急停信号",
 		"type": "1",
 		"type_name": "整车",
@@ -405,7 +405,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "20",
+		"id": "20",
 		"name": "低压下电通知",
 		"type": "1",
 		"type_name": "整车",
@@ -426,7 +426,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "21",
+		"id": "21",
 		"name": "车速",
 		"type": "1",
 		"type_name": "整车",
@@ -447,7 +447,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "22",
+		"id": "22",
 		"name": "整车life",
 		"type": "1",
 		"type_name": "整车",
@@ -468,7 +468,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "23",
+		"id": "23",
 		"name": "发电需求功率",
 		"type": "1",
 		"type_name": "整车",
@@ -489,7 +489,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "24",
+		"id": "24",
 		"name": "整车运行状态",
 		"type": "1",
 		"type_name": "整车",
@@ -510,7 +510,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "25",
+		"id": "25",
 		"name": "电池状态",
 		"type": "1",
 		"type_name": "整车",
@@ -531,7 +531,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "26",
+		"id": "26",
 		"name": "电池配电箱状态",
 		"type": "1",
 		"type_name": "整车",
@@ -552,7 +552,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "27",
+		"id": "27",
 		"name": "电池母线电流",
 		"type": "1",
 		"type_name": "整车",
@@ -573,7 +573,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "28",
+		"id": "28",
 		"name": "电池母线电压",
 		"type": "1",
 		"type_name": "整车",
@@ -594,7 +594,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "29",
+		"id": "29",
 		"name": "电池SOC",
 		"type": "1",
 		"type_name": "整车",
@@ -615,7 +615,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "30",
+		"id": "30",
 		"name": "电池母线最大允许放电电流",
 		"type": "1",
 		"type_name": "整车",
@@ -636,7 +636,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "31",
+		"id": "31",
 		"name": "电池母线最大允许充电电流",
 		"type": "1",
 		"type_name": "整车",
@@ -657,7 +657,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "32",
+		"id": "32",
 		"name": "主驱电机当前转速",
 		"type": "1",
 		"type_name": "整车",
@@ -678,7 +678,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "33",
+		"id": "33",
 		"name": "主驱电机当前功率",
 		"type": "1",
 		"type_name": "整车",
@@ -699,7 +699,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "34",
+		"id": "34",
 		"name": "单体电池最高温度",
 		"type": "1",
 		"type_name": "整车",
@@ -720,7 +720,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "35",
+		"id": "35",
 		"name": "单体电池最低温度",
 		"type": "1",
 		"type_name": "整车",
@@ -741,7 +741,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "36",
+		"id": "36",
 		"name": "BMS 当前电压",
 		"type": "1",
 		"type_name": "整车",
@@ -762,7 +762,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "37",
+		"id": "37",
 		"name": "高压上电指令",
 		"type": "1",
 		"type_name": "整车",
@@ -783,7 +783,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "38",
+		"id": "38",
 		"name": "充放电模式",
 		"type": "1",
 		"type_name": "整车",
@@ -804,7 +804,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "39",
+		"id": "39",
 		"name": "工作模式",
 		"type": "1",
 		"type_name": "整车",
@@ -825,7 +825,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "40",
+		"id": "40",
 		"name": "设定目标温度",
 		"type": "1",
 		"type_name": "整车",
@@ -846,7 +846,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "41",
+		"id": "41",
 		"name": "电池平均温度",
 		"type": "1",
 		"type_name": "整车",
@@ -867,7 +867,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "42",
+		"id": "42",
 		"name": "电池热管理Life",
 		"type": "1",
 		"type_name": "整车",
@@ -888,7 +888,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "43",
+		"id": "43",
 		"name": "驱动电机1实际输出转矩值",
 		"type": "3",
 		"type_name": "电机",
@@ -909,7 +909,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "44",
+		"id": "44",
 		"name": "驱动电机1转速",
 		"type": "3",
 		"type_name": "电机",
@@ -930,7 +930,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "45",
+		"id": "45",
 		"name": "直流端母线电压",
 		"type": "3",
 		"type_name": "电机",
@@ -951,7 +951,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "46",
+		"id": "46",
 		"name": "直流端母线电流",
 		"type": "3",
 		"type_name": "电机",
@@ -972,7 +972,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "47",
+		"id": "47",
 		"name": "逆变器状态",
 		"type": "3",
 		"type_name": "电机",
@@ -993,7 +993,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "48",
+		"id": "48",
 		"name": "驻坡状态",
 		"type": "3",
 		"type_name": "电机",
@@ -1014,7 +1014,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "49",
+		"id": "49",
 		"name": "驱动电机1模式状态",
 		"type": "3",
 		"type_name": "电机",
@@ -1028,10 +1028,10 @@ let monitorRule = [
 		"value_array": "\"000:自由模式;"
 	},
 	{
-		"_id": "001:扭矩模式;"
+		"id": "001:扭矩模式;"
 	},
 	{
-		"_id": "010:转速模式\"",
+		"id": "010:转速模式\"",
 		"name": "",
 		"type": "",
 		"type_name": "10",
@@ -1041,7 +1041,7 @@ let monitorRule = [
 		"scale": "11"
 	},
 	{
-		"_id": "50",
+		"id": "50",
 		"name": "电机欠压",
 		"type": "0",
 		"type_name": "故障",
@@ -1062,7 +1062,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "51",
+		"id": "51",
 		"name": "相电流过流",
 		"type": "0",
 		"type_name": "故障",
@@ -1083,7 +1083,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "52",
+		"id": "52",
 		"name": "驱动电机CAN通信故障",
 		"type": "0",
 		"type_name": "故障",
@@ -1104,7 +1104,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "53",
+		"id": "53",
 		"name": "控制器IGBT模块故障",
 		"type": "0",
 		"type_name": "故障",
@@ -1125,7 +1125,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "54",
+		"id": "54",
 		"name": "电机过温",
 		"type": "0",
 		"type_name": "故障",
@@ -1146,7 +1146,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "55",
+		"id": "55",
 		"name": "逆变器过温",
 		"type": "0",
 		"type_name": "故障",
@@ -1167,7 +1167,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "56",
+		"id": "56",
 		"name": "母线过压",
 		"type": "0",
 		"type_name": "故障",
@@ -1188,7 +1188,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "57",
+		"id": "57",
 		"name": "电机超速",
 		"type": "0",
 		"type_name": "故障",
@@ -1209,7 +1209,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "58",
+		"id": "58",
 		"name": "电机速度偏大",
 		"type": "0",
 		"type_name": "故障",
@@ -1230,7 +1230,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "59",
+		"id": "59",
 		"name": "相电流过载",
 		"type": "0",
 		"type_name": "故障",
@@ -1251,7 +1251,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "60",
+		"id": "60",
 		"name": "逆变器温度偏大",
 		"type": "0",
 		"type_name": "故障",
@@ -1272,7 +1272,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "61",
+		"id": "61",
 		"name": "母线电压偏大",
 		"type": "0",
 		"type_name": "故障",
@@ -1293,7 +1293,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "62",
+		"id": "62",
 		"name": "母线电压偏小",
 		"type": "0",
 		"type_name": "故障",
@@ -1314,7 +1314,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "63",
+		"id": "63",
 		"name": "电机温度偏大",
 		"type": "0",
 		"type_name": "故障",
@@ -1335,7 +1335,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "64",
+		"id": "64",
 		"name": "电机温度传感器断线",
 		"type": "0",
 		"type_name": "故障",
@@ -1356,7 +1356,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "65",
+		"id": "65",
 		"name": "硬件过压故障",
 		"type": "0",
 		"type_name": "故障",
@@ -1377,7 +1377,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "66",
+		"id": "66",
 		"name": "硬件过流故障",
 		"type": "0",
 		"type_name": "故障",
@@ -1398,7 +1398,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "67",
+		"id": "67",
 		"name": "硬件限流故障",
 		"type": "0",
 		"type_name": "故障",
@@ -1419,7 +1419,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "68",
+		"id": "68",
 		"name": "初始化故障",
 		"type": "0",
 		"type_name": "故障",
@@ -1440,7 +1440,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "69",
+		"id": "69",
 		"name": "硬件IGBT故障",
 		"type": "0",
 		"type_name": "故障",
@@ -1461,7 +1461,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "70",
+		"id": "70",
 		"name": "控制器过温",
 		"type": "0",
 		"type_name": "故障",
@@ -1482,7 +1482,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "71",
+		"id": "71",
 		"name": "控制器硬件检测有故障",
 		"type": "0",
 		"type_name": "故障",
@@ -1503,7 +1503,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "72",
+		"id": "72",
 		"name": "A电流传感器故障",
 		"type": "0",
 		"type_name": "故障",
@@ -1524,7 +1524,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "73",
+		"id": "73",
 		"name": "B电流传感器故障",
 		"type": "0",
 		"type_name": "故障",
@@ -1545,7 +1545,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "74",
+		"id": "74",
 		"name": "C电流传感器故障",
 		"type": "0",
 		"type_name": "故障",
@@ -1566,7 +1566,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "75",
+		"id": "75",
 		"name": "母线电流传感器故障",
 		"type": "0",
 		"type_name": "故障",
@@ -1587,7 +1587,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "76",
+		"id": "76",
 		"name": "MCU软件版本信息",
 		"type": "3",
 		"type_name": "电机",
@@ -1608,7 +1608,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "77",
+		"id": "77",
 		"name": "逆变器温度",
 		"type": "3",
 		"type_name": "电机",
@@ -1629,7 +1629,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "78",
+		"id": "78",
 		"name": "驱动电机1温度",
 		"type": "3",
 		"type_name": "电机",
@@ -1650,7 +1650,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "79",
+		"id": "79",
 		"name": "DCDC输入电压",
 		"type": "5",
 		"type_name": "高压附件",
@@ -1671,7 +1671,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "80",
+		"id": "80",
 		"name": "DCDC输入电流",
 		"type": "5",
 		"type_name": "高压附件",
@@ -1692,7 +1692,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "81",
+		"id": "81",
 		"name": "DCDC输出电流",
 		"type": "5",
 		"type_name": "高压附件",
@@ -1713,7 +1713,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "82",
+		"id": "82",
 		"name": "DCDC控制器温度",
 		"type": "5",
 		"type_name": "高压附件",
@@ -1734,7 +1734,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "83",
+		"id": "83",
 		"name": "DCDC输出辅助低压",
 		"type": "5",
 		"type_name": "高压附件",
@@ -1755,7 +1755,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "84",
+		"id": "84",
 		"name": "DCDC控制器通信状态值",
 		"type": "5",
 		"type_name": "高压附件",
@@ -1776,7 +1776,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "85",
+		"id": "85",
 		"name": "DCDC状态",
 		"type": "5",
 		"type_name": "高压附件",
@@ -1797,7 +1797,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "86",
+		"id": "86",
 		"name": "DCDC故障编码",
 		"type": "5",
 		"type_name": "高压附件",
@@ -1818,7 +1818,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "87",
+		"id": "87",
 		"name": "液压电机转速",
 		"type": "5",
 		"type_name": "高压附件",
@@ -1839,7 +1839,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "88",
+		"id": "88",
 		"name": "液压电机直流端母线电压",
 		"type": "5",
 		"type_name": "高压附件",
@@ -1860,7 +1860,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "89",
+		"id": "89",
 		"name": "液压电机直流端母线电流",
 		"type": "5",
 		"type_name": "高压附件",
@@ -1881,7 +1881,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "90",
+		"id": "90",
 		"name": "液压电机输出电压",
 		"type": "5",
 		"type_name": "高压附件",
@@ -1902,7 +1902,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "91",
+		"id": "91",
 		"name": "液压电机输出电流",
 		"type": "5",
 		"type_name": "高压附件",
@@ -1923,7 +1923,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "92",
+		"id": "92",
 		"name": "液压电机散热器温度",
 		"type": "5",
 		"type_name": "高压附件",
@@ -1944,7 +1944,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "93",
+		"id": "93",
 		"name": "液压电机缺相",
 		"type": "0",
 		"type_name": "故障",
@@ -1965,7 +1965,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "94",
+		"id": "94",
 		"name": "液压电机过载",
 		"type": "0",
 		"type_name": "故障",
@@ -1986,7 +1986,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "95",
+		"id": "95",
 		"name": "液压电机短路",
 		"type": "0",
 		"type_name": "故障",
@@ -2007,7 +2007,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "96",
+		"id": "96",
 		"name": "液压电机过热",
 		"type": "0",
 		"type_name": "故障",
@@ -2028,7 +2028,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "97",
+		"id": "97",
 		"name": "液压电机CAN中断",
 		"type": "0",
 		"type_name": "故障",
@@ -2049,7 +2049,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "98",
+		"id": "98",
 		"name": "液压电机驱动电源",
 		"type": "0",
 		"type_name": "故障",
@@ -2070,7 +2070,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "99",
+		"id": "99",
 		"name": "液压电机输入过压",
 		"type": "0",
 		"type_name": "故障",
@@ -2091,7 +2091,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "100",
+		"id": "100",
 		"name": "液压电机输入欠压",
 		"type": "0",
 		"type_name": "故障",
@@ -2112,7 +2112,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "101",
+		"id": "101",
 		"name": "气泵输入电压",
 		"type": "0",
 		"type_name": "故障",
@@ -2133,7 +2133,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "102",
+		"id": "102",
 		"name": "气泵输出电压",
 		"type": "0",
 		"type_name": "故障",
@@ -2154,7 +2154,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "103",
+		"id": "103",
 		"name": "气泵输出电流",
 		"type": "0",
 		"type_name": "故障",
@@ -2175,7 +2175,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "104",
+		"id": "104",
 		"name": "气泵散热器温度",
 		"type": "0",
 		"type_name": "故障",
@@ -2196,7 +2196,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "105",
+		"id": "105",
 		"name": "气泵缺相",
 		"type": "0",
 		"type_name": "故障",
@@ -2217,7 +2217,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "106",
+		"id": "106",
 		"name": "气泵过载",
 		"type": "0",
 		"type_name": "故障",
@@ -2238,7 +2238,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "107",
+		"id": "107",
 		"name": "气泵短路",
 		"type": "0",
 		"type_name": "故障",
@@ -2259,7 +2259,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "108",
+		"id": "108",
 		"name": "气泵过热",
 		"type": "0",
 		"type_name": "故障",
@@ -2280,7 +2280,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "109",
+		"id": "109",
 		"name": "气泵CAN中断",
 		"type": "0",
 		"type_name": "故障",
@@ -2301,7 +2301,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "110",
+		"id": "110",
 		"name": "气泵驱动电源",
 		"type": "0",
 		"type_name": "故障",
@@ -2322,7 +2322,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "111",
+		"id": "111",
 		"name": "气泵输入过压",
 		"type": "0",
 		"type_name": "故障",
@@ -2343,7 +2343,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "112",
+		"id": "112",
 		"name": "气泵输入欠压",
 		"type": "0",
 		"type_name": "故障",
@@ -2364,7 +2364,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "113",
+		"id": "113",
 		"name": "正极对外壳绝缘值",
 		"type": "4",
 		"type_name": "电池",
@@ -2385,7 +2385,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "114",
+		"id": "114",
 		"name": "负极对外壳绝缘值",
 		"type": "4",
 		"type_name": "电池",
@@ -2406,7 +2406,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "115",
+		"id": "115",
 		"name": "绝缘检测life值",
 		"type": "4",
 		"type_name": "电池",
@@ -2427,7 +2427,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "116",
+		"id": "116",
 		"name": "绝缘模块的故障 ",
 		"type": "4",
 		"type_name": "电池",
@@ -2448,7 +2448,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "117",
+		"id": "117",
 		"name": "单体电压过低",
 		"type": "0",
 		"type_name": "故障",
@@ -2469,7 +2469,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "118",
+		"id": "118",
 		"name": "单体电压过高",
 		"type": "0",
 		"type_name": "故障",
@@ -2490,7 +2490,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "119",
+		"id": "119",
 		"name": "绝缘故障",
 		"type": "0",
 		"type_name": "故障",
@@ -2511,7 +2511,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "120",
+		"id": "120",
 		"name": "电池温度过高",
 		"type": "0",
 		"type_name": "故障",
@@ -2532,7 +2532,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "121",
+		"id": "121",
 		"name": "放电电流过大",
 		"type": "0",
 		"type_name": "故障",
@@ -2553,7 +2553,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "122",
+		"id": "122",
 		"name": "充电电流过大",
 		"type": "0",
 		"type_name": "故障",
@@ -2574,7 +2574,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "123",
+		"id": "123",
 		"name": "总压过低",
 		"type": "0",
 		"type_name": "故障",
@@ -2595,7 +2595,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "124",
+		"id": "124",
 		"name": "总压过高",
 		"type": "0",
 		"type_name": "故障",
@@ -2616,7 +2616,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "125",
+		"id": "125",
 		"name": "空调报警故障",
 		"type": "0",
 		"type_name": "故障",
@@ -2637,7 +2637,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "126",
+		"id": "126",
 		"name": "高压连接器故障",
 		"type": "0",
 		"type_name": "故障",
@@ -2658,7 +2658,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "127",
+		"id": "127",
 		"name": "SOC过低",
 		"type": "0",
 		"type_name": "故障",
@@ -2679,7 +2679,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "128",
+		"id": "128",
 		"name": "回馈电流过大",
 		"type": "0",
 		"type_name": "故障",
@@ -2700,7 +2700,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "129",
+		"id": "129",
 		"name": "单体温度和电压采集模块故障",
 		"type": "0",
 		"type_name": "故障",
@@ -2721,7 +2721,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "130",
+		"id": "130",
 		"name": "绝缘模块采样超时故障(超时20s)",
 		"type": "0",
 		"type_name": "故障",
@@ -2742,7 +2742,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "131",
+		"id": "131",
 		"name": "内网通讯故障",
 		"type": "0",
 		"type_name": "故障",
@@ -2763,7 +2763,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "132",
+		"id": "132",
 		"name": "SOC过高故障",
 		"type": "0",
 		"type_name": "故障",
@@ -2784,7 +2784,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "133",
+		"id": "133",
 		"name": "单体电压差异故障",
 		"type": "0",
 		"type_name": "故障",
@@ -2805,7 +2805,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "134",
+		"id": "134",
 		"name": "温度差异故障",
 		"type": "0",
 		"type_name": "故障",
@@ -2826,7 +2826,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "135",
+		"id": "135",
 		"name": "总故障等级",
 		"type": "4",
 		"type_name": "电池",
@@ -2847,7 +2847,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "136",
+		"id": "136",
 		"name": "BMS基本状态",
 		"type": "4",
 		"type_name": "电池",
@@ -2868,7 +2868,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "137",
+		"id": "137",
 		"name": "电池组平均温度",
 		"type": "4",
 		"type_name": "电池",
@@ -2889,7 +2889,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "138",
+		"id": "138",
 		"name": "电池组SOC",
 		"type": "4",
 		"type_name": "电池",
@@ -2910,7 +2910,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "139",
+		"id": "139",
 		"name": "电池组充放电电流",
 		"type": "4",
 		"type_name": "电池",
@@ -2931,7 +2931,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "140",
+		"id": "140",
 		"name": "电池组总电压",
 		"type": "4",
 		"type_name": "电池",
@@ -2952,7 +2952,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "141",
+		"id": "141",
 		"name": "高压继电器状态2",
 		"type": "4",
 		"type_name": "电池",
@@ -2973,7 +2973,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "142",
+		"id": "142",
 		"name": "高压继电器状态1",
 		"type": "4",
 		"type_name": "电池",
@@ -2994,7 +2994,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "143",
+		"id": "143",
 		"name": "电池组允许最高温度",
 		"type": "4",
 		"type_name": "电池",
@@ -3015,7 +3015,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "144",
+		"id": "144",
 		"name": "电池组允许最低温度",
 		"type": "4",
 		"type_name": "电池",
@@ -3036,7 +3036,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "145",
+		"id": "145",
 		"name": "电池组允许最低使用SOC",
 		"type": "4",
 		"type_name": "电池",
@@ -3057,7 +3057,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "146",
+		"id": "146",
 		"name": "电池组当前最大允许放电电流",
 		"type": "4",
 		"type_name": "电池",
@@ -3078,7 +3078,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "147",
+		"id": "147",
 		"name": "电池组当前最大允许回馈电流",
 		"type": "4",
 		"type_name": "电池",
@@ -3099,7 +3099,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "148",
+		"id": "148",
 		"name": "电池组允许漏电流",
 		"type": "4",
 		"type_name": "电池",
@@ -3120,7 +3120,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "149",
+		"id": "149",
 		"name": "SOC跳变状态",
 		"type": "4",
 		"type_name": "电池",
@@ -3141,7 +3141,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "150",
+		"id": "150",
 		"name": "BMS自检状态",
 		"type": "4",
 		"type_name": "电池",
@@ -3162,7 +3162,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "151",
+		"id": "151",
 		"name": "BMS运行模式",
 		"type": "4",
 		"type_name": "电池",
@@ -3183,7 +3183,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "152",
+		"id": "152",
 		"name": "SOH",
 		"type": "4",
 		"type_name": "电池",
@@ -3204,7 +3204,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "153",
+		"id": "153",
 		"name": "最大可用持续充电电流",
 		"type": "4",
 		"type_name": "电池",
@@ -3225,7 +3225,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "154",
+		"id": "154",
 		"name": "最大可用持续放电电流",
 		"type": "4",
 		"type_name": "电池",
@@ -3246,7 +3246,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "155",
+		"id": "155",
 		"name": "电池最高温度点一（整组最高值）",
 		"type": "4",
 		"type_name": "电池",
@@ -3267,7 +3267,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "156",
+		"id": "156",
 		"name": "电池最高温度点一（所在箱体地址编号）",
 		"type": "4",
 		"type_name": "电池",
@@ -3288,7 +3288,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "157",
+		"id": "157",
 		"name": "电池最高温度点二",
 		"type": "4",
 		"type_name": "电池",
@@ -3309,7 +3309,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "158",
+		"id": "158",
 		"name": "电池最高温度点二（所在箱体地址编号）",
 		"type": "4",
 		"type_name": "电池",
@@ -3330,7 +3330,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "159",
+		"id": "159",
 		"name": "电池最高温度点三",
 		"type": "4",
 		"type_name": "电池",
@@ -3351,7 +3351,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "160",
+		"id": "160",
 		"name": "电池最高温度点三（所在箱体地址编号）",
 		"type": "4",
 		"type_name": "电池",
@@ -3372,7 +3372,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "161",
+		"id": "161",
 		"name": "电池最高温度点四",
 		"type": "4",
 		"type_name": "电池",
@@ -3393,7 +3393,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "162",
+		"id": "162",
 		"name": "电池最高温度点四（所在箱体地址编号）",
 		"type": "4",
 		"type_name": "电池",
@@ -3414,7 +3414,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "163",
+		"id": "163",
 		"name": "电池最低温度点一（整组最低值）",
 		"type": "4",
 		"type_name": "电池",
@@ -3435,7 +3435,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "164",
+		"id": "164",
 		"name": "电池最低温度点一（所在箱体地址编号）",
 		"type": "4",
 		"type_name": "电池",
@@ -3456,7 +3456,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "165",
+		"id": "165",
 		"name": "电池最低温度点二",
 		"type": "4",
 		"type_name": "电池",
@@ -3477,7 +3477,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "166",
+		"id": "166",
 		"name": "电池最低温度点二（所在箱体地址编号）",
 		"type": "4",
 		"type_name": "电池",
@@ -3498,7 +3498,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "167",
+		"id": "167",
 		"name": "电池最低温度点三",
 		"type": "4",
 		"type_name": "电池",
@@ -3519,7 +3519,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "168",
+		"id": "168",
 		"name": "电池最低温度点三（所在箱体地址编号）",
 		"type": "4",
 		"type_name": "电池",
@@ -3540,7 +3540,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "169",
+		"id": "169",
 		"name": "电池最低温度点四",
 		"type": "4",
 		"type_name": "电池",
@@ -3561,7 +3561,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "170",
+		"id": "170",
 		"name": "电池最低温度点四（所在箱体地址编号）",
 		"type": "4",
 		"type_name": "电池",
@@ -3582,7 +3582,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "171",
+		"id": "171",
 		"name": "电池单体最低电压一",
 		"type": "4",
 		"type_name": "电池",
@@ -3603,7 +3603,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "173",
+		"id": "173",
 		"name": "电池单体最低电压一单体组编号",
 		"type": "4",
 		"type_name": "电池",
@@ -3624,7 +3624,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "174",
+		"id": "174",
 		"name": "电池单体最低电压二",
 		"type": "4",
 		"type_name": "电池",
@@ -3645,7 +3645,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "176",
+		"id": "176",
 		"name": "电池单体最低电压二单体组编号",
 		"type": "4",
 		"type_name": "电池",
@@ -3666,7 +3666,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "177",
+		"id": "177",
 		"name": "电池单体最低电压三",
 		"type": "4",
 		"type_name": "电池",
@@ -3687,7 +3687,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "179",
+		"id": "179",
 		"name": "电池单体最低电压三单体组编号",
 		"type": "4",
 		"type_name": "电池",
@@ -3708,7 +3708,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "180",
+		"id": "180",
 		"name": "电池单体最低电压四",
 		"type": "4",
 		"type_name": "电池",
@@ -3729,7 +3729,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "182",
+		"id": "182",
 		"name": "电池单体最低电压四单体组编号",
 		"type": "4",
 		"type_name": "电池",
@@ -3750,7 +3750,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "183",
+		"id": "183",
 		"name": "电池单体最高电压一",
 		"type": "4",
 		"type_name": "电池",
@@ -3771,7 +3771,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "185",
+		"id": "185",
 		"name": "电池单体最高电压一单体组编号",
 		"type": "4",
 		"type_name": "电池",
@@ -3792,7 +3792,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "186",
+		"id": "186",
 		"name": "电池单体最高电压二",
 		"type": "4",
 		"type_name": "电池",
@@ -3813,7 +3813,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "188",
+		"id": "188",
 		"name": "电池单体最高电压二单体组编号",
 		"type": "4",
 		"type_name": "电池",
@@ -3834,7 +3834,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "189",
+		"id": "189",
 		"name": "电池单体最高电压三",
 		"type": "4",
 		"type_name": "电池",
@@ -3855,7 +3855,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "191",
+		"id": "191",
 		"name": "电池单体最高电压三单体组编号",
 		"type": "4",
 		"type_name": "电池",
@@ -3876,7 +3876,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "192",
+		"id": "192",
 		"name": "电池单体最高电压四",
 		"type": "4",
 		"type_name": "电池",
@@ -3897,7 +3897,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "194",
+		"id": "194",
 		"name": "电池单体最高电压四单体组编号",
 		"type": "4",
 		"type_name": "电池",
@@ -3918,7 +3918,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "195",
+		"id": "195",
 		"name": "总压上限",
 		"type": "4",
 		"type_name": "电池",
@@ -3939,7 +3939,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "196",
+		"id": "196",
 		"name": "总压下限",
 		"type": "4",
 		"type_name": "电池",
@@ -3960,7 +3960,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "197",
+		"id": "197",
 		"name": "单体电压上限",
 		"type": "4",
 		"type_name": "电池",
@@ -3981,7 +3981,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "198",
+		"id": "198",
 		"name": "单体电压下限",
 		"type": "4",
 		"type_name": "电池",
@@ -4002,7 +4002,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "199",
+		"id": "199",
 		"name": "最高允许充电端电压",
 		"type": "4",
 		"type_name": "电池",
@@ -4023,7 +4023,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "200",
+		"id": "200",
 		"name": "最高允许充电电流",
 		"type": "4",
 		"type_name": "电池",
@@ -4044,7 +4044,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "201",
+		"id": "201",
 		"name": "充电机状态",
 		"type": "4",
 		"type_name": "电池",
@@ -4065,7 +4065,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "202",
+		"id": "202",
 		"name": "快充连接状态",
 		"type": "4",
 		"type_name": "电池",
@@ -4086,7 +4086,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "203",
+		"id": "203",
 		"name": "车载充电线连接状态",
 		"type": "4",
 		"type_name": "电池",
@@ -4107,7 +4107,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "204",
+		"id": "204",
 		"name": "电池充电状态",
 		"type": "4",
 		"type_name": "电池",
@@ -4128,7 +4128,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "205",
+		"id": "205",
 		"name": "BMS高压输出状态",
 		"type": "4",
 		"type_name": "电池",
@@ -4149,7 +4149,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "206",
+		"id": "206",
 		"name": "充电座一温度1",
 		"type": "4",
 		"type_name": "电池",
@@ -4170,7 +4170,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "207",
+		"id": "207",
 		"name": "充电座一温度2",
 		"type": "4",
 		"type_name": "电池",
@@ -4191,7 +4191,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "208",
+		"id": "208",
 		"name": "充电座二温度1",
 		"type": "4",
 		"type_name": "电池",
@@ -4212,7 +4212,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "209",
+		"id": "209",
 		"name": "充电座二温度2",
 		"type": "4",
 		"type_name": "电池",
@@ -4233,7 +4233,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "211",
+		"id": "211",
 		"name": "轮胎1位置信息",
 		"type": "1",
 		"type_name": "整车",
@@ -4254,7 +4254,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "212",
+		"id": "212",
 		"name": "轮胎1压力",
 		"type": "1",
 		"type_name": "整车",
@@ -4275,7 +4275,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "213",
+		"id": "213",
 		"name": "轮胎1温度",
 		"type": "1",
 		"type_name": "整车",
@@ -4296,7 +4296,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "214",
+		"id": "214",
 		"name": "轮胎1数据状态",
 		"type": "1",
 		"type_name": "整车",
@@ -4317,7 +4317,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "215",
+		"id": "215",
 		"name": "轮胎2位置信息",
 		"type": "1",
 		"type_name": "整车",
@@ -4338,7 +4338,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "217",
+		"id": "217",
 		"name": "轮胎2压力",
 		"type": "1",
 		"type_name": "整车",
@@ -4359,7 +4359,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "219",
+		"id": "219",
 		"name": "轮胎2温度",
 		"type": "1",
 		"type_name": "整车",
@@ -4380,7 +4380,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "220",
+		"id": "220",
 		"name": "轮胎2数据状态",
 		"type": "1",
 		"type_name": "整车",
@@ -4401,7 +4401,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "221",
+		"id": "221",
 		"name": "增程器母线电压",
 		"type": "6",
 		"type_name": "RCU",
@@ -4422,7 +4422,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "222",
+		"id": "222",
 		"name": "增程器母线输出电流",
 		"type": "6",
 		"type_name": "RCU",
@@ -4443,7 +4443,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "223",
+		"id": "223",
 		"name": "增程器输出功率",
 		"type": "6",
 		"type_name": "RCU",
@@ -4464,7 +4464,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "224",
+		"id": "224",
 		"name": "增程器故障等级",
 		"type": "6",
 		"type_name": "RCU",
@@ -4485,7 +4485,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "225",
+		"id": "225",
 		"name": "增程器状态反馈",
 		"type": "6",
 		"type_name": "RCU",
@@ -4506,7 +4506,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "226",
+		"id": "226",
 		"name": "RCU系统准备状态",
 		"type": "6",
 		"type_name": "RCU",
@@ -4527,7 +4527,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "227",
+		"id": "227",
 		"name": "增程器ISG实际转速",
 		"type": "6",
 		"type_name": "RCU",
@@ -4548,7 +4548,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "228",
+		"id": "228",
 		"name": "增程器ISG实际扭矩",
 		"type": "6",
 		"type_name": "RCU",
@@ -4569,7 +4569,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "229",
+		"id": "229",
 		"name": "增程器最大允许发电功率",
 		"type": "6",
 		"type_name": "RCU",
@@ -4590,7 +4590,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "230",
+		"id": "230",
 		"name": "ISG电机绕组温度",
 		"type": "6",
 		"type_name": "RCU",
@@ -4611,7 +4611,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "231",
+		"id": "231",
 		"name": "ISG电机控制器温度",
 		"type": "6",
 		"type_name": "RCU",
@@ -4632,7 +4632,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "232",
+		"id": "232",
 		"name": "增程器累计发电量",
 		"type": "6",
 		"type_name": "RCU",
@@ -4653,7 +4653,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "233",
+		"id": "233",
 		"name": "信号偏移量",
 		"type": "6",
 		"type_name": "RCU",
@@ -4674,7 +4674,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "234",
+		"id": "234",
 		"name": "信号排列格式",
 		"type": "6",
 		"type_name": "RCU",
@@ -4695,7 +4695,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "235",
+		"id": "235",
 		"name": "通讯协议版本号",
 		"type": "6",
 		"type_name": "RCU",
@@ -4716,7 +4716,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "236",
+		"id": "236",
 		"name": "发动机实际转速反馈值",
 		"type": "6",
 		"type_name": "RCU",
@@ -4737,7 +4737,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "237",
+		"id": "237",
 		"name": "冷却液温度",
 		"type": "6",
 		"type_name": "RCU",
@@ -4758,7 +4758,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "238",
+		"id": "238",
 		"name": "尿素温度",
 		"type": "6",
 		"type_name": "RCU",
@@ -4779,7 +4779,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "239",
+		"id": "239",
 		"name": "尿素液位",
 		"type": "6",
 		"type_name": "RCU",
@@ -4800,7 +4800,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "240",
+		"id": "240",
 		"name": "机油压力",
 		"type": "6",
 		"type_name": "RCU",
@@ -4821,7 +4821,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "241",
+		"id": "241",
 		"name": "油中有水报警",
 		"type": "6",
 		"type_name": "RCU",
@@ -4842,7 +4842,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "242",
+		"id": "242",
 		"name": "进水温度",
 		"type": "4",
 		"type_name": "电池",
@@ -4863,7 +4863,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "243",
+		"id": "243",
 		"name": "出水温度",
 		"type": "4",
 		"type_name": "电池",
@@ -4884,7 +4884,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "244",
+		"id": "244",
 		"name": "TMS高压继电器状态",
 		"type": "4",
 		"type_name": "电池",
@@ -4905,7 +4905,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "245",
+		"id": "245",
 		"name": "充放电模式",
 		"type": "4",
 		"type_name": "电池",
@@ -4926,7 +4926,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "246",
+		"id": "246",
 		"name": "工作模式",
 		"type": "4",
 		"type_name": "电池",
@@ -4947,7 +4947,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "248",
+		"id": "248",
 		"name": "压缩机负载比率",
 		"type": "4",
 		"type_name": "电池",
@@ -4968,7 +4968,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "249",
+		"id": "249",
 		"name": "故障等级",
 		"type": "4",
 		"type_name": "电池",
@@ -4989,7 +4989,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "250",
+		"id": "250",
 		"name": "故障码",
 		"type": "4",
 		"type_name": "电池",
@@ -5010,7 +5010,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "251",
+		"id": "251",
 		"name": "热管理Life值",
 		"type": "4",
 		"type_name": "电池",
@@ -5031,7 +5031,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "252",
+		"id": "252",
 		"name": "液位传感器状态",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5052,7 +5052,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "253",
+		"id": "253",
 		"name": "转向过滤器状态",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5073,7 +5073,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "254",
+		"id": "254",
 		"name": "回油过滤器状态",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5094,7 +5094,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "255",
+		"id": "255",
 		"name": "液压站压力状态",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5115,7 +5115,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "257",
+		"id": "257",
 		"name": "液压站油温状态",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5136,7 +5136,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "258",
+		"id": "258",
 		"name": "压力传感器",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5157,7 +5157,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "259",
+		"id": "259",
 		"name": "温度传感器",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5178,7 +5178,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "260",
+		"id": "260",
 		"name": "1桥转角",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5199,7 +5199,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "261",
+		"id": "261",
 		"name": "2桥转角",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5220,7 +5220,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "264",
+		"id": "264",
 		"name": "3桥转角",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5241,7 +5241,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "265",
+		"id": "265",
 		"name": "4桥转角",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5262,7 +5262,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "266",
+		"id": "266",
 		"name": "2桥驻车制动气室气压",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5283,7 +5283,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "267",
+		"id": "267",
 		"name": "3桥驻车制动气室气压",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5304,7 +5304,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "268",
+		"id": "268",
 		"name": "1/2桥行车制动气室气压",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5325,7 +5325,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "269",
+		"id": "269",
 		"name": "3/4桥行车制动气室气压",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5346,7 +5346,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "270",
+		"id": "270",
 		"name": "辅助储气筒气压",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5367,7 +5367,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "271",
+		"id": "271",
 		"name": "1/2桥储气筒气压",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5388,7 +5388,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "272",
+		"id": "272",
 		"name": "3/4桥储气筒气压",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5409,7 +5409,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "273",
+		"id": "273",
 		"name": "膨胀水箱液位",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5430,7 +5430,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "274",
+		"id": "274",
 		"name": "循环水泵状态",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5451,7 +5451,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "275",
+		"id": "275",
 		"name": "冷却风扇2状态",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5472,7 +5472,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "276",
+		"id": "276",
 		"name": "冷却风扇1状态",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5493,7 +5493,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "277",
+		"id": "277",
 		"name": "BMS温度",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5514,7 +5514,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "278",
+		"id": "278",
 		"name": "四合一驱动控制器温度",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5535,7 +5535,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "279",
+		"id": "279",
 		"name": "主驱控制器温度",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5556,7 +5556,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "280",
+		"id": "280",
 		"name": "主驱电机温度",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5577,7 +5577,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "281",
+		"id": "281",
 		"name": "气泵散热器温度",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5598,7 +5598,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "282",
+		"id": "282",
 		"name": "增程器发动机水温",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5619,7 +5619,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "283",
+		"id": "283",
 		"name": "故障总数",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5640,7 +5640,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "284",
+		"id": "284",
 		"name": "故障序号",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5661,7 +5661,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "285",
+		"id": "285",
 		"name": "故障代码",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5682,7 +5682,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "287",
+		"id": "287",
 		"name": "已关闭故障总数",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5703,7 +5703,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "288",
+		"id": "288",
 		"name": "当前关闭故障序号",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5724,7 +5724,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "289",
+		"id": "289",
 		"name": "当前关闭故障代码",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -5745,7 +5745,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "290",
+		"id": "290",
 		"name": "电机扭矩控制模式",
 		"type": "8",
 		"type_name": "EBS",
@@ -5766,7 +5766,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "291",
+		"id": "291",
 		"name": "电机输出转速",
 		"type": "8",
 		"type_name": "EBS",
@@ -5787,7 +5787,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "292",
+		"id": "292",
 		"name": "驻车制动状态",
 		"type": "8",
 		"type_name": "EBS",
@@ -5808,7 +5808,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "293",
+		"id": "293",
 		"name": "车速",
 		"type": "8",
 		"type_name": "EBS",
@@ -5829,7 +5829,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "294",
+		"id": "294",
 		"name": "外部减速度需求",
 		"type": "8",
 		"type_name": "EBS",
@@ -5850,7 +5850,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "295",
+		"id": "295",
 		"name": "外部制动请求控制模式",
 		"type": "8",
 		"type_name": "EBS",
@@ -5871,7 +5871,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "296",
+		"id": "296",
 		"name": "外部制动请求优先级",
 		"type": "8",
 		"type_name": "EBS",
@@ -5892,7 +5892,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "297",
+		"id": "297",
 		"name": "EBI模式",
 		"type": "8",
 		"type_name": "EBS",
@@ -5913,7 +5913,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "298",
+		"id": "298",
 		"name": "车辆行驶方向",
 		"type": "8",
 		"type_name": "EBS",
@@ -5934,7 +5934,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "299",
+		"id": "299",
 		"name": "驻车回路供气压力",
 		"type": "8",
 		"type_name": "EBS",
@@ -5955,7 +5955,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "300",
+		"id": "300",
 		"name": "第一行车回路供气压力",
 		"type": "8",
 		"type_name": "EBS",
@@ -5976,7 +5976,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "301",
+		"id": "301",
 		"name": "第二行车回路供气压力",
 		"type": "8",
 		"type_name": "EBS",
@@ -5997,7 +5997,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "302",
+		"id": "302",
 		"name": "第三行车回路供气压力",
 		"type": "8",
 		"type_name": "EBS",
@@ -6018,7 +6018,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "303",
+		"id": "303",
 		"name": "上电指示灯",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6039,7 +6039,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "304",
+		"id": "304",
 		"name": "人工接管模式",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6060,7 +6060,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "305",
+		"id": "305",
 		"name": "AGV故障报警",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6081,7 +6081,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "306",
+		"id": "306",
 		"name": "年",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6102,7 +6102,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "307",
+		"id": "307",
 		"name": "月",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6123,7 +6123,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "308",
+		"id": "308",
 		"name": "日",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6144,7 +6144,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "309",
+		"id": "309",
 		"name": "时",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6165,7 +6165,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "310",
+		"id": "310",
 		"name": "分",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6186,7 +6186,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "311",
+		"id": "311",
 		"name": "秒",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6207,7 +6207,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "312",
+		"id": "312",
 		"name": "胎压",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6228,7 +6228,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "313",
+		"id": "313",
 		"name": "轮胎编号",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6249,7 +6249,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "314",
+		"id": "314",
 		"name": "轮胎温度",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6270,7 +6270,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "315",
+		"id": "315",
 		"name": "AGV电量",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6291,7 +6291,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "317",
+		"id": "317",
 		"name": "电机转速",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6312,7 +6312,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "318",
+		"id": "318",
 		"name": "液压站压力传感器",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6333,7 +6333,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "319",
+		"id": "319",
 		"name": "液压站温度传感器",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6354,7 +6354,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "320",
+		"id": "320",
 		"name": "车速",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6375,7 +6375,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "321",
+		"id": "321",
 		"name": "1桥转向角",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6396,7 +6396,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "322",
+		"id": "322",
 		"name": "4桥转向角",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6417,7 +6417,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "323",
+		"id": "323",
 		"name": "储气罐压力",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6438,7 +6438,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "324",
+		"id": "324",
 		"name": "AGV故障等级",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6459,7 +6459,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "325",
+		"id": "325",
 		"name": "AGV Ready状态",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6480,7 +6480,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "326",
+		"id": "326",
 		"name": "增程器状态",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6501,7 +6501,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "327",
+		"id": "327",
 		"name": "无人驾驶控制模式请求",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6522,7 +6522,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "328",
+		"id": "328",
 		"name": "3桥驻车制动（EPB）状态",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6543,7 +6543,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "329",
+		"id": "329",
 		"name": "2桥驻车制动（EPB）状态",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6564,7 +6564,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "330",
+		"id": "330",
 		"name": "3/4桥行车制动状态",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6585,7 +6585,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "331",
+		"id": "331",
 		"name": "1/2桥行车制动状态",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6606,7 +6606,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "333",
+		"id": "333",
 		"name": "BMS高压电状态",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6627,7 +6627,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "334",
+		"id": "334",
 		"name": "高压箱高压电状态",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6648,7 +6648,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "335",
+		"id": "335",
 		"name": "低压回路4上下电状态",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6669,7 +6669,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "336",
+		"id": "336",
 		"name": "低压回路3上下电状态",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6690,7 +6690,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "337",
+		"id": "337",
 		"name": "低压回路2上下电状态",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6711,7 +6711,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "338",
+		"id": "338",
 		"name": "低压回路1上下电状态",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6732,7 +6732,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "339",
+		"id": "339",
 		"name": "动力电池SOC",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6753,7 +6753,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "340",
+		"id": "340",
 		"name": "油箱剩余油量百分比",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6774,7 +6774,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "341",
+		"id": "341",
 		"name": "主驱电机实际输出转矩",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6795,7 +6795,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "342",
+		"id": "342",
 		"name": "主驱电机实际转速",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6816,7 +6816,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "343",
+		"id": "343",
 		"name": "无线连接",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6837,7 +6837,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "344",
+		"id": "344",
 		"name": "急停翻转",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6858,7 +6858,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "345",
+		"id": "345",
 		"name": "急停",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6879,7 +6879,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "346",
+		"id": "346",
 		"name": "平台下降",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6900,7 +6900,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "347",
+		"id": "347",
 		"name": "平台上升",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6921,7 +6921,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "348",
+		"id": "348",
 		"name": "转向回正",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6942,7 +6942,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "349",
+		"id": "349",
 		"name": "驻车制动",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6963,7 +6963,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "350",
+		"id": "350",
 		"name": "行车制动",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -6984,7 +6984,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "351",
+		"id": "351",
 		"name": "手动慢速",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -7005,7 +7005,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "352",
+		"id": "352",
 		"name": "人工接管",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -7026,7 +7026,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "353",
+		"id": "353",
 		"name": "上电",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -7047,7 +7047,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "354",
+		"id": "354",
 		"name": "设置",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -7068,7 +7068,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "355",
+		"id": "355",
 		"name": "OK",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -7089,7 +7089,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "356",
+		"id": "356",
 		"name": "减小",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -7110,7 +7110,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "357",
+		"id": "357",
 		"name": "增加",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -7131,7 +7131,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "358",
+		"id": "358",
 		"name": "前进和后退",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -7152,7 +7152,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "359",
+		"id": "359",
 		"name": "左转和右转",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -7173,7 +7173,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "360",
+		"id": "360",
 		"name": "通讯Live值",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -7194,7 +7194,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "361",
+		"id": "361",
 		"name": "高压上下电指令",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -7215,7 +7215,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "362",
+		"id": "362",
 		"name": "急停",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -7236,7 +7236,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "363",
+		"id": "363",
 		"name": "EPB使能",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -7257,7 +7257,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "364",
+		"id": "364",
 		"name": "刹车使能",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -7278,7 +7278,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "365",
+		"id": "365",
 		"name": "转向使能",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -7299,7 +7299,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "366",
+		"id": "366",
 		"name": "电驱使能",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -7320,7 +7320,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "367",
+		"id": "367",
 		"name": "EPB值",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -7341,7 +7341,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "368",
+		"id": "368",
 		"name": "声光报警器控制",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -7362,7 +7362,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "369",
+		"id": "369",
 		"name": "喇叭控制",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -7383,7 +7383,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "370",
+		"id": "370",
 		"name": "电驱转速",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -7404,7 +7404,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "371",
+		"id": "371",
 		"name": "一桥左侧转角",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -7425,7 +7425,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "372",
+		"id": "372",
 		"name": "刹车值",
 		"type": "7",
 		"type_name": "手持遥控",
@@ -7446,7 +7446,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "373",
+		"id": "373",
 		"name": "ABS控制激活状态",
 		"type": "8",
 		"type_name": "EBS",
@@ -7467,7 +7467,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "374",
+		"id": "374",
 		"name": "完全工作模式",
 		"type": "8",
 		"type_name": "EBS",
@@ -7488,7 +7488,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "375",
+		"id": "375",
 		"name": "前桥平均轮速",
 		"type": "8",
 		"type_name": "EBS",
@@ -7509,7 +7509,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "377",
+		"id": "377",
 		"name": "前桥左侧轮相对于前桥的速度",
 		"type": "8",
 		"type_name": "EBS",
@@ -7530,7 +7530,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "378",
+		"id": "378",
 		"name": "前桥右侧轮相对于前桥的速度",
 		"type": "8",
 		"type_name": "EBS",
@@ -7551,7 +7551,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "379",
+		"id": "379",
 		"name": "中间桥左侧轮相对于前桥的速度",
 		"type": "8",
 		"type_name": "EBS",
@@ -7572,7 +7572,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "380",
+		"id": "380",
 		"name": "中间桥右侧轮相对于前桥的速度",
 		"type": "8",
 		"type_name": "EBS",
@@ -7593,7 +7593,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "381",
+		"id": "381",
 		"name": "后桥左侧轮相对于前桥的速度",
 		"type": "8",
 		"type_name": "EBS",
@@ -7614,7 +7614,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "382",
+		"id": "382",
 		"name": "后桥右侧轮相对于前桥的速度",
 		"type": "8",
 		"type_name": "EBS",
@@ -7635,7 +7635,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "383",
+		"id": "383",
 		"name": "外部制动请求加速度限值",
 		"type": "8",
 		"type_name": "EBS",
@@ -7656,7 +7656,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "384",
+		"id": "384",
 		"name": "航向角",
 		"type": "9",
 		"type_name": "惯导信息",
@@ -7677,7 +7677,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "385",
+		"id": "385",
 		"name": "经度",
 		"type": "9",
 		"type_name": "惯导信息",
@@ -7698,7 +7698,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "386",
+		"id": "386",
 		"name": "纬度",
 		"type": "9",
 		"type_name": "惯导信息",
@@ -7719,7 +7719,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "387",
+		"id": "387",
 		"name": "高度",
 		"type": "9",
 		"type_name": "惯导信息",
@@ -7740,7 +7740,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "388",
+		"id": "388",
 		"name": "纵向速度",
 		"type": "9",
 		"type_name": "惯导信息",
@@ -7761,7 +7761,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "389",
+		"id": "389",
 		"name": "横向速度",
 		"type": "9",
 		"type_name": "惯导信息",
@@ -7782,7 +7782,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "390",
+		"id": "390",
 		"name": "年",
 		"type": "9",
 		"type_name": "惯导信息",
@@ -7803,7 +7803,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "391",
+		"id": "391",
 		"name": "月",
 		"type": "9",
 		"type_name": "惯导信息",
@@ -7824,7 +7824,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "392",
+		"id": "392",
 		"name": "日",
 		"type": "9",
 		"type_name": "惯导信息",
@@ -7845,7 +7845,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "393",
+		"id": "393",
 		"name": "时",
 		"type": "9",
 		"type_name": "惯导信息",
@@ -7866,7 +7866,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "394",
+		"id": "394",
 		"name": "分",
 		"type": "9",
 		"type_name": "惯导信息",
@@ -7887,7 +7887,7 @@ let monitorRule = [
 		"car_type": "11"
 	},
 	{
-		"_id": "395",
+		"id": "395",
 		"name": "秒",
 		"type": "9",
 		"type_name": "惯导信息",
