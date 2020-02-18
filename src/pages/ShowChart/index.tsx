@@ -22,7 +22,6 @@ export default class ShowChart extends React.Component<Props> {
 
 	componentDidMount() { 
 		console.log(this.props.fileData,'fileData')
-		console.log(JSON.stringify(this.props.fileData))
 	}
 
 	public render() {
