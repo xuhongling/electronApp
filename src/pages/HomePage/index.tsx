@@ -1,4 +1,6 @@
 import React from 'react'
+import Header from 'components/Header'
+import Sidebar from 'components/Sidebar'
 import styles from './style.less'
 
 export default class HomePage extends React.Component {
@@ -9,7 +11,10 @@ export default class HomePage extends React.Component {
 
 	public render() {
 		return (
-			<div className={styles.homePage}></div>
+			<div className={styles.homePage}>
+				<Header/>
+				<Sidebar/>
+			</div>
 		)
 	}
 }

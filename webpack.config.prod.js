@@ -94,9 +94,10 @@ module.exports = {
 								postcssUrl({}),
 								postcssPresetEnv({}),
 								cssnano({
-									preset: 'advanced',
-									autoprefixer: false,
-									'postcss-zindex': false
+									"cssnano-preset-advanced": {
+						        zindex: false,
+						        autoprefixer: false
+						      },
 								})
 							]
 						}
@@ -131,9 +132,10 @@ module.exports = {
 								postcssUrl({}),
 								postcssPresetEnv({}),
 								cssnano({
-									preset: 'advanced',
-									autoprefixer: false,
-									'postcss-zindex': false
+									"cssnano-preset-advanced": {
+						        zindex: false,
+						        autoprefixer: false
+						      },
 								})
 							]
 						}
