@@ -1,8 +1,28 @@
 .sidebar{
-	width: 260px;
 	height: 100%;
-	background: #fff;
+	padding: 60px 40px 0 30px;
+	background: #3e3e3e;
+	box-shadow: 4px 0 6px rgba(0,0,0,0.1);
 	position: absolute;
 	left: 0;
 	top: 0;
+	z-index: 1;
+	.listItem{
+		width: 100%;
+		height: 56px;
+		display: flex;
+		align-items: center;
+		color: #a9afcb;
+		font-size: 14px;
+		font-weight: bold;
+		i{
+			font-size: 18px;
+			margin-right: 6px;
+			font-weight: normal;
+		}
+		&:hover{
+			color: #50abff;
+			cursor: pointer;
+		}
+	}
 }
