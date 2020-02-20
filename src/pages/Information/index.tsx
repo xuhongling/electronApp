@@ -9,7 +9,9 @@ export default class Information extends React.Component {
 
 	public render() {
 		return (
-			<div className={styles.homePage}></div>
+			<div className={styles.information}>
+				Information
+			</div>
 		)
 	}
 }

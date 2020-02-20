@@ -9,7 +9,9 @@ export default class EBS extends React.Component {
 
 	public render() {
 		return (
-			<div className={styles.homePage}></div>
+			<div className={styles.EBS}>
+				EBS
+			</div>
 		)
 	}
 }

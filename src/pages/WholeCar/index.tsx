@@ -9,7 +9,9 @@ export default class WholeCar extends React.Component {
 
 	public render() {
 		return (
-			<div className={styles.homePage}></div>
+			<div className={styles.wholeCar}>
+				WholeCar
+			</div>
 		)
 	}
 }

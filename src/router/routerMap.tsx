@@ -23,15 +23,21 @@ const routerMap = () => (
       <Route exact path="/" render={() => <Redirect to="/selectFile" />} />
 			<Route path="/showChart" component={ShowChart} />
 			<Route path="/homePage" component={HomePage} />
-			<Route path="/electricMachinery" component={ElectricMachinery} />
-			<Route path="/highVoltage" component={HighVoltage} />
-			<Route path="/fault" component={Fault} />
-			<Route path="/wholeCar" component={WholeCar} />
-			<Route path="/RCU" component={RCU} />
-			<Route path="/battery" component={Battery} />
-			<Route path="/handheldControl" component={HandheldControl} />
-			<Route path="/EBS" component={EBS} />
-			<Route path="/information" component={Information} />
+			<Route path="/" render={()=>
+				<HomePage>
+					<Switch>
+						<Route path="/electricMachinery" component={ElectricMachinery} />
+						<Route path="/highVoltage" component={HighVoltage} />
+						<Route path="/fault" component={Fault} />
+						<Route path="/wholeCar" component={WholeCar} />
+						<Route path="/RCU" component={RCU} />
+						<Route path="/battery" component={Battery} />
+						<Route path="/handheldControl" component={HandheldControl} />
+						<Route path="/EBS" component={EBS} />
+						<Route path="/information" component={Information} />
+					</Switch>
+				</HomePage>
+			} />
 		</Switch>
 	</Router>
 )
