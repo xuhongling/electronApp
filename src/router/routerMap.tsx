@@ -22,7 +22,6 @@ const routerMap = () => (
 			<Route path="/selectFile" component={SelectFile} exact={true} />
       <Route exact path="/" render={() => <Redirect to="/selectFile" />} />
 			<Route path="/showChart" component={ShowChart} />
-			<Route path="/homePage" component={HomePage} />
 			<Route path="/" render={()=>
 				<HomePage>
 					<Switch>

@@ -1,8 +1,9 @@
 import React from 'react'
-import { Checkbox } from 'antd'
+import { Checkbox, Popover } from 'antd'
 import { connect } from 'react-redux'
 import { RootState, actions } from '@/store'
 import { bindActionCreators } from 'redux'
+import { Link } from 'react-router-dom'
 import styles from './style.less'
 
 type Props = ReturnType<typeof bindActionCreators>
@@ -56,7 +57,14 @@ export default class Header extends React.Component<Props, State> {
 	public render() {
 		return (
 			<div className={styles.header}>
-				<div className={styles.title}>{this.state.title}</div>
+				<Popover placement="bottom" content={<div className={styles.tips}>回到选择文件</div>}>
+					<Link to='/selectFile'>
+						<svg className="icon" aria-hidden="true">
+					    <use href="#icon-jiexi"></use>
+						</svg>
+						<div className={styles.title}>{this.state.title}</div>
+					</Link>
+				</Popover>
 				<div className={styles.checkboxWrap}>
 					<Checkbox.Group options={this.state.options} defaultValue={this.state.values} onChange={this.onChangeCheckbox}/>
 				</div>

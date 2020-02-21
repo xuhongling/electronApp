@@ -57,7 +57,7 @@ export default class AddFile extends React.Component<Props> {
 			// 把 fileData 数据设置全局访问
 			this.props.setFileData(fileDataArr)
 			// 跳转展示图表页面
-			this.props.history.push('/homePage')
+			this.props.history.push('/wholeCar')
 		}
 	}
 
