@@ -7,12 +7,13 @@ import { bindActionCreators } from 'redux'
 import monitorRule from 'static/monitorRule'
 import styles from './style.less'
 
-const { Option, OptGroup } = Select
+const { Option } = Select
 
 type Props = ReturnType<typeof bindActionCreators>
 type State = {
 	selectNumber: any[],
 	selectDataList: any[],
+	selectValue: any[],
 	selectOptionData: any[]
 }
 // @ts-ignore: 不可达代码错误。 用装饰器简写方式
@@ -37,11 +38,8 @@ export default class SelectData extends React.Component<Props, State> {
 		this.state = {
 			selectDataList: [],
 			selectOptionData: [],
-			selectNumber: [
-				{ title: '1111' },
-				{ title: '2222' },
-				{ title: '3333' }
-			]
+			selectValue: [],
+			selectNumber: ['a','b','c']
 		}
 	}
 	componentDidMount() {
@@ -58,26 +56,30 @@ export default class SelectData extends React.Component<Props, State> {
 
 	handleChangeSelectData = (typeName:string)=> {
 		let selectDataList =  []
-		for (var i = 0; i < monitorRule.length; i++) {
+		for (let i = 0; i < monitorRule.length; i++) {
 			if (monitorRule[i].type_name === typeName) {
 				selectDataList.push(monitorRule[i])
 			}
 		}
-		this.setState({ selectDataList }, ()=> {
-			let array:any[] = this.state.selectDataList
-			let size:number = this.state.selectDataList.length / this.state.selectNumber.length
-			let selectOptionData:any = this.sliceArray(array, size)
-			this.setState({selectOptionData})
-		})
+		let array:any[] = selectDataList
+		let size:number = selectDataList.length / this.state.selectNumber.length
+		let selectOptionData:any = this.sliceArray(array, size)
+		let selectValue = []
+		for (let i = 0; i < selectOptionData.length; i++) {
+			selectValue.push(selectOptionData[i][0].name)
+		}
+		this.setState({selectDataList, selectOptionData, selectValue})
 	}
-
-	handleChangeData = (value:any)=> {
-	  console.log(`selected ${value}`)
+	handleFocusData = (index:number)=> {
+		console.log(index)
+	}
+	handleChangeData = (value:any, option:any)=> {
+	  console.log(`selected ${value}`,option)
 	}
 	handleClickAdd = ()=> {
 		let selectNumber = this.state.selectNumber
 		if (selectNumber.length < 5 ) {
-			selectNumber.push({title: '4444'})
+			selectNumber.push('d')
 		}
 		this.setState({ selectNumber })
 	}
@@ -101,19 +103,29 @@ export default class SelectData extends React.Component<Props, State> {
 		return (
 			<div className={styles.selectData}>
 			  {
-			  	this.state.selectNumber.map((item,index)=>{
+			  	this.state.selectValue.length !==0 ? this.state.selectNumber.map((itemList,index)=>{
 			  		return (
-							<Select showSearch allowClear placeholder="Select a person" optionFilterProp="children" onChange={this.handleChangeData} key={index}>
-						    <OptGroup label="Manager">
-						      <Option value="jack">{item.title}</Option>
-						      <Option value="lucy">Lucy</Option>
-						    </OptGroup>
-						    <OptGroup label="Engineer">
-						      <Option value="Yiminghe">yiminghe</Option>
-						    </OptGroup>
+							<Select 
+								showSearch
+								allowClear
+								value={this.state.selectValue[index]}
+								placeholder="请选择"
+								optionFilterProp="children"
+								onChange={this.handleChangeData}
+								onFocus={()=>this.handleFocusData(index)}
+								key={index}
+							>
+						    {
+						    	this.state.selectOptionData.length !==0 ?
+						    	this.state.selectOptionData[index].map((item:any)=>{
+						    		return (
+						    			<Option value={item.name} key={item.id}>{item.name}</Option>
+						    		)
+						    	}): null
+						    }
 						  </Select>
 			  		)
-			  	})
+			  	}): null
 			  }
 			  <PlusOutlined className={styles.addIcon} onClick={this.handleClickAdd}/>
 			</div>
