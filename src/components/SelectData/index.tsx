@@ -12,7 +12,8 @@ const { Option, OptGroup } = Select
 type Props = ReturnType<typeof bindActionCreators>
 type State = {
 	selectNumber: any[],
-	selectData: object
+	selectDataList: any[],
+	selectOptionData: any[]
 }
 // @ts-ignore: 不可达代码错误。 用装饰器简写方式
 @connect(
@@ -34,17 +35,8 @@ export default class SelectData extends React.Component<Props, State> {
 	constructor(props:any) {
 		super(props)
 		this.state = {
-			selectData: {
-				wholeCarData: [],
-				electricMachineryData: [],
-				faultData: [],
-				highVoltageData: [],
-				batteryData: [],
-				RCUData: [],
-				handheldControlData: [],
-				EBSData: [],
-				informationData: []
-			},
+			selectDataList: [],
+			selectOptionData: [],
 			selectNumber: [
 				{ title: '1111' },
 				{ title: '2222' },
@@ -52,60 +44,30 @@ export default class SelectData extends React.Component<Props, State> {
 			]
 		}
 	}
-
 	componentDidMount() {
-		let wholeCarData =  []
-		let electricMachineryData =  []
-		let faultData =  []
-		let highVoltageData =  []
-		let batteryData =  []
-		let RCUData =  []
-		let handheldControlData =  []
-		let EBSData =  []
-		let informationData =  []
+		this.handleChangeSelectData('整车')
+	}
+
+	componentDidUpdate(prevProps:any, prevState:any) {
+	  // 判断是否更新了全局 eChart，典型用法（不要忘记比较 props）
+	  if (this.props.selectData !== prevProps.selectData) {
+	  	let typeName:any = this.props.selectData
+	  	this.handleChangeSelectData(typeName)
+	  }
+	}
+
+	handleChangeSelectData = (typeName:string)=> {
+		let selectDataList =  []
 		for (var i = 0; i < monitorRule.length; i++) {
-			if (monitorRule[i].type_name === '整车') {
-				wholeCarData.push(monitorRule[i])
-			}
-			if (monitorRule[i].type_name === '电机') {
-				electricMachineryData.push(monitorRule[i])
-			}
-			if (monitorRule[i].type_name === '故障') {
-				faultData.push(monitorRule[i])
-			}
-			if (monitorRule[i].type_name === '高压附件') {
-				highVoltageData.push(monitorRule[i])
-			}
-			if (monitorRule[i].type_name === '电池') {
-				batteryData.push(monitorRule[i])
-			}
-			if (monitorRule[i].type_name === 'RCU') {
-				RCUData.push(monitorRule[i])
-			}
-			if (monitorRule[i].type_name === '手持遥控') {
-				handheldControlData.push(monitorRule[i])
-			}
-			if (monitorRule[i].type_name === 'EBS') {
-				EBSData.push(monitorRule[i])
-			}
-			if (monitorRule[i].type_name === '惯导信息') {
-				informationData.push(monitorRule[i])
+			if (monitorRule[i].type_name === typeName) {
+				selectDataList.push(monitorRule[i])
 			}
 		}
-		this.setState({
-			selectData: {
-				wholeCarData,
-				electricMachineryData,
-				faultData,
-				highVoltageData,
-				batteryData,
-				RCUData,
-				handheldControlData,
-				EBSData,
-				informationData
-			}
-		},()=>{
-			console.log(this.state.selectData,'selectData')
+		this.setState({ selectDataList }, ()=> {
+			let array:any[] = this.state.selectDataList
+			let size:number = this.state.selectDataList.length / this.state.selectNumber.length
+			let selectOptionData:any = this.sliceArray(array, size)
+			this.setState({selectOptionData})
 		})
 	}
 
@@ -117,16 +79,27 @@ export default class SelectData extends React.Component<Props, State> {
 		if (selectNumber.length < 5 ) {
 			selectNumber.push({title: '4444'})
 		}
-		this.setState({
-			selectNumber
-		})
+		this.setState({ selectNumber })
 	}
 
+	/*
+ * 将一个数组分成几个同等长度的数组
+ * array[分割的原数组]
+ * size[每个子数组的长度]
+ */
+ 	sliceArray = (array:any[], size:number) => {
+    let result = []
+    for (let i = 0; i < Math.ceil(array.length / size); i++) {
+      let start = i * size
+      let end = start + size
+      result.push(array.slice(start, end))
+    }
+    return result
+	}
 
 	public render() {
 		return (
 			<div className={styles.selectData}>
-				
 			  {
 			  	this.state.selectNumber.map((item,index)=>{
 			  		return (
