@@ -1,14 +1,29 @@
 import React from 'react'
 import classnames from 'classnames'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { RootState, actions } from '@/store'
+import { bindActionCreators } from 'redux'
 import styles from './style.less'
 
-type Props = {}
+type Props = ReturnType<typeof bindActionCreators>
 type State = {
 	isType: string,
 	sidebarList: any[]
 }
 
+// @ts-ignore: 不可达代码错误。 用装饰器简写方式
+@connect(
+  (state: RootState) => ({ selectData: state.selectData.selectData }),
+  dispatch => ({
+    ...bindActionCreators(
+      {
+        setSelectData: (selectData: string) => actions.selectData.setSelectData(selectData)
+      },
+      dispatch
+    )
+  })
+)
 export default class Sidebar extends React.Component<Props,State> {
 
 	constructor(props:any) {
@@ -31,6 +46,7 @@ export default class Sidebar extends React.Component<Props,State> {
 
 	handleClickList = (item:any)=> {
 		this.setState({isType: item.type})
+		this.props.setSelectData(item.name)
 	}
 
 	public render() {

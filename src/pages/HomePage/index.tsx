@@ -8,10 +8,6 @@ export default class HomePage extends React.Component {
 	constructor(props:any) {
 		super(props)
 	}
-	componentDidMount() {
-		//ChildrenCommon
-		console.log(this.props)
-	}
 
 	public render() {
 		return (
