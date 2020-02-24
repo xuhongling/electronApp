@@ -14,17 +14,19 @@ type State = {
 	selectNumber: any[],
 	selectDataList: any[],
 	selectValue: any[],
-	selectOptionData: any[]
+	selectOptionData: any[],
+	selectOptionIndex: number
 }
 // @ts-ignore: 不可达代码错误。 用装饰器简写方式
 @connect(
   (state: RootState) => ({ 
-  	fileData: state.chartData.chartData,
+  	legendData: state.legendData.legendData,
   	selectData: state.selectData.selectData
   }),
   dispatch => ({
     ...bindActionCreators(
       {
+        setLegendData: (legendData: any[]) => actions.legendData.setLegendData(legendData),
         setChartData: (chartData: any[]) => actions.chartData.setChartData(chartData)
       },
       dispatch
@@ -38,12 +40,19 @@ export default class SelectData extends React.Component<Props, State> {
 		this.state = {
 			selectDataList: [],
 			selectOptionData: [],
+			selectOptionIndex: 0,
 			selectValue: [],
 			selectNumber: ['a','b','c']
 		}
 	}
 	componentDidMount() {
 		this.handleChangeSelectData('整车')
+		let chartData = [
+      [20, 32, 101, 134, 90, 120, 180, 190, 172, 161, 134, 90, 120, 110],
+      [220, 182, 191, 234, 290, 300, 310, 234, 290, 330, 310, 234, 290, 330],
+      [150, 232, 201, 154, 190, 330, 410, 350, 332, 301, 354, 290, 330, 310]
+    ]
+    this.props.setChartData(chartData)
 	}
 
 	componentDidUpdate(prevProps:any, prevState:any) {
@@ -69,21 +78,43 @@ export default class SelectData extends React.Component<Props, State> {
 			selectValue.push(selectOptionData[i][0].name)
 		}
 		this.setState({selectDataList, selectOptionData, selectValue})
+		// 设置图表Legend数据
+	  this.props.setLegendData(selectValue)
+	  let chartData = [
+      [20, 32, 101, 134, 90, 120, 180, 190, 172, 161, 134, 90, 120, 110],
+      [220, 182, 191, 234, 290, 300, 310, 234, 290, 330, 310, 234, 290, 330],
+      [150, 232, 201, 154, 190, 330, 410, 350, 332, 301, 354, 290, 330, 310],
+      [120, 132, 101, 154, 190, 130, 110, 120, 132, 101, 154, 190, 130, 110],
+      [140, 222, 171, 194, 150, 220, 250, 140, 222, 171, 194, 150, 220, 200]
+    ]
+	  this.props.setChartData(chartData)
 	}
+	// 获取鼠标点击哪一个选择框
 	handleFocusData = (index:number)=> {
-		console.log(index)
+		this.setState({ selectOptionIndex: index })
 	}
-	handleChangeData = (value:any, option:any)=> {
-	  console.log(`selected ${value}`,option)
+	// 给选择框对应赋值
+	handleChangeData = (value:any)=> {
+	  let selectValue = this.state.selectValue
+	  let selectOptionIndex = this.state.selectOptionIndex
+	  selectValue[selectOptionIndex] = value
+	  this.setState({selectValue: selectValue})
+	  // 设置图表Legend数据
+	  console.log(selectValue,'selectValue11')
+	  this.props.setLegendData(selectValue)
 	}
+	// 添加选择框
 	handleClickAdd = ()=> {
+		let typeName:any = this.props.selectData
 		let selectNumber = this.state.selectNumber
 		if (selectNumber.length < 5 ) {
 			selectNumber.push('d')
+		} else {
+			return
 		}
+		this.handleChangeSelectData(typeName)
 		this.setState({ selectNumber })
 	}
-
 	/*
  * 将一个数组分成几个同等长度的数组
  * array[分割的原数组]

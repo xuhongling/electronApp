@@ -1,15 +1,17 @@
-const axisCommon = (data:any[])=> {
+const yAxisOption = (data:any[], chartColorList:any)=> {
 	let legendData:any[] = data
-	let legendDataAll:any[] = []
+	let yAxisOptionData:any[] = []
+  console.log(chartColorList,'chartColorList')
 	for (let i = 0; i < legendData.length; i++) {
 		let option = {
       type: 'value',
-      name: legendData[i],
+      //name: legendData[i],
       position: 'left',
-      offset: i*70,
+      offset: i*60,
       axisLine: {
         lineStyle: {
           color: "#c6c9cd",
+          //color: chartColorList[i],
         }
       },
       splitLine :{
@@ -19,11 +21,11 @@ const axisCommon = (data:any[])=> {
       	}
       } 
     }
-		legendDataAll.push(option)
+		yAxisOptionData.push(option)
 	}
 	return (
-		legendDataAll
+		yAxisOptionData
 	)
 }
 
-export default axisCommon 
+export default yAxisOption 

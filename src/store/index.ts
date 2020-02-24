@@ -4,10 +4,12 @@ import { StateType } from 'typesafe-actions'
 import rootReducer from './root-reducer'
 import * as userActions from './user/actions'
 import * as fileDataActions from './fileData/actions'
-import * as chartDataActions from './chartData/actions'
+import * as legendDataActions from './legendData/actions'
 import * as globalChartActions from './globalChart/actions'
 import * as chartColorList from './chartColorList/actions'
 import * as selectData from './selectData/actions'
+import * as chartData from './chartData/actions'
+
 
 export { default } from './store'
 export { default as rootReducer } from './root-reducer'
@@ -15,9 +17,10 @@ export { default as rootReducer } from './root-reducer'
 export const actions = {
 	user: userActions,
 	fileData: fileDataActions,
-	chartData: chartDataActions,
+	legendData: legendDataActions,
 	globalChart: globalChartActions,
 	chartColorList: chartColorList,
-	selectData: selectData
+	selectData: selectData,
+	chartData: chartData
 }
 export type RootState = StateType<typeof rootReducer>

@@ -3,7 +3,8 @@ import echarts from 'echarts'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { RootState, actions } from '@/store'
-import yAxisCommon from './chartOption/yAxisCommon'
+import yAxisOption from './chartOption/yAxisOption'
+import seriesOption from './chartOption/seriesOption'
 import styles from './style.less'
 
 type Props = ReturnType<typeof bindActionCreators>
@@ -16,6 +17,7 @@ type State = {
 // @ts-ignore: 不可达代码错误。 用装饰器简写方式
 @connect(
   (state: RootState) => ({ 
+    legendData: state.legendData.legendData,
     chartData: state.chartData.chartData,
     chartColorList: state.chartColorList.chartColorList
   }),
@@ -37,7 +39,7 @@ export default class CreateChart extends React.Component<Props,State> {
     this.state = {
       option: null,
       myChart: null,
-      legendData: ['邮件营销','联盟广告','视频广告']
+      legendData: []
     }
   }
 
@@ -52,19 +54,23 @@ export default class CreateChart extends React.Component<Props,State> {
       }
     },100)
   }
-  static getDerivedStateFromProps(nextProps:any) {
-    const { chartData } = nextProps
+  static getDerivedStateFromProps(props:any, state:any) {
+    console.log(props,state,'props state')
+    const { legendData } = props
     // 当传入的type发生变化的时候，更新state
-    if (chartData !== null && chartData.length > 0) {
+    if (legendData !== null && legendData.length > 0) {
       return {
-        legendData: chartData
+        legendData: legendData
       }
     }
     // 否则，对于state不进行任何操作
     return null
   }
   componentDidUpdate(prevProps:any, prevState:any) {
-    if (this.props.chartData !== prevProps.chartData || this.props.chartColorList !== prevProps.chartColorList) {
+    const { legendData, chartColorList, chartData } = prevProps
+    console.log(chartData,'chartData11')
+    // 判断legendData跟颜色有没有改变，有就更新图表
+    if (this.props.legendData !== legendData || this.props.chartColorList !== chartColorList) {
       this.initChart()
     }
   }
@@ -82,73 +88,53 @@ export default class CreateChart extends React.Component<Props,State> {
       },
       legend: {
         data: this.state.legendData,
-        top: 16,
+        top: 18,
         textStyle: {
           color: "#c6c9cd"
         }
       },
       grid: {
-      	top: 76,
-        left: 150,
-        right: 30,
-        bottom: '3%',
+      	top: 64,
+        left: this.state.legendData.length*30,
+        right: 40,
+        bottom: 55,
         containLabel: true
       },
       toolbox: {
+        show: true,
         feature: {
-          saveAsImage: {}
+          magicType: {show: true, type: ['stack', 'tiled']},
+          saveAsImage: {show: true}
         }
       },
       xAxis: {
         type: 'category',
         boundaryGap: false,
-        data: ['周一','周二','周三','周四','周五','周六','周日'],
+        data: ['19:11:00','19:11:05','19:11:10','19:11:15','19:11:20','19:11:25','19:11:30','19:11:35','19:11:40','19:11:45','19:11:50','19:11:55','19:11:60','19:12:05'],
         axisLine: {
           lineStyle: {
             color: "#c6c9cd",
           }
         },
       },
-      yAxis: yAxisCommon(this.state.legendData),
-      series: [
+      yAxis: yAxisOption(this.state.legendData, this.props.chartColorList),
+      series: seriesOption(this.state.legendData, this.props.chartData, this.props.chartColorList),
+      dataZoom: [
         {
-          name:'邮件营销',
-          type:'line',
-          stack: '总量',
-          yAxisIndex:'0', //使用第一个y轴，序号从0开始
-          data:[20, 32, 101, 134, 90, 230, 210],
-          itemStyle: {
-            color: (params:any)=> {
-              let colorList = this.props.chartColorList
-              return colorList[params.seriesIndex]
-            }
-          },
-        },
-        {
-          name:'联盟广告',
-          type:'line',
-          stack: '总量',
-          yAxisIndex:'1', //使用第二个y轴
-          data:[220, 182, 191, 234, 290, 330, 310],
-          itemStyle: {
-            color: (params:any)=> {
-              let colorList = this.props.chartColorList
-              return colorList[params.seriesIndex]
-            }
-          },
-        },
-        {
-          name:'视频广告',
-          type:'line',
-          stack: '总量',
-          yAxisIndex:'2',
-          data:[150, 232, 201, 154, 190, 330, 410],
-          itemStyle: {
-            color: (params:any)=> {
-              let colorList = this.props.chartColorList
-              return colorList[params.seriesIndex]
-            }
-          },
+          type: 'inside',
+          realtime: true,
+          xAxisIndex: 0,
+          bottom: 16,
+          start: 0,
+          end: 100
+        }, {
+          type: 'slider',
+          show: true,
+          realtime: true,
+          xAxisIndex: 0,
+          bottom: 16,
+          start: 0,
+          end: 100
         }
       ]
     }
