@@ -1,7 +1,6 @@
 const yAxisOption = (data:any[], chartColorList:any)=> {
 	let legendData:any[] = data
 	let yAxisOptionData:any[] = []
-  console.log(chartColorList,'chartColorList')
 	for (let i = 0; i < legendData.length; i++) {
 		let option = {
       type: 'value',

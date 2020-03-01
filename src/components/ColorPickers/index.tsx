@@ -63,7 +63,6 @@ export default class ColorPickers extends React.Component<Props,State> {
 	  let globalChart:any = this.props.globalChart
 	  globalChart.on('contextmenu', (params:any)=> {
       params.event.event.preventDefault()
-      console.log(params,'params')
       let colorPickers:any = this.colorPickers.current
       let clientWidth = document.body.clientWidth
 			let clientHeight = document.body.clientHeight

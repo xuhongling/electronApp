@@ -55,7 +55,6 @@ export default class CreateChart extends React.Component<Props,State> {
     },100)
   }
   static getDerivedStateFromProps(props:any, state:any) {
-    console.log(props,state,'props state')
     const { legendData } = props
     // 当传入的type发生变化的时候，更新state
     if (legendData !== null && legendData.length > 0) {
@@ -67,8 +66,7 @@ export default class CreateChart extends React.Component<Props,State> {
     return null
   }
   componentDidUpdate(prevProps:any, prevState:any) {
-    const { legendData, chartColorList, chartData } = prevProps
-    console.log(chartData,'chartData11')
+    const { legendData, chartColorList } = prevProps
     // 判断legendData跟颜色有没有改变，有就更新图表
     if (this.props.legendData !== legendData || this.props.chartColorList !== chartColorList) {
       this.initChart()
