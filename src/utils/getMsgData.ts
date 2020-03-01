@@ -9,7 +9,6 @@ const getMsgData = (data:any)=>{
 			response = baseData * Number(ruleData[i].scale) + Number(ruleData[i].value_offset)
 		}
 	}
-	
 	return response
 }
 

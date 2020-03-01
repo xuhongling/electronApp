@@ -1,5 +1,5 @@
 import monitorRule from 'static/monitorRule'
-
+// 获取每个列表的数据集合
 const getColumnData = (ruleTypeName:string, fileData:any[])=>{
 	let ruleTypeData:any[] = []
 	for (let i = 0; i < monitorRule.length; i++) {
