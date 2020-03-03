@@ -95,11 +95,12 @@ export default class SelectData extends React.Component<Props, State> {
 	}
 	// 给选择框对应赋值
 	handleChangeData = (value:any)=> {
+		this.props.setLegendData([])
 	  let selectValue = this.state.selectValue
 	  let selectOptionIndex = this.state.selectOptionIndex
 	  selectValue[selectOptionIndex] = value
 	  this.setState({selectValue: selectValue})
-	  // 设置图表Legend数据
+		// 设置图表Legend数据
 	  this.props.setLegendData(selectValue)
 	}
 	// 添加选择框

@@ -10,12 +10,15 @@ import fileData from 'static/fileData'
 import styles from './style.less'
 
 type Props = ReturnType<typeof bindActionCreators>
-type State = {}
+type State = {
+	legendData: any
+}
 
 // @ts-ignore: 不可达代码错误。 用装饰器简写方式
 @connect(
   (state: RootState) => ({
-    fileData: state.fileData.fileData
+    fileData: state.fileData.fileData,
+    legendData: state.legendData.legendData,
   }),
   dispatch => ({
     ...bindActionCreators(
@@ -28,17 +31,45 @@ export default class HandheldControl extends React.Component<Props,State> {
 
 	constructor(props:any) {
 		super(props)
+		this.state = {
+			legendData: null
+		}
 	}
 
 	componentDidMount() {
-		let columnData = getColumnData('手持遥控',fileData)
-		console.log(columnData,'columnData')
+		console.log('手持遥控')
+	}
+
+	static getDerivedStateFromProps(props:any, state:any) {
+    const { legendData } = props
+    // 当传入的type发生变化的时候，更新state
+    if (legendData !== null && legendData.length > 0) {
+      return {
+        legendData: legendData
+      }
+    }
+    // 否则，对于state不进行任何操作
+    return null
+  }
+	componentDidUpdate(prevProps:any, prevState:any) {
+		console.log('dadadadadas')
+	  // 判断是否更新了全局 eChart，典型用法（不要忘记比较 props）
+	  const { legendData } = prevProps
+	  console.log(this.state.legendData, legendData)
+    if (legendData.length > 2) {
+      this.changeChartData()
+    }
+	}
+
+	changeChartData = ()=> {
+		let legendData = this.state.legendData
+		let columnData = getColumnData('手持遥控', legendData, fileData)
+		console.log(columnData,'手持遥控columnData')
 		let aaa = []
 		for (let i = 0; i < columnData.length; i++) {
 			let data = getMsgData(columnData[i])
 			aaa.push(data)
 		}
-		console.log(aaa,'23452342342')
 	}
 
 	public render() {
