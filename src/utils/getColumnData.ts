@@ -24,20 +24,32 @@ const getColumnData = (ruleTypeName:string, legendData:any[], fileData:any[])=>{
 		for (let j = 0; j < fileData.length; j++) {
 			let canId:any = fileData[j].ID号
 			if (selectAllData[i].can_id === canId) { 
-				filterColumnData.push(fileData[j])
+				// 加入一个选择框，selectName字段，用作判断
+				let fileDataMerge = {...fileData[j], selectName: selectAllData[i].name}
+				filterColumnData.push(fileDataMerge)
 			}
 		}
 	}
-	
+
 	// 解析的数据
 	let columnData:any[] = []
 	for (let i = 0; i < filterColumnData.length; i++) {
 		let arrData = filterColumnData[i].数据.replace(/^\s+|\s+$/g,"").split(" ")
 		arrData.push(...['0x'])
+		let baseData = arrData.reverse().join("").slice(0, -2)
+		let formatData
+		for (let i = 0; i < selectAllData.length; i++) {
+			if (selectAllData[i].can_id === filterColumnData[i].ID号) {
+				baseData = (parseInt(filterColumnData[i].data) / Math.pow(2, Number(selectAllData[i].start_bit))) & (Math.pow(2, Number(selectAllData[i].bit_size)) - 1)
+				formatData = baseData * Number(selectAllData[i].scale) + Number(selectAllData[i].value_offset)
+			}
+		}
+
 		let data = {
 			canId: filterColumnData[i].ID号,
-			data: arrData.reverse().join("").slice(0, -2),
-			time: filterColumnData[i].时间标识
+			data: formatData,
+			time: filterColumnData[i].时间标识,
+			selectName: filterColumnData[i].selectName
 		}
 		columnData.push(data)
 	}

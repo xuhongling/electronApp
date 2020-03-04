@@ -63,13 +63,15 @@ export default class HandheldControl extends React.Component<Props,State> {
 
 	changeChartData = ()=> {
 		let legendData = this.state.legendData
+		// 传入三个值，当前栏目名称，选择栏数据，CSV总数据
 		let columnData = getColumnData('手持遥控', legendData, fileData)
 		console.log(columnData,'手持遥控columnData')
-		let aaa = []
+		/*let aaa = []
 		for (let i = 0; i < columnData.length; i++) {
 			let data = getMsgData(columnData[i])
 			aaa.push(data)
 		}
+		console.log(aaa,'11111')*/
 	}
 
 	public render() {
