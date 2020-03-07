@@ -15,6 +15,8 @@ const seriesCommon = (legendData:any[], chartData:any, timeData:any, chartColorL
 			}
 		}
 
+		console.log(arrayData,'arrayData')
+
 		// series 配置项
 		let option = {
 	    name: legendData[i],
