@@ -5,7 +5,6 @@ import { RootState } from '@/store'
 import CreateChart from 'components/CreateChart'
 import ColorPickers from 'components/ColorPickers'
 import getColumnData from 'utils/getColumnData'
-import getMsgData from 'utils/getMsgData'
 import fileData from 'static/fileData'
 import styles from './style.less'
 
@@ -66,12 +65,6 @@ export default class HandheldControl extends React.Component<Props,State> {
 		// 传入三个值，当前栏目名称，选择栏数据，CSV总数据
 		let columnData = getColumnData('手持遥控', legendData, fileData)
 		console.log(columnData,'手持遥控columnData')
-		/*let aaa = []
-		for (let i = 0; i < columnData.length; i++) {
-			let data = getMsgData(columnData[i])
-			aaa.push(data)
-		}
-		console.log(aaa,'11111')*/
 	}
 
 	public render() {
