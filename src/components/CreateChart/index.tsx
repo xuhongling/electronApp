@@ -7,11 +7,13 @@ import yAxisOption from './chartOption/yAxisOption'
 import seriesOption from './chartOption/seriesOption'
 import styles from './style.less'
 
+// type Props = ReturnType<typeof bindActionCreators> & {columnData: any}
 type Props = ReturnType<typeof bindActionCreators>
 type State = {
   option: {} | null,
   myChart: any,
-  legendData: any[]
+  legendData: any[],
+  chartData: any[]
 }
 
 // @ts-ignore: 不可达代码错误。 用装饰器简写方式
@@ -39,7 +41,8 @@ export default class CreateChart extends React.Component<Props,State> {
     this.state = {
       option: null,
       myChart: null,
-      legendData: []
+      legendData: [],
+      chartData: []
     }
   }
 
@@ -55,11 +58,12 @@ export default class CreateChart extends React.Component<Props,State> {
     },100)
   }
   static getDerivedStateFromProps(props:any, state:any) {
-    const { legendData } = props
+    const { legendData, chartData } = props
     // 当传入的type发生变化的时候，更新state
     if (legendData !== null && legendData.length > 0) {
       return {
-        legendData: legendData
+        legendData: legendData,
+        chartData: chartData
       }
     }
     // 否则，对于state不进行任何操作
@@ -70,10 +74,36 @@ export default class CreateChart extends React.Component<Props,State> {
     // 判断legendData跟颜色有没有改变，有就更新图表
     if (this.props.legendData !== legendData || this.props.chartColorList !== chartColorList) {
       this.initChart()
+      this.getTimeData()
     }
   }
 
-  initChart(){
+  // 获取时间轴数据
+  getTimeData = ()=> {
+    let chartData:any = this.state.chartData
+    let timeData:any = []
+    if (typeof(chartData) === 'undefined' || chartData.length < 1) {
+      return timeData
+    }
+    for (let i = 0; i < chartData.length; i++) {
+      timeData.push(chartData[i].time)
+    }
+    if (timeData.length > 1) {
+      // 时间排序
+      timeData.sort((a,b) => {
+        return a > b ? 1 : - 1
+      })
+    }
+    return [...new Set(timeData)]
+  }
+
+  initChart = ()=> {
+    let chartData = this.props.chartData
+    let timeData = this.getTimeData()
+    if (typeof(chartData) === 'undefined' || chartData.length < 1) {
+      return
+    }
+    // 创建 eChart
 		let myRefChart:any = this.myRefChart.current
     let myChart = echarts.init(myRefChart)
     // 全把 eChart 对象放到store全局，方便访问
@@ -108,7 +138,7 @@ export default class CreateChart extends React.Component<Props,State> {
       xAxis: {
         type: 'category',
         boundaryGap: false,
-        data: ['19:11:00','19:11:05','19:11:10','19:11:15','19:11:20','19:11:25','19:11:30','19:11:35','19:11:40','19:11:45','19:11:50','19:11:55','19:11:60','19:12:05'],
+        data: timeData,
         axisLine: {
           lineStyle: {
             color: "#c6c9cd",
@@ -116,7 +146,7 @@ export default class CreateChart extends React.Component<Props,State> {
         },
       },
       yAxis: yAxisOption(this.state.legendData, this.props.chartColorList),
-      series: seriesOption(this.state.legendData, this.props.chartData, this.props.chartColorList),
+      series: seriesOption(this.state.legendData, chartData, timeData, this.props.chartColorList),
       dataZoom: [
         {
           type: 'inside',
@@ -124,7 +154,7 @@ export default class CreateChart extends React.Component<Props,State> {
           xAxisIndex: 0,
           bottom: 16,
           start: 0,
-          end: 100
+          end: 3
         }, {
           type: 'slider',
           show: true,
@@ -132,7 +162,7 @@ export default class CreateChart extends React.Component<Props,State> {
           xAxisIndex: 0,
           bottom: 16,
           start: 0,
-          end: 100
+          end: 3
         }
       ]
     }

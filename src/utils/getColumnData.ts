@@ -3,6 +3,9 @@ import DateFormat from './DateFormat'
 
 // 获取每个列表的数据集合
 const getColumnData = (ruleTypeName:string, legendData:any[], fileData:any[])=>{
+	if (legendData===null || legendData.length===0 || fileData.length===0) {
+		return
+	}
 	let ruleTypeData:any[] = []
 	for (let i = 0; i < monitorRule.length; i++) {
 		if (monitorRule[i].type_name === ruleTypeName) {

@@ -1,4 +1,6 @@
 import React from 'react'
+import CreateChart from 'components/CreateChart'
+import ColorPickers from 'components/ColorPickers'
 import styles from './style.less'
 
 export default class HighVoltage extends React.Component {
@@ -10,7 +12,8 @@ export default class HighVoltage extends React.Component {
 	public render() {
 		return (
 			<div className={styles.highVoltage}>
-				HighVoltage
+				<CreateChart/>
+				<ColorPickers/>
 			</div>
 		)
 	}
