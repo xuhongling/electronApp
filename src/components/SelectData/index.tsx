@@ -1,6 +1,7 @@
 import React from 'react'
 import { Select } from 'antd'
-import { PlusOutlined } from '@ant-design/icons'
+import classnames from 'classnames'
+import { PlusOutlined, MinusOutlined } from '@ant-design/icons'
 import { connect } from 'react-redux'
 import { RootState, actions } from '@/store'
 import { bindActionCreators } from 'redux'
@@ -17,7 +18,9 @@ type State = {
 	selectDataList: any[],
 	legendData: any[],
 	selectOptionData: any[],
-	selectOptionIndex: number
+	selectOptionIndex: number,
+	isShowAdd: boolean,
+	isShowSubtract: boolean
 }
 
 // @ts-ignore: 不可达代码错误。 用装饰器简写方式
@@ -45,7 +48,9 @@ export default class SelectData extends React.Component<Props, State> {
 			selectOptionData: [],
 			selectOptionIndex: 0,
 			legendData: [],
-			selectNumber: ['a','b','c']
+			selectNumber: ['a','b','c'],
+			isShowAdd: true,
+			isShowSubtract: false
 		}
 	}
 	componentDidMount() {
@@ -59,8 +64,6 @@ export default class SelectData extends React.Component<Props, State> {
 	  	this.handleChangeSelectData(typeName)
 	  }
 	}
-
-	
 
 	// 选择框数据初始化
 	handleChangeSelectData = (typeName:string)=> {
@@ -83,10 +86,7 @@ export default class SelectData extends React.Component<Props, State> {
 	  // 传入三个值，当前栏目名称，选择栏数据，CSV总数据
 	  let fileData:any = this.props.fileData
 		let chartData:any = getColumnData(typeName, legendData, fileData)
-
 		this.props.setChartData(chartData)
-
-		console.log(chartData,'SelectData里面的chartData,getColumnData')
 	}
 	// 获取鼠标点击哪一个选择框
 	handleFocusData = (index:number)=> {
@@ -101,16 +101,59 @@ export default class SelectData extends React.Component<Props, State> {
 	  this.setState({legendData: legendData})
 		// 设置图表Legend数据
 	  this.props.setLegendData(legendData)
+	  // 传入三个值，当前栏目名称，选择栏数据，CSV总数据
+	  let typeName:any = this.props.selectData
+	  let fileData:any = this.props.fileData
+		let chartData:any = getColumnData(typeName, legendData, fileData)
+		this.props.setChartData(chartData)
 	}
 	// 添加选择框
 	handleClickAdd = ()=> {
 		let typeName:any = this.props.selectData
 		let selectNumber = this.state.selectNumber
+		console.log(selectNumber.length,'selectNumber.length')
 		if (selectNumber.length < 5 ) {
 			selectNumber.push('d')
 		} else {
 			return
 		}
+
+		// 控制加减控制栏显示
+		if (selectNumber.length < 5) {
+			this.setState({isShowAdd: true})
+		}else{
+			this.setState({isShowAdd: false})
+		}
+		if (selectNumber.length > 3 && selectNumber.length < 6) {
+			this.setState({isShowSubtract: true})
+		}else{
+			this.setState({isShowSubtract: false})
+		}
+		
+		this.handleChangeSelectData(typeName)
+		this.setState({ selectNumber })
+	}
+	handleClickSubtract = ()=> {
+		let typeName:any = this.props.selectData
+		let selectNumber = this.state.selectNumber
+		if (selectNumber.length > 3 && selectNumber.length < 6) {
+			selectNumber.splice(selectNumber.length-1, 1)
+		} else {
+			return
+		}
+
+		// 控制加减控制栏显示
+		if (selectNumber.length < 5) {
+			this.setState({isShowAdd: true})
+		}else{
+			this.setState({isShowAdd: false})
+		}
+		if (selectNumber.length > 3 && selectNumber.length < 6) {
+			this.setState({isShowSubtract: true})
+		}else{
+			this.setState({isShowSubtract: false})
+		}
+
 		this.handleChangeSelectData(typeName)
 		this.setState({ selectNumber })
 	}
@@ -132,6 +175,7 @@ export default class SelectData extends React.Component<Props, State> {
 	public render() {
 		return (
 			<div className={styles.selectData}>
+			 <MinusOutlined className={classnames(styles.addIcon, {[`${styles.isShow}`]: this.state.isShowSubtract})} onClick={this.handleClickSubtract}/>
 			  {
 			  	this.state.legendData.length !==0 ? this.state.selectNumber.map((itemList,index)=>{
 			  		return (
@@ -157,7 +201,7 @@ export default class SelectData extends React.Component<Props, State> {
 			  		)
 			  	}): null
 			  }
-			  <PlusOutlined className={styles.addIcon} onClick={this.handleClickAdd}/>
+			  <PlusOutlined className={classnames(styles.addIcon, {[`${styles.isShow}`]: this.state.isShowAdd})} onClick={this.handleClickAdd}/>
 			</div>
 		)
 	}

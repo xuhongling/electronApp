@@ -73,9 +73,9 @@ export default class CreateChart extends React.Component<Props,State> {
   }
 
   componentDidUpdate(prevProps:any, prevState:any) {
-    const { legendData, chartColorList } = prevProps
+    const { chartColorList } = prevProps
     // 判断legendData跟颜色有没有改变，有就更新图表
-    if (this.state.legendData === legendData || this.props.chartColorList !== chartColorList) {
+    if (this.state.myChart !== null || this.props.chartColorList !== chartColorList) {
       this.setChartOption()
     }
   }
@@ -106,8 +106,9 @@ export default class CreateChart extends React.Component<Props,State> {
     let myChart = echarts.init(myRefChart)
     // 全把 eChart 对象放到store全局，方便访问
     this.props.setGlobalChart(myChart)
-    this.setState({myChart})
-    this.setChartOption()
+    this.setState({myChart},()=>{
+      this.setChartOption()
+    })
   }
   // 图表配置
   setChartOption = ()=>{

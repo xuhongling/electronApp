@@ -1,8 +1,9 @@
 const seriesCommon = (legendData:any[], chartData:any, timeData:any, chartColorList:any)=> {
 	let optionDataAll:any[] = []
-	
+
 	for (let i = 0; i < legendData.length; i++) {
-		let arrayData:any = new Array(timeData.length)
+		let arrayData:any = []
+		arrayData = new Array(timeData.length)
 		for (let j = 0; j < chartData.length; j++) {
 			if (legendData[i] === chartData[j].selectName) {
 				for (let k = 0; k < timeData.length; k++) {
@@ -14,8 +15,6 @@ const seriesCommon = (legendData:any[], chartData:any, timeData:any, chartColorL
 				}
 			}
 		}
-
-		console.log(arrayData,'arrayData')
 
 		// series 配置项
 		let option = {

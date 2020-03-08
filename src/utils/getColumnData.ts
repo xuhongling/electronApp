@@ -6,6 +6,7 @@ const getColumnData = (ruleTypeName:string, legendData:any[], fileData:any[])=>{
 	if (legendData===null || legendData.length===0 || fileData.length===0) {
 		return
 	}
+
 	let ruleTypeData:any[] = []
 	for (let i = 0; i < monitorRule.length; i++) {
 		if (monitorRule[i].type_name === ruleTypeName) {
@@ -22,7 +23,7 @@ const getColumnData = (ruleTypeName:string, legendData:any[], fileData:any[])=>{
 			}
 		}
 	}
-
+	
 	// 遍历对应CSV里面的数据
 	let filterColumnData:any[] = []
 	for (let i = 0; i < selectAllData.length; i++) {
@@ -43,10 +44,10 @@ const getColumnData = (ruleTypeName:string, legendData:any[], fileData:any[])=>{
 		arrData.push(...['0x'])
 		let baseData = arrData.reverse().join("").slice(0, -2)
 		let formatData
-		for (let i = 0; i < selectAllData.length; i++) {
-			if (selectAllData[i].can_id === filterColumnData[i].ID号) {
-				baseData = (parseInt(filterColumnData[i].data) / Math.pow(2, Number(selectAllData[i].start_bit))) & (Math.pow(2, Number(selectAllData[i].bit_size)) - 1)
-				formatData = baseData * Number(selectAllData[i].scale) + Number(selectAllData[i].value_offset)
+		for (let j = 0; j < selectAllData.length; j++) {
+			if (selectAllData[j].can_id === filterColumnData[i].ID号) {
+				baseData = (parseInt(filterColumnData[i].data) / Math.pow(2, Number(selectAllData[j].start_bit))) & (Math.pow(2, Number(selectAllData[j].bit_size)) - 1)
+				formatData = baseData * Number(selectAllData[j].scale) + Number(selectAllData[j].value_offset)
 			}
 		}
 		
