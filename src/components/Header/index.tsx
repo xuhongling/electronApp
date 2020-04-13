@@ -1,7 +1,7 @@
 import React from 'react'
 import { Popover } from 'antd'
 import { Link } from 'react-router-dom'
-import SelectData from 'components/SelectData'
+import SelectData2 from 'components/SelectData2'
 import styles from './style.less'
 
 type Props = {}
@@ -49,7 +49,7 @@ export default class Header extends React.Component<Props, State> {
 				</Popover>
 				<div className={styles.rightWrap}>
 					{/*<Checkbox.Group options={this.state.options} defaultValue={this.state.values} onChange={this.onChangeCheckbox}/>*/}
-					<SelectData/>
+					<SelectData2/>
 				</div>
 			</div>
 		)
