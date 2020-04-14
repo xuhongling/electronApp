@@ -43,7 +43,7 @@ const SelectData2: React.FC = () => {
   return (
     <div className={styles.selectData}>
       <Button type="primary" onClick={showModal}>增加展示数据</Button>
-      <Modal title="选择展示栏数" visible={state.visible} onOk={handleOkModal} onCancel={handleCancelModal}>
+      <Modal title="选择展示栏数" visible={state.visible} onOk={handleOkModal} onCancel={handleCancelModal} okText={'确定'} cancelText={'取消'}>
         <Radio.Group onChange={onChangeRadio} value={state.value}>
 	        <Radio value={1} style={radioStyle}>一栏数据</Radio>
 	        <Radio value={2} style={radioStyle}>二栏数据</Radio>
