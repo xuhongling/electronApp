@@ -38,14 +38,29 @@ export default class AddFile extends React.Component<Props> {
 			return
 		}
 		let reader = new FileReader() 	//new一个FileReader对象实例
-		reader.readAsText(file,'utf-8')  //读取csv文件.
+		reader.readAsText(file, 'GB2312')  //读取csv文件.
+		//console.log(reader.readAsText(file,'utf-8'),'reader utf-8')
+		//console.log(reader.readAsText(file,'GB2312'),'reader GB2312')
 		reader.onload = () => {		//读取成功完成后出发事件
 			let fileData:any = reader.result	 //获取读取的数据
 			let relArr = fileData.split("\r\n")
 			let fileDataArr = []
 			if(relArr.length > 1) {
+				// fileTiele: ["序号", "传输方向", "时间标识", "名称", "帧ID(靠右对齐)", "帧格式", "帧类型", "数据长度", "数据(HEX)"]
 				let fileTiele = relArr[0].split(',')
+				for (let i = 0; i < fileTiele.length; i++) {
+					if (fileTiele[i].indexOf('时间') !== -1) {
+						fileTiele[i] = 'TimeID'
+					}
+					if (fileTiele[i].indexOf('ID') !== -1 && fileTiele[i] !== 'TimeID') {
+						fileTiele[i] = 'CanID'
+					}
+					if (fileTiele[i].indexOf('数据') !== -1 && fileTiele[i].indexOf('长度') === -1) {
+						fileTiele[i] = 'DataHEX'
+					}
+				}
 				for (let i = 1; i < relArr.length; i++) {
+					// fileList: ["0", "接收", "15:18:28:508", "", "0x0cf401e8", "数据帧", "扩展帧", "8", "70 17 70 17 58 02 E8 03"]
 					let fileList = relArr[i].split(',')
 					let obj = {}
 					for (let j = 0; j < fileList.length; j++) {

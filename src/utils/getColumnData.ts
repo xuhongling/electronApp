@@ -1,5 +1,5 @@
 import monitorRule from 'static/monitorRule'
-import DateFormat from './DateFormat'
+// import DateFormat from './DateFormat'
 
 // 获取每个列表的数据集合
 const getColumnData = (ruleTypeName:string, legendData:any[], fileData:any[])=>{
@@ -23,40 +23,43 @@ const getColumnData = (ruleTypeName:string, legendData:any[], fileData:any[])=>{
 			}
 		}
 	}
-	
+
 	// 遍历对应CSV里面的数据
 	let filterColumnData:any[] = []
 	for (let i = 0; i < selectAllData.length; i++) {
 		for (let j = 0; j < fileData.length; j++) {
-			let canId:any = fileData[j].ID号
-			if (selectAllData[i].can_id === canId) { 
+			let CanID:any = fileData[j].CanID
+			if (selectAllData[i].can_id === CanID) { 
 				// 加入一个选择框，selectName字段，用作判断
 				let fileDataMerge = {...fileData[j], selectName: selectAllData[i].name}
 				filterColumnData.push(fileDataMerge)
 			}
 		}
 	}
+	console.log(fileData, 'fileData')
+	console.log(filterColumnData,'filterColumnData')
 
 	// 解析的数据
 	let columnData:any[] = []
 	for (let i = 0; i < filterColumnData.length; i++) {
-		let arrData = filterColumnData[i].数据.replace(/^\s+|\s+$/g,"").split(" ")
+		let arrData = filterColumnData[i].DataHEX.replace(/^\s+|\s+$/g,"").split(" ")
 		arrData.push(...['0x'])
 		let baseData = arrData.reverse().join("").slice(0, -2)
 		let formatData
 		for (let j = 0; j < selectAllData.length; j++) {
-			if (selectAllData[j].can_id === filterColumnData[i].ID号) {
+			if (selectAllData[j].can_id === filterColumnData[i].CanID) {
 				baseData = (parseInt(filterColumnData[i].data) / Math.pow(2, Number(selectAllData[j].start_bit))) & (Math.pow(2, Number(selectAllData[j].bit_size)) - 1)
 				formatData = baseData * Number(selectAllData[j].scale) + Number(selectAllData[j].value_offset)
 			}
 		}
 		
-		let startTime = parseInt(filterColumnData[i].时间标识)
-		let dateTime = DateFormat(startTime,'yyyy-MM-dd hh:mm:ss')
+		// let startTime = parseInt(filterColumnData[i].TimeID)
+		// let dateTime = DateFormat(startTime,'yyyy-MM-dd hh:mm:ss')
+		// time: dateTime.substr(11,8),
 		let data = {
-			canId: filterColumnData[i].ID号,
+			canId: filterColumnData[i].CanID,
 			data: formatData,
-			time: dateTime.substr(11,8),
+			time: filterColumnData[i].TimeID,
 			selectName: filterColumnData[i].selectName
 		}
 		columnData.push(data)
