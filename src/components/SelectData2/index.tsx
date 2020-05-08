@@ -127,7 +127,6 @@ export default class SelectData extends React.Component<Props, State> {
   handleOkModal = ()=>{
     this.setState({ visible: false })
     let typeName:any = this.props.selectData
-    console.log(typeName,'typeName')
     this.handleChangeSelectData(typeName)
   }
   handleCancelModal = ()=>{
@@ -155,7 +154,6 @@ export default class SelectData extends React.Component<Props, State> {
       height: '40px',
       lineHeight: '40px',
     }
-    console.log(this.state.selectOptionData,'1234345')
 
     return (
       <div className={styles.selectData}>

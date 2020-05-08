@@ -24,19 +24,42 @@ const getColumnData = (ruleTypeName:string, legendData:any[], fileData:any[])=>{
 		}
 	}
 
+	/*for (var i = 0; i < fileData.length; i++) {
+		console.log(fileData[i].CanID == '0x14019c94','**********888888********')
+	}*/
 	// 遍历对应CSV里面的数据
-	let filterColumnData:any[] = []
-	for (let i = 0; i < selectAllData.length; i++) {
+	
+	/*for (let i = 0; i < selectAllData.length; i++) {
+		console.log(selectAllData[i].can_id,'selectAllData[i].can_id')
+		//console.log(selectAllData[i].can_id,'selectAllData[i].can_id')
 		for (let j = 0; j < fileData.length; j++) {
 			let CanID:any = fileData[j].CanID
-			if (selectAllData[i].can_id === CanID) { 
+
+			if (selectAllData[i].can_id == CanID) { 
+				console.log(selectAllData[i])
 				// 加入一个选择框，selectName字段，用作判断
 				let fileDataMerge = {...fileData[j], selectName: selectAllData[i].name}
 				filterColumnData.push(fileDataMerge)
 			}
 		}
-	}
+	}*/
+	console.log(selectAllData,'selectAllData')
 	console.log(fileData, 'fileData')
+	
+	// 遍历对应CSV里面的数据
+	let filterColumnData:any[] = []
+	for (let i = 0; i < fileData.length; i++) {
+		for (let j = 0; j < selectAllData.length; j++) {
+			let fileDataCanID = fileData[i].CanID
+			let selectAllDataCanId = selectAllData[j].can_id.toString().toLowerCase()
+			if (fileDataCanID === selectAllDataCanId) {
+				// 加入一个选择框，selectName字段，用作判断
+				let fileDataMerge = {...fileData[i], selectName: selectAllData[j].name}
+				filterColumnData.push(fileDataMerge)
+			}
+		}
+	}
+
 	console.log(filterColumnData,'filterColumnData')
 
 	// 解析的数据
@@ -44,10 +67,12 @@ const getColumnData = (ruleTypeName:string, legendData:any[], fileData:any[])=>{
 	for (let i = 0; i < filterColumnData.length; i++) {
 		let arrData = filterColumnData[i].DataHEX.replace(/^\s+|\s+$/g,"").split(" ")
 		arrData.push(...['0x'])
-		let baseData = arrData.reverse().join("").slice(0, -2)
+		let baseData = arrData.reverse().join("")
 		let formatData
 		for (let j = 0; j < selectAllData.length; j++) {
-			if (selectAllData[j].can_id === filterColumnData[i].CanID) {
+			let filterColumnDataCanID = filterColumnData[i].CanID
+			let selectAllDataCanId = selectAllData[j].can_id.toString().toLowerCase()
+			if (filterColumnDataCanID === selectAllDataCanId) {
 				baseData = (parseInt(filterColumnData[i].data) / Math.pow(2, Number(selectAllData[j].start_bit))) & (Math.pow(2, Number(selectAllData[j].bit_size)) - 1)
 				formatData = baseData * Number(selectAllData[j].scale) + Number(selectAllData[j].value_offset)
 			}
@@ -64,6 +89,7 @@ const getColumnData = (ruleTypeName:string, legendData:any[], fileData:any[])=>{
 		}
 		columnData.push(data)
 	}
+	console.log(columnData,'********** columnData *********')
 	return columnData
 }
 
