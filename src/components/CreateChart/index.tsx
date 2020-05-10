@@ -13,7 +13,8 @@ type State = {
   myChart: any,
   legendData: any[],
   chartData: any[],
-  chartColorList: any[]
+  chartColorList: any[],
+  chartOption: any
 }
 
 // @ts-ignore: 不可达代码错误。 用装饰器简写方式
@@ -42,7 +43,8 @@ export default class CreateChart extends React.Component<Props,State> {
       myChart: null,
       legendData: [],
       chartData: [],
-      chartColorList: []
+      chartColorList: [],
+      chartOption: null
     }
   }
 
@@ -76,7 +78,10 @@ export default class CreateChart extends React.Component<Props,State> {
     const { chartColorList } = prevProps
     // 判断legendData跟颜色有没有改变，有就更新图表
     if (this.state.myChart !== null || this.props.chartColorList !== chartColorList) {
-      this.setChartOption()
+      let option = this.setChartOption()
+      if (option && typeof option === "object") {
+        this.state.myChart.setOption(option, true)
+      }
     }
   }
 
@@ -107,14 +112,27 @@ export default class CreateChart extends React.Component<Props,State> {
     // 全把 eChart 对象放到store全局，方便访问
     this.props.setGlobalChart(myChart)
     this.setState({myChart},()=>{
-      this.setChartOption()
+      let option = this.setChartOption()
+      if (option && typeof option === "object") {
+        this.state.myChart.setOption(option, true)
+      }
+    })
+
+    /* 选中图例 */
+    myChart.on("legendselectchanged", (params:any)=> {
+      // 得到当前的图例显示隐藏状态分别有哪些
+      let SelectedData = params.selected
+      let option = this.setChartOption(SelectedData)
+      if (option && typeof option === "object") {
+        myChart.setOption(option, true)
+      }
     })
   }
   // 图表配置
-  setChartOption = ()=>{
+  setChartOption = ( SelectedData = {} )=>{
     let chartData = this.state.chartData
     let timeData = this.getTimeData()
-    if (typeof(chartData) === 'undefined' || chartData.length < 1) {
+    if (typeof(chartData) === 'undefined') {
       return
     }
     let option:any = null
@@ -125,14 +143,15 @@ export default class CreateChart extends React.Component<Props,State> {
       },
       legend: {
         data: this.state.legendData,
-        top: 18,
+        top: 30,
+        selected: SelectedData,
         textStyle: {
           color: "#c6c9cd"
         }
       },
       grid: {
-        top: 64,
-        left: this.state.legendData.length*30,
+        top: 80,
+        left: this.state.legendData.length * 35,
         right: 40,
         bottom: 55,
         containLabel: true
@@ -148,14 +167,17 @@ export default class CreateChart extends React.Component<Props,State> {
         type: 'category',
         boundaryGap: false,
         data: timeData,
+        axisTick: {
+          alignWithLabel: true
+        },
         axisLine: {
           lineStyle: {
             color: "#c6c9cd",
           }
         },
       },
-      yAxis: yAxisOption(this.state.legendData, this.state.chartColorList),
-      series: seriesOption(this.state.legendData, chartData, timeData, this.state.chartColorList),
+      yAxis: yAxisOption(this.state.legendData, this.state.chartColorList, SelectedData),
+      series: seriesOption(this.state.legendData, chartData, timeData, this.state.chartColorList, SelectedData),
       dataZoom: [
         {
           type: 'inside',
@@ -175,10 +197,7 @@ export default class CreateChart extends React.Component<Props,State> {
         }
       ]
     }
-    
-    if (option && typeof option === "object") {
-      this.state.myChart.setOption(option, true)
-    }
+    return option
   }
 
   public render() {

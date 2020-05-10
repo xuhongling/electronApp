@@ -1,4 +1,4 @@
-const seriesCommon = (legendData:any[], chartData:any, timeData:any, chartColorList:any)=> {
+const seriesCommon = (legendData:any[], chartData:any, timeData:any, chartColorList:any, SelectedData:any)=> {
 	let optionDataAll:any[] = []
 
 	for (let i = 0; i < legendData.length; i++) {
@@ -17,20 +17,37 @@ const seriesCommon = (legendData:any[], chartData:any, timeData:any, chartColorL
 		}
 
 		// series 配置项
-		let option = {
-	    name: legendData[i],
-	    type:'line',
-	    yAxisIndex: i, //使用第一个y轴，序号从0开始
-	    data: arrayData,
-	    connectNulls: true,
-	    itemStyle: {
-	      color: (params:any)=> {
-	        let colorList = chartColorList
-	        return colorList[params.seriesIndex]
-	      }
-	    },
-	  }
-	  optionDataAll.push(option)
+		if (SelectedData[legendData[i]] !== false) {
+			let option = {
+		    name: legendData[i],
+		    type:'line',
+		    yAxisIndex: i, //使用第一个y轴，序号从0开始
+		    data: arrayData,
+		    connectNulls: true,
+		    itemStyle: {
+		      color: (params:any)=> {
+		        let colorList = chartColorList
+		        return colorList[params.seriesIndex]
+		      }
+		    },
+		  }
+		  optionDataAll.push(option)
+		}else{
+			let option = {
+		    name: legendData[i],
+		    type:'line',
+		    yAxisIndex: i, //使用第一个y轴，序号从0开始
+		    data: [],
+		    connectNulls: true,
+		    itemStyle: {
+		      color: (params:any)=> {
+		        let colorList = chartColorList
+		        return colorList[params.seriesIndex]
+		      }
+		    },
+		  }
+		  optionDataAll.push(option)
+		}
 	}
 	return (
 		optionDataAll

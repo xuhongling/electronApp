@@ -162,7 +162,6 @@ export default class SelectData extends React.Component<Props, State> {
             return (
               <Select 
                 showSearch
-                allowClear
                 value={this.state.legendData[index]}
                 placeholder="请选择"
                 optionFilterProp="children"

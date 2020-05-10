@@ -1,5 +1,5 @@
 import monitorRule from 'static/monitorRule'
-const yAxisOption = (data:any[], chartColorList:any)=> {
+const yAxisOption = (data:any[], chartColorList:any, SelectedData:any)=> {
 	let legendData:any[] = data
 	let yAxisOptionData:any[] = []
 	for (let i = 0; i < legendData.length; i++) {
@@ -9,32 +9,41 @@ const yAxisOption = (data:any[], chartColorList:any)=> {
         unitName = monitorRule[j].unit
       }
     }
-    if (unitName === '°') {
-      unitName = '度'
-    }else{
-      unitName = ''
-    }
 
-		let option = {
+    let option = {
       type: 'value',
-      name: unitName,
+      name: legendData[i],
       position: 'left',
-      offset: i*60,
+      offset: i*50,
+      show: SelectedData[legendData[i]] !== false ? true : false,
       axisLine: {
         lineStyle: {
-          color: "#c6c9cd",
-          //color: chartColorList[i],
+          color: chartColorList[i],
         }
       },
       splitLine :{
-      	lineStyle:{ 
-      		type:'dashed',
-      		color: "#777"
-      	}
-      } 
+        lineStyle:{ 
+          type:'dashed',
+          color: "#555"
+        }
+      },
+      nameRotate: 90,
+      axisLabel: {
+        rotate: 90,
+        formatter: (value:any)=> {
+          if (unitName === '°') {
+            return value + '度'
+          } else {
+            return `${value} ${unitName}`
+          }
+        }
+      }
     }
-		yAxisOptionData.push(option)
-	}
+    yAxisOptionData.push(option)
+  }
+  if (data.length === 0) {
+    yAxisOptionData.push({ type: 'value' })
+  }
 	return (
 		yAxisOptionData
 	)

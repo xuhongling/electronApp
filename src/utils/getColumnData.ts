@@ -43,8 +43,6 @@ const getColumnData = (ruleTypeName:string, legendData:any[], fileData:any[])=>{
 			}
 		}
 	}*/
-	console.log(selectAllData,'selectAllData')
-	console.log(fileData, 'fileData')
 	
 	// 遍历对应CSV里面的数据
 	let filterColumnData:any[] = []
@@ -59,8 +57,6 @@ const getColumnData = (ruleTypeName:string, legendData:any[], fileData:any[])=>{
 			}
 		}
 	}
-
-	console.log(filterColumnData,'filterColumnData')
 
 	// 解析的数据
 	let columnData:any[] = []
@@ -84,12 +80,11 @@ const getColumnData = (ruleTypeName:string, legendData:any[], fileData:any[])=>{
 		let data = {
 			canId: filterColumnData[i].CanID,
 			data: formatData,
-			time: filterColumnData[i].TimeID,
+			time: filterColumnData[i].TimeID.substr(0,8),
 			selectName: filterColumnData[i].selectName
 		}
 		columnData.push(data)
 	}
-	console.log(columnData,'********** columnData *********')
 	return columnData
 }
 
