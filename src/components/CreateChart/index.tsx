@@ -148,14 +148,14 @@ export default class CreateChart extends React.Component<Props,State> {
       },
       legend: {
         data: this.state.legendData,
-        top: 30,
+        top: 16,
         selected: SelectedData,
         textStyle: {
           color: "#111"
         }
       },
       grid: {
-        top: 80,
+        top: 60,
         left: this.state.legendData.length * 38,
         right: 50,
         bottom: 40,

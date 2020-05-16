@@ -1,10 +1,14 @@
 const seriesCommon = (legendData:any[], chartData:any, timeData:any, chartColorList:any, SelectedData:any)=> {
 	let optionDataAll:any[] = []
-
+	// let selectNameAll = []
 	for (let i = 0; i < legendData.length; i++) {
 		let arrayData:any = []
 		arrayData = new Array(timeData.length)
 		for (let j = 0; j < chartData.length; j++) {
+			// 把图表数据中的名字字段加到一起，然后去重判断有没有数据，给出提示
+			// selectNameAll.push(chartData[j].selectName)
+			
+			// 遍历数据到对应的栏目中
 			if (legendData[i] === chartData[j].selectName) {
 				for (let k = 0; k < timeData.length; k++) {
 					if (chartData[j].time === timeData[k]) {
@@ -48,7 +52,18 @@ const seriesCommon = (legendData:any[], chartData:any, timeData:any, chartColorL
 		  }
 		  optionDataAll.push(option)
 		}
+
+		// 把图表数据中的名字字段加到一起，然后去重判断有没有数据，给出提示
+		/*let deDuplicationSelectName = [...new Set(selectNameAll)]
+		if (deDuplicationSelectName.includes(legendData[i])) {
+			console.log('')
+		}else{
+			console.log(legendData[i],'1111111')
+		}*/
+
 	}
+
+
 	return (
 		optionDataAll
 	)

@@ -24,8 +24,7 @@ const yAxisOption = (data:any[], chartColorList:any, SelectedData:any)=> {
       },
       position: 'left',
       offset: i*58,
-      /*show: SelectedData[legendData[i]] !== false ? true : false,*/
-      show: true,
+      show: SelectedData[legendData[i]] !== false ? true : false, // 显示隐藏 图例 跟 Y轴
       axisLine: {
         lineStyle: {
           color: chartColorList[i],
