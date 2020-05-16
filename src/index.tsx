@@ -6,8 +6,8 @@ import RouterMap from '@/router/routerMap'
 import * as serviceWorker from './serviceWorker'
 
 import 'static/reset.css'
-// Antd 暗色主题
-import 'static/antd.dark.css'
+// Antd compact主题
+import 'static/antd.compact.css'
 
 ReactDOM.render(
 	<Provider store={store}>

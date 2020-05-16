@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { RootState, actions } from '@/store'
 import { bindActionCreators } from 'redux'
+import { Popover } from 'antd'
 import styles from './style.less'
 
 type Props = ReturnType<typeof bindActionCreators>
@@ -51,19 +52,31 @@ export default class Sidebar extends React.Component<Props,State> {
 
 	public render() {
 		return (
-			<ul className={styles.sidebar}>
-				{
-					this.state.sidebarList.map((item,index)=>{
-						return(
-							<li className={classnames(styles.listItem, {[`${styles.isActive}`]: this.state.isType===item.type})} onClick={()=>this.handleClickList(item)} key={index}>
-								<Link to={item.path}>
-			            <i className={item.icon}></i><span>{item.name}</span>
-			          </Link>
-							</li>
-						)
-					})
-				}
-			</ul>
+			<div className={styles.sidebar}>
+				<Popover placement="bottom" content={<div className={styles.tips}>回到选择文件</div>}>
+					<Link to='/selectFile'>
+						<svg className="icon" aria-hidden="true">
+					    <use href="#icon-jiexi"></use>
+						</svg>
+						<div className={styles.title}>报文解析</div>
+					</Link>
+				</Popover>
+				<ul className={styles.sidebarBox}>
+					{
+						this.state.sidebarList.map((item,index)=>{
+							return(
+								<li className={classnames(styles.listItem, {[`${styles.isActive}`]: this.state.isType===item.type})} onClick={()=>this.handleClickList(item)} key={index}>
+									<Popover placement="right" content={<div className={styles.tips}>{item.name}</div>}>
+										<Link to={item.path}>
+					            <i className={item.icon}></i>
+					          </Link>
+				          </Popover>
+								</li>
+							)
+						})
+					}
+				</ul>
+			</div>
 		)
 	}
 }

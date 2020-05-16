@@ -104,7 +104,16 @@ module.exports = {
 						}
 					},
 					{
-						loader: 'less-loader'
+						loader: 'less-loader',
+						options: {
+							lessOptions: { // 如果使用less-loader@5，请移除 lessOptions 这一级直接配置选项。
+							  modifyVars: {
+							  	'font-size-base': '14px', // 主字号
+							    'primary-color': '#2c50ee', // 全局主色
+							  },
+							  javascriptEnabled: true,
+							},
+						},
 					}
 				]
 			},
