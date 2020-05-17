@@ -1,6 +1,43 @@
 .chartExplanation{
 	width: 100%;
-	padding-left: 100px;
-	padding-right: 20px;
-	height: 150px;
+	padding: 6px 30px 0 110px;
+	height: 182px;
+	.tableMain{
+		width: 100%;
+		height: 100%;
+		background: #fff;
+	}
+	thead[class~='ant-table-thead']{
+		tr{
+			th {
+				background: #d5ddea;
+				color: #4e4e4e;
+			}
+		}
+	}
+	tbody[class^='ant-table-tbody']{
+		height: 144px;
+		overflow: hidden;
+		overflow-y: auto;
+	}
+}
+
+/*修改滚动条样式*/
+div[class~='ant-table-body']::-webkit-scrollbar{
+  width:10px;
+  height:10px;
+}
+div[class~='ant-table-body']::-webkit-scrollbar-track{
+  background: rgba(255, 255, 255, 0.7);
+  border-radius:4px;
+}
+div[class~='ant-table-body']::-webkit-scrollbar-thumb{
+  background: rgba(200, 200, 200, 0.6);
+  border-radius:10px;
+}
+div[class~='ant-table-body']::-webkit-scrollbar-thumb:hover{
+  background: rgba(200, 200, 200, 0.8);
+}
+div[class~='ant-table-body']::-webkit-scrollbar-corner{
+  background: rgba(255, 255, 255, 0.7);
 }

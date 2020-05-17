@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { RootState, actions } from '@/store'
 import { bindActionCreators } from 'redux'
 import { Popover } from 'antd'
+import { PlusOutlined } from '@ant-design/icons'
 import styles from './style.less'
 
 type Props = ReturnType<typeof bindActionCreators>
@@ -53,12 +54,10 @@ export default class Sidebar extends React.Component<Props,State> {
 	public render() {
 		return (
 			<div className={styles.sidebar}>
-				<Popover placement="bottom" content={<div className={styles.tips}>回到选择文件</div>}>
+				<Popover placement="bottom" content={<div className={styles.tips}>选择新数据文件</div>}>
 					<Link to='/selectFile'>
-						<svg className="icon" aria-hidden="true">
-					    <use href="#icon-jiexi"></use>
-						</svg>
-						<div className={styles.title}>报文解析</div>
+						<div className={styles.addFileIcon}><PlusOutlined style={{ fontSize: '18px', color: '#a8bcff' }}/></div>
+						<div className={styles.addFileTitle}>新文件</div>
 					</Link>
 				</Popover>
 				<ul className={styles.sidebarBox}>

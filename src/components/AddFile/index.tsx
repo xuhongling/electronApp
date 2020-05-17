@@ -1,8 +1,8 @@
 import React from 'react'
-import { message } from 'antd'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { RootState, actions } from '@/store'
+import { message } from 'antd'
 import styles from './style.less'
 
 type Props = ReturnType<typeof bindActionCreators> & {
