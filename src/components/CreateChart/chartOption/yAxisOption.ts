@@ -36,22 +36,22 @@ const yAxisOption = (data:any[], chartColorList:any, SelectedData:any)=> {
       splitLine :{
         lineStyle:{ 
           type:'dashed',
-          color: "#bbb"
+          color: "#ddd"
         }
       },
       min: (value:any)=> {
-         if (value.min === Infinity) {
-           return 0
-         }else{
-           return value.min
-         }
+        if (value.min === Infinity) {
+          return 0
+        }else{
+          return value.min
+        }
       },
       max: (value:any)=> {
-         if (value.max === -Infinity) {
-           return 10
-         }else{
-           return value.max * 1.2
-         }
+        if (value.max === -Infinity) {
+          return 10
+        }else{
+          return (value.max * 1.2).toFixed(2)
+        }
       },
       nameRotate: 90,
       axisLabel: {

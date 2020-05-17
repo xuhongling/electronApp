@@ -28,6 +28,7 @@ const seriesCommon = (legendData:any[], chartData:any, timeData:any, chartColorL
 		    yAxisIndex: i, //使用第一个y轴，序号从0开始
 		    data: arrayData,
 		    connectNulls: true,
+		    lineStyle: { width: 1 },
 		    itemStyle: {
 		      color: (params:any)=> {
 		        let colorList = chartColorList
@@ -43,6 +44,7 @@ const seriesCommon = (legendData:any[], chartData:any, timeData:any, chartColorL
 		    yAxisIndex: i, //使用第一个y轴，序号从0开始
 		    data: [],
 		    connectNulls: true,
+		    lineStyle: { width: 1 },
 		    itemStyle: {
 		      color: (params:any)=> {
 		        let colorList = chartColorList

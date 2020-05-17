@@ -38,6 +38,7 @@ const ChartExplanation = (legendData:any) => {
   value_array: "0:关闭;1:打开"
   value_offset: "0.0"*/
 
+
   useEffect(()=>{
     let legendDataArr = legendData.legendData
     let tableDataArr:any[] = []
@@ -55,7 +56,11 @@ const ChartExplanation = (legendData:any) => {
             key: i,
             name: monitorRule[j].name,
             can_id: monitorRule[j].can_id,
-            value_array: valueArray
+            start_bit: monitorRule[j].start_bit,
+            bit_size: monitorRule[j].bit_size,
+            scale: monitorRule[j].scale,
+            value_offset: monitorRule[j].value_offset,
+            value_array: valueArray,
           }
           tableDataArr.push(formatData)
         }
@@ -86,10 +91,14 @@ const ChartExplanation = (legendData:any) => {
             }
           }}
         >
-          <Column title="Name" dataIndex="name" width="240px" />
-          <Column title="Can Id" dataIndex="can_id" width="160px" />
+          <Column title="名称" dataIndex="name" width="200px" />
+          <Column title="Can Id" dataIndex="can_id" align='center' width="80px" />
+          <Column title="起始BIT位" dataIndex="start_bit" align='center' width="80px" />
+          <Column title="BIT长度" dataIndex="bit_size" align='center' width="80px" />
+          <Column title="缩放比例" dataIndex="scale" align='center' width="80px" />
+          <Column title="偏移量" dataIndex="value_offset" align='center' width="80px" />
           <Column
-            title="Value Array"
+            title="数据状态"
             dataIndex="value_array"
             render={value_array => (
               <>
