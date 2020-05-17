@@ -69,8 +69,9 @@ const getColumnData = (ruleTypeName:string, legendData:any[], fileData:any[])=>{
 			let filterColumnDataCanID = filterColumnData[i].CanID
 			let selectAllDataCanId = selectAllData[j].can_id.toString().toLowerCase()
 			if (filterColumnDataCanID === selectAllDataCanId) {
-				baseData = (parseInt(filterColumnData[i].data) / Math.pow(2, Number(selectAllData[j].start_bit))) & (Math.pow(2, Number(selectAllData[j].bit_size)) - 1)
-				formatData = baseData * Number(selectAllData[j].scale) + Number(selectAllData[j].value_offset)
+				// debugger
+				let baseData2 = (baseData / Math.pow(2, Number(selectAllData[j].start_bit))) & (Math.pow(2, Number(selectAllData[j].bit_size)) - 1)
+				formatData = baseData2 * Number(selectAllData[j].scale) + Number(selectAllData[j].value_offset)
 			}
 		}
 		

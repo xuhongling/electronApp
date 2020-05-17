@@ -48,9 +48,9 @@ const yAxisOption = (data:any[], chartColorList:any, SelectedData:any)=> {
       },
       max: (value:any)=> {
          if (value.max === -Infinity) {
-           return 100
+           return 10
          }else{
-           return value.max + 10
+           return value.max * 1.2
          }
       },
       nameRotate: 90,

@@ -190,7 +190,7 @@ export default class CreateChart extends React.Component<Props,State> {
           xAxisIndex: 0,
           bottom: 16,
           start: 0,
-          end: 3,
+          end: 100,
           height: 14
         }, {
           type: 'slider',
@@ -199,7 +199,7 @@ export default class CreateChart extends React.Component<Props,State> {
           xAxisIndex: 0,
           bottom: 16,
           start: 0,
-          end: 3,
+          end: 100,
           height: 14
         }
       ]

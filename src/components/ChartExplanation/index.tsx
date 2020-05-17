@@ -39,7 +39,6 @@ const ChartExplanation = (legendData:any) => {
   value_offset: "0.0"*/
 
   useEffect(()=>{
-    console.log(monitorRule)
     let legendDataArr = legendData.legendData
     let tableDataArr:any[] = []
     let valueArray:any = []
@@ -52,7 +51,6 @@ const ChartExplanation = (legendData:any) => {
           }else{
             valueArray = ['']
           }
-          console.log(valueArray,'valueArray  tags')
           let formatData = {
             key: i,
             name: monitorRule[j].name,
