@@ -358,7 +358,7 @@ let monitorRule = [
 	},
 	{
 	  "id": "18",
-	  "name": "高压上下电指令",
+	  "name": "高压上下电指令-整车",
 	  "type": "1",
 	  "type_name": "整车",
 	  "can_id": "0x18F055D0",
@@ -421,7 +421,7 @@ let monitorRule = [
 	},
 	{
 	  "id": "21",
-	  "name": "车速",
+	  "name": "整车-车速",
 	  "type": "1",
 	  "type_name": "整车",
 	  "can_id": "0x18F055D0",
@@ -799,7 +799,7 @@ let monitorRule = [
 	},
 	{
 	  "id": "39",
-	  "name": "工作模式",
+	  "name": "整车工作模式",
 	  "type": "1",
 	  "type_name": "整车",
 	  "can_id": "0x18FF45F3",
@@ -2170,7 +2170,7 @@ let monitorRule = [
 	},
 	{
 	  "id": "104",
-	  "name": "气泵散热器温度",
+	  "name": "气泵散热器温度-故障",
 	  "type": "0",
 	  "type_name": "故障",
 	  "can_id": "0xCF909E7",
@@ -4921,7 +4921,7 @@ let monitorRule = [
 	},
 	{
 	  "id": "246",
-	  "name": "工作模式",
+	  "name": "电池工作模式",
 	  "type": "4",
 	  "type_name": "电池",
 	  "can_id": "0x18FFF345",
@@ -5572,7 +5572,7 @@ let monitorRule = [
 	},
 	{
 	  "id": "281",
-	  "name": "气泵散热器温度",
+	  "name": "气泵散热器温度-手持遥控",
 	  "type": "7",
 	  "type_name": "手持遥控",
 	  "can_id": "0x10FB05D8",
@@ -5803,7 +5803,7 @@ let monitorRule = [
 	},
 	{
 	  "id": "293",
-	  "name": "车速",
+	  "name": "EBS-车速",
 	  "type": "8",
 	  "type_name": "EBS",
 	  "can_id": "0x18FEF100",
@@ -6076,7 +6076,7 @@ let monitorRule = [
 	},
 	{
 	  "id": "306",
-	  "name": "年",
+	  "name": "年-手持遥控",
 	  "type": "7",
 	  "type_name": "手持遥控",
 	  "can_id": "0x10FA02DB",
@@ -6097,7 +6097,7 @@ let monitorRule = [
 	},
 	{
 	  "id": "307",
-	  "name": "月",
+	  "name": "月-手持遥控",
 	  "type": "7",
 	  "type_name": "手持遥控",
 	  "can_id": "0x10FA02DB",
@@ -6118,7 +6118,7 @@ let monitorRule = [
 	},
 	{
 	  "id": "308",
-	  "name": "日",
+	  "name": "日-手持遥控",
 	  "type": "7",
 	  "type_name": "手持遥控",
 	  "can_id": "0x10FA02DB",
@@ -6139,7 +6139,7 @@ let monitorRule = [
 	},
 	{
 	  "id": "309",
-	  "name": "时",
+	  "name": "时-手持遥控",
 	  "type": "7",
 	  "type_name": "手持遥控",
 	  "can_id": "0x10FA02DB",
@@ -6160,7 +6160,7 @@ let monitorRule = [
 	},
 	{
 	  "id": "310",
-	  "name": "分",
+	  "name": "分-手持遥控",
 	  "type": "7",
 	  "type_name": "手持遥控",
 	  "can_id": "0x10FA02DB",
@@ -6181,7 +6181,7 @@ let monitorRule = [
 	},
 	{
 	  "id": "311",
-	  "name": "秒",
+	  "name": "秒-手持遥控",
 	  "type": "7",
 	  "type_name": "手持遥控",
 	  "can_id": "0x10FA02DB",
@@ -6349,7 +6349,7 @@ let monitorRule = [
 	},
 	{
 	  "id": "320",
-	  "name": "车速",
+	  "name": "手持遥控-车速",
 	  "type": "7",
 	  "type_name": "手持遥控",
 	  "can_id": "0x10FA04DB",
@@ -6853,7 +6853,7 @@ let monitorRule = [
 	},
 	{
 	  "id": "345",
-	  "name": "急停",
+	  "name": "急停-手持遥控",
 	  "type": "7",
 	  "type_name": "手持遥控",
 	  "can_id": "0x10FA01DB",
@@ -7189,7 +7189,7 @@ let monitorRule = [
 	},
 	{
 	  "id": "361",
-	  "name": "高压上下电指令",
+	  "name": "高压上下电指令-手持遥控",
 	  "type": "7",
 	  "type_name": "手持遥控",
 	  "can_id": "0x0cf101d4",
@@ -7210,7 +7210,7 @@ let monitorRule = [
 	},
 	{
 	  "id": "362",
-	  "name": "急停",
+	  "name": "急停2-手持遥控",
 	  "type": "7",
 	  "type_name": "手持遥控",
 	  "can_id": "0x0cf101d4",
@@ -7777,7 +7777,7 @@ let monitorRule = [
 	},
 	{
 	  "id": "390",
-	  "name": "年",
+	  "name": "年-惯导信息",
 	  "type": "9",
 	  "type_name": "惯导信息",
 	  "can_id": "0x18F207D4",
@@ -7798,7 +7798,7 @@ let monitorRule = [
 	},
 	{
 	  "id": "391",
-	  "name": "月",
+	  "name": "月-惯导信息",
 	  "type": "9",
 	  "type_name": "惯导信息",
 	  "can_id": "0x18F207D4",
@@ -7819,7 +7819,7 @@ let monitorRule = [
 	},
 	{
 	  "id": "392",
-	  "name": "日",
+	  "name": "日-惯导信息",
 	  "type": "9",
 	  "type_name": "惯导信息",
 	  "can_id": "0x18F207D4",
@@ -7840,7 +7840,7 @@ let monitorRule = [
 	},
 	{
 	  "id": "393",
-	  "name": "时",
+	  "name": "时-惯导信息",
 	  "type": "9",
 	  "type_name": "惯导信息",
 	  "can_id": "0x18F207D4",
@@ -7861,7 +7861,7 @@ let monitorRule = [
 	},
 	{
 	  "id": "394",
-	  "name": "分",
+	  "name": "分-惯导信息",
 	  "type": "9",
 	  "type_name": "惯导信息",
 	  "can_id": "0x18F207D4",
@@ -7882,7 +7882,7 @@ let monitorRule = [
 	},
 	{
 	  "id": "395",
-	  "name": "秒",
+	  "name": "秒-惯导信息",
 	  "type": "9",
 	  "type_name": "惯导信息",
 	  "can_id": "0x18F207D4",

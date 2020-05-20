@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { RootState, actions } from '@/store'
 import { bindActionCreators } from 'redux'
-import SelectData3 from 'components/SelectData3'
+import SelectData2 from 'components/SelectData2'
 import styles from './style.less'
 
 const sidebarList:any[] = [
@@ -45,7 +45,7 @@ const Header:React.FC = (selectData:any) => {
 				<span>{state.titleName}报文解析</span>
 			</h2>
 			<div className={styles.rightWrap}>
-				<SelectData3/>
+				<SelectData2/>
 			</div>
 		</div>
   )

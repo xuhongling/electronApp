@@ -103,6 +103,7 @@ export default class SelectData extends React.Component<Props, State> {
     let typeName:any = this.props.selectData
     let fileData:any = this.props.fileData
     let chartData:any = getColumnData(typeName, legendData, fileData)
+    console.log(legendData, typeName, fileData, chartData)
     this.props.setChartData(chartData)
   }
   /*

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { RootState, actions } from '@/store'
 import { bindActionCreators } from 'redux'
-import { Modal, Button, TreeSelect } from 'antd'
+import { Modal, Button, TreeSelect, message } from 'antd'
 import monitorRule from 'static/monitorRule'
 import styles from './style.less'
 
@@ -81,6 +81,10 @@ const SelectData3: React.FC = (props:any) => {
     }))
   }
   const onChangeTreeData = (value:any)=> {
+    if (value.length > 8) {
+      message.warning('为了图表展示效果，建议最多勾选八组数据进行查看对比！')
+      return
+    }
     setState(state => ({
       ...state,
       treeValue: value
@@ -98,8 +102,7 @@ const SelectData3: React.FC = (props:any) => {
     onSelect: onSelectTreeData,
     treeCheckable: true,
     showCheckedStrategy: SHOW_PARENT,
-    treeDefaultExpandAll: true,
-    placeholder: 'Please select',
+    placeholder: '点击或者搜索输入你要展示数据',
     style: {
       width: '100%',
     },
@@ -107,8 +110,8 @@ const SelectData3: React.FC = (props:any) => {
 
   return(
     <div className={styles.selectData}>
-      <Button type="primary" onClick={showModal} style={{marginLeft: '20px'}}>选择数据栏数</Button>
-        <Modal title="选择展示栏数" visible={state.visible} onOk={handleOkModal} onCancel={handleCancelModal} okText={'确定'} cancelText={'取消'}>
+      <Button type="primary" onClick={showModal} style={{marginLeft: '20px'}}>选择展示数据</Button>
+        <Modal title="选择展示数据" visible={state.visible} onOk={handleOkModal} onCancel={handleCancelModal} okText={'确定'} cancelText={'取消'}>
           <TreeSelect {...tProps} />
         </Modal>
     </div>
