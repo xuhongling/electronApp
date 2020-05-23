@@ -27,7 +27,7 @@ const seriesCommon = (legendData:any[], chartData:any, timeData:any, chartColorL
 		    type:'line',
 		    yAxisIndex: i, //使用第一个y轴，序号从0开始
 		    data: arrayData,
-		    connectNulls: true,
+		    connectNulls: true, //是否连接空数据
 		    lineStyle: { width: 1 },
 		    itemStyle: {
 		      color: (params:any)=> {
@@ -43,7 +43,7 @@ const seriesCommon = (legendData:any[], chartData:any, timeData:any, chartColorL
 		    type:'line',
 		    yAxisIndex: i, //使用第一个y轴，序号从0开始
 		    data: [],
-		    connectNulls: true,
+		    connectNulls: true, //是否连接空数据
 		    lineStyle: { width: 1 },
 		    itemStyle: {
 		      color: (params:any)=> {

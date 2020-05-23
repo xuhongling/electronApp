@@ -1,38 +1,29 @@
 import monitorRule from 'static/monitorRule'
-// import DateFormat from './DateFormat'
 
 // 获取每个列表的数据集合
-const getColumnData = (ruleTypeName:string, legendData:any[], fileData:any[])=>{
-	if (legendData===null || legendData.length===0 || fileData.length===0) {
+const computeFileData = (fileData:any[])=>{
+	if (fileData.length===0) {
 		return
 	}
 
-	let ruleTypeData:any[] = []
-	for (let i = 0; i < monitorRule.length; i++) {
-		if (monitorRule[i].type_name === ruleTypeName) {
-			ruleTypeData.push(monitorRule[i])
+	// 规则的数据
+	let selectAllData:any[] = []
+	for (let k = 0; k < monitorRule.length; k++) {
+		if (monitorRule[k].can_id !== undefined) {
+			selectAllData.push(monitorRule[k])
 		}
 	}
 
-	// 选择框对应的数据
-	let selectAllData:any[] = []
-	for (let i = 0; i < legendData.length; i++) {
-		for (let j = 0; j < ruleTypeData.length; j++) {
-			if (ruleTypeData[j].name === legendData[i]) {
-				selectAllData.push(ruleTypeData[j])
-			}
-		}
-	}
-	
 	// 遍历对应CSV里面的数据
 	let filterColumnData:any[] = []
-	for (let i = 0; i < fileData.length; i++) {
-		for (let j = 0; j < selectAllData.length; j++) {
-			let fileDataCanID = fileData[i].CanID
-			let selectAllDataCanId = selectAllData[j].can_id.toString().toLowerCase()
+	for (let m = 0; m < selectAllData.length; m++) {
+		let selectAllDataCanId = selectAllData[m].can_id.toString().toLowerCase()
+		for (let n = 0; n < fileData.length; n++) {
+			let fileDataCanID = fileData[n].CanID
+			let fileDataMerge = {}
 			if (fileDataCanID === selectAllDataCanId) {
 				// 加入一个选择框，selectName字段，用作判断
-				let fileDataMerge = {...fileData[i], selectName: selectAllData[j].name}
+				fileDataMerge = {...fileData[n], selectName: selectAllData[m].name}
 				filterColumnData.push(fileDataMerge)
 			}
 		}
@@ -66,4 +57,4 @@ const getColumnData = (ruleTypeName:string, legendData:any[], fileData:any[])=>{
 	return columnData
 }
 
-export default getColumnData
+export default computeFileData

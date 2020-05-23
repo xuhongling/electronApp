@@ -84,6 +84,7 @@ export default class SelectData extends React.Component<Props, State> {
     // 传入三个值，当前栏目名称，选择栏数据，CSV总数据
     let fileData:any = this.props.fileData
     let chartData:any = getColumnData(typeName, legendData, fileData)
+    // console.log(chartData,typeName, legendData, fileData)
     this.props.setChartData(chartData)
   }
   // 获取鼠标点击哪一个选择框

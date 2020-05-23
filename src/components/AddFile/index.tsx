@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { RootState, actions } from '@/store'
 import { message } from 'antd'
+// import computeFileData from 'utils/computeFileData'
+import monitorRule from 'static/monitorRule'
 import styles from './style.less'
 
 type Props = ReturnType<typeof bindActionCreators> & {
@@ -29,6 +31,10 @@ export default class AddFile extends React.Component<Props> {
 		this.myRefInput = React.createRef()
 	}
 
+	componentDidMount() {
+		
+	}
+
 	uploadCSVFile = ()=> {
 		let myRefInput:any = this.myRefInput.current
 		let file:any = myRefInput.files[0]	//取到当前上传的文件
@@ -42,6 +48,7 @@ export default class AddFile extends React.Component<Props> {
 		//console.log(reader.readAsText(file,'utf-8'),'reader utf-8')
 		//console.log(reader.readAsText(file,'GB2312'),'reader GB2312')
 		reader.onload = () => {		//读取成功完成后出发事件
+			console.time()
 			let fileData:any = reader.result	 //获取读取的数据
 			let relArr = fileData.split("\r\n")
 			let fileDataArr = []
@@ -64,15 +71,51 @@ export default class AddFile extends React.Component<Props> {
 					let fileList = relArr[i].split(',')
 					let obj = {}
 					for (let j = 0; j < fileList.length; j++) {
-						obj[fileTiele[j]] = fileList[j]
+						if (fileList[j].indexOf(':') !== -1 ) {
+							// .substr(0,8)
+							obj[fileTiele[j]] = fileList[j]
+						}else{
+							obj[fileTiele[j]] = fileList[j]
+						}
 					}
 					fileDataArr.push(obj)
 				}
 			}
+
+			// 删选初始数据里的重复数据
+			let newArr:any = {}
+			let selectFileData = fileDataArr.reduce((item:any, next:any)=> {
+				// 如果临时对象中有这个名字，什么都不做
+		    if (newArr[next.CanID] && newArr[next.TimeID] && newArr[next.DataHEX]) {
+		    	// code...
+		    }else{
+		    	newArr[next.CanID] = true
+		    	newArr[next.TimeID] = true
+		    	newArr[next.DataHEX] = true
+		    	item.push(next)
+		    }
+		    return item
+			}, [])
+			
+			// 调用，在Web Worker里面处理计算
+			this.setWebWorker(selectFileData, monitorRule)
 			// 把 fileData 数据设置全局访问
-			this.props.setFileData(fileDataArr)
+			this.props.setFileData(selectFileData)
 			// 跳转展示图表页面
 			this.props.history.push('/wholeCar')
+		}
+	}
+
+	//在Web Worker里面处理计算
+	setWebWorker = (fileData:any[], monitorRule:any)=> {
+		if (fileData.length===0) {
+			return
+		}
+		let worker = new Worker('js/WebWorker.js')
+		worker.postMessage({fileData, monitorRule})
+		worker.onmessage = function (event) {
+			console.timeEnd()
+			console.log(event.data)
 		}
 	}
 

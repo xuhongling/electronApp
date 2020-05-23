@@ -101,7 +101,7 @@ export default class CreateChart extends React.Component<Props,State> {
         return a > b ? 1 : - 1
       })
     }
-    return [...new Set(timeData)]
+    return timeData
   }
 
   // 初始化图表

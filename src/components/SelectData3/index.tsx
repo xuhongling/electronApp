@@ -4,6 +4,8 @@ import { RootState, actions } from '@/store'
 import { bindActionCreators } from 'redux'
 import { Modal, Button, TreeSelect, message } from 'antd'
 import monitorRule from 'static/monitorRule'
+//import computeFileData from 'utils/computeFileData'
+
 import styles from './style.less'
 
 const { SHOW_PARENT } = TreeSelect
@@ -30,10 +32,7 @@ const SelectData3: React.FC = (props:any) => {
   })
 
   useEffect(()=>{
-    console.log(monitorRule,'monitorRule')
-    console.log(props.fileData, props.selectData)
-
-    
+    // treeData
     for (let i = 0; i < sidebarList.length; i++) {
       let childrenData = []
       for (let j = 0; j < monitorRule.length; j++) {
@@ -57,9 +56,30 @@ const SelectData3: React.FC = (props:any) => {
       }
       treeData.push(treeChildrenData)
     }
-    console.log(treeData,'treeData')
-      
   },[])
+
+  useEffect(()=>{
+    if (props.fileData.length > 0) {
+      console.time()
+      let fileData = props.fileData
+      let fileDataArr = []
+      console.log(monitorRule,fileData)
+      for (let i = 0; i < monitorRule.length; i++) {
+        let can_id = monitorRule[i].can_id.toString().toLowerCase()
+        let obj = {}
+        let fileDataItem = []
+        for (let j = 0; j < fileData.length; j++) {
+          if (can_id === fileData[j].CanID) {
+             fileDataItem.push(fileData[j])
+           }
+        }
+        obj[can_id] = fileDataItem
+        fileDataArr.push(obj)
+      }
+      console.timeEnd()
+      console.log(fileDataArr,'fileDataArr-----7777')
+    }
+  },[props.fileData])
 
   const showModal = ()=> {
     setState(state => ({
@@ -89,6 +109,8 @@ const SelectData3: React.FC = (props:any) => {
       ...state,
       treeValue: value
     }))
+    // 设置图表Legend数据
+    props.setLegendData(value)
   }
 
   const onSelectTreeData = (value:any)=> {
