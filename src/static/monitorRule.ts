@@ -1019,17 +1019,7 @@ let monitorRule = [
 	  "value_offset": "0.0",
 	  "low_limit": "0.0",
 	  "high_limit": "0.0",
-	  "value_array": "000:自由模式;"
-	},
-	{
-	  "id": "010:转速模式",
-	  "name": "",
-	  "type": "",
-	  "type_name": "10",
-	  "can_id": "1",
-	  "start_bit": "",
-	  "bit_size": "1",
-	  "scale": "11"
+	  "value_array": "000:自由模式;001:扭矩模式;010:转速模式"
 	},
 	{
 	  "id": "50",

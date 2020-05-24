@@ -5,12 +5,10 @@ import { bindActionCreators } from 'redux'
 import { Modal, Button, TreeSelect, message } from 'antd'
 import monitorRule from 'static/monitorRule'
 //import computeFileData from 'utils/computeFileData'
-
 import styles from './style.less'
 
 const { SHOW_PARENT } = TreeSelect
 
-const treeData:any[] = []
 let sidebarList = [
   {icon: 'iconfont icon-che', name: '整车', type: 'WholeCar', path: '/wholeCar'},
   {icon: 'iconfont icon-dianji', name: '电机', type: 'ElectricMachinery', path: '/electricMachinery'},
@@ -32,16 +30,67 @@ const SelectData3: React.FC = (props:any) => {
   })
 
   useEffect(()=>{
-    // treeData
+    if (props.fileData.length > 0) {
+      console.time()
+      let fileData = props.fileData
+      // 删选初始数据里的重复数据
+      let newArr:any = {}
+      let selectMonitorRule = monitorRule.reduce((item:any, next:any)=> {
+        // 如果临时对象中有这个名字，什么都不做
+        if (newArr[next.can_id]) {
+          // code...
+        }else{
+          newArr[next.can_id] = true
+          item.push(next)
+        }
+        return item
+      }, [])
+
+      let fileDataObj = {}
+
+      for (let i = 0; i < selectMonitorRule.length; i++) {
+        let can_id = selectMonitorRule[i].can_id.toString().toLowerCase()
+        let fileDataArr = []
+        for (let j = 0; j < fileData.length; j++) {
+          if (can_id === fileData[j].CanID) {
+             fileDataArr.push(fileData[j])
+           }
+        }
+        fileDataObj[can_id] = fileDataArr
+      }
+      console.timeEnd()
+      setTreeData(fileDataObj)
+    }
+  },[props.fileData])
+
+  // 设置树的数据
+  const setTreeData = (fileDataArr:any)=>{
+    let treeData:any[] = []
     for (let i = 0; i < sidebarList.length; i++) {
       let childrenData = []
       for (let j = 0; j < monitorRule.length; j++) {
+        
         if (sidebarList[i].name === monitorRule[j].type_name) {
+          // 判断是否有数据
+          let can_id = monitorRule[j].can_id.toString().toLowerCase()
+          let isDisabled = true
+
+          if (fileDataArr[can_id] !== undefined) {
+            if (fileDataArr[can_id].length > 0) {
+              isDisabled = false
+            }else{
+              isDisabled = true
+            }
+          }else{
+            isDisabled = true
+          }
+
           childrenData.push({
             ...monitorRule[j],
             title: monitorRule[j].name,
             value: monitorRule[j].name,
             key: monitorRule[j].name,
+            disabled: isDisabled
           })
         }
       }
@@ -56,30 +105,12 @@ const SelectData3: React.FC = (props:any) => {
       }
       treeData.push(treeChildrenData)
     }
-  },[])
+    setState(state => ({
+      ...state,
+      treeData
+    }))
+  }
 
-  useEffect(()=>{
-    if (props.fileData.length > 0) {
-      console.time()
-      let fileData = props.fileData
-      let fileDataArr = []
-      console.log(monitorRule,fileData)
-      for (let i = 0; i < monitorRule.length; i++) {
-        let can_id = monitorRule[i].can_id.toString().toLowerCase()
-        let obj = {}
-        let fileDataItem = []
-        for (let j = 0; j < fileData.length; j++) {
-          if (can_id === fileData[j].CanID) {
-             fileDataItem.push(fileData[j])
-           }
-        }
-        obj[can_id] = fileDataItem
-        fileDataArr.push(obj)
-      }
-      console.timeEnd()
-      console.log(fileDataArr,'fileDataArr-----7777')
-    }
-  },[props.fileData])
 
   const showModal = ()=> {
     setState(state => ({
@@ -109,8 +140,12 @@ const SelectData3: React.FC = (props:any) => {
       ...state,
       treeValue: value
     }))
+
+    console.log(value,'value')
+
     // 设置图表Legend数据
     props.setLegendData(value)
+    //props.setChartData(chartData)
   }
 
   const onSelectTreeData = (value:any)=> {
@@ -118,7 +153,7 @@ const SelectData3: React.FC = (props:any) => {
   }
 
   const tProps = {
-    treeData,
+    treeData: state.treeData,
     value: state.treeValue,
     onChange: onChangeTreeData,
     onSelect: onSelectTreeData,

@@ -31,10 +31,6 @@ export default class AddFile extends React.Component<Props> {
 		this.myRefInput = React.createRef()
 	}
 
-	componentDidMount() {
-		
-	}
-
 	uploadCSVFile = ()=> {
 		let myRefInput:any = this.myRefInput.current
 		let file:any = myRefInput.files[0]	//取到当前上传的文件
@@ -98,7 +94,7 @@ export default class AddFile extends React.Component<Props> {
 			}, [])
 			
 			// 调用，在Web Worker里面处理计算
-			this.setWebWorker(selectFileData, monitorRule)
+			// this.setWebWorker(selectFileData, monitorRule)
 			// 把 fileData 数据设置全局访问
 			this.props.setFileData(selectFileData)
 			// 跳转展示图表页面
