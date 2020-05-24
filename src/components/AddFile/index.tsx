@@ -92,9 +92,11 @@ export default class AddFile extends React.Component<Props> {
 		    }
 		    return item
 			}, [])
+
+			console.log(selectFileData,'selectFileData-----*****')
 			
 			// 调用，在Web Worker里面处理计算
-			// this.setWebWorker(selectFileData, monitorRule)
+			this.setWebWorker(selectFileData, monitorRule)
 			// 把 fileData 数据设置全局访问
 			this.props.setFileData(selectFileData)
 			// 跳转展示图表页面

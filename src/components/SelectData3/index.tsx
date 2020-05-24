@@ -4,7 +4,7 @@ import { RootState, actions } from '@/store'
 import { bindActionCreators } from 'redux'
 import { Modal, Button, TreeSelect, message } from 'antd'
 import monitorRule from 'static/monitorRule'
-//import computeFileData from 'utils/computeFileData'
+import computeFileData from 'utils/computeFileData'
 import styles from './style.less'
 
 const { SHOW_PARENT } = TreeSelect
@@ -26,7 +26,8 @@ const SelectData3: React.FC = (props:any) => {
     selectDataList: [],
     legendData: [],
     visible: false,
-    treeValue: []
+    treeValue: [],
+    fileDataArr: {}
   })
 
   useEffect(()=>{
@@ -50,16 +51,20 @@ const SelectData3: React.FC = (props:any) => {
 
       for (let i = 0; i < selectMonitorRule.length; i++) {
         let can_id = selectMonitorRule[i].can_id.toString().toLowerCase()
-        let fileDataArr = []
+        let fileDataObjItem = []
         for (let j = 0; j < fileData.length; j++) {
           if (can_id === fileData[j].CanID) {
-             fileDataArr.push(fileData[j])
+             fileDataObjItem.push(fileData[j])
            }
         }
-        fileDataObj[can_id] = fileDataArr
+        fileDataObj[can_id] = fileDataObjItem
       }
       console.timeEnd()
       setTreeData(fileDataObj)
+      setState(state => ({
+        ...state,
+        fileDataArr: fileDataObj
+      }))
     }
   },[props.fileData])
 
@@ -111,7 +116,6 @@ const SelectData3: React.FC = (props:any) => {
     }))
   }
 
-
   const showModal = ()=> {
     setState(state => ({
       ...state,
@@ -123,7 +127,6 @@ const SelectData3: React.FC = (props:any) => {
       ...state,
       visible: false
     }))
-    console.log(state.treeValue,'treeValue')
   }
   const handleCancelModal = ()=>{
     setState(state => ({
@@ -141,7 +144,32 @@ const SelectData3: React.FC = (props:any) => {
       treeValue: value
     }))
 
-    console.log(value,'value')
+    if (value.length === 0) {
+      message.warning('为了图表展示效果，最少勾选一组数据进行查看！')
+      return
+    }
+
+    let getDataCanID = []
+    for (let i = 0; i < value.length; i++) {
+      for (let j = 0; j < monitorRule.length; j++) {
+        let can_id = monitorRule[j].can_id.toString().toLowerCase()
+        if (monitorRule[j].name === value[i]) {
+          getDataCanID.push(can_id)
+        }
+      }
+    }
+    getDataCanID = [...new Set(getDataCanID)]
+    let fileDataArr = state.fileDataArr
+    let fileDataAll = []
+
+    for (let i = 0; i < getDataCanID.length; i++) {
+      fileDataAll.push(...fileDataArr[getDataCanID[i]])
+    }
+
+
+    let chartData = computeFileData(fileDataAll)
+    console.log(chartData,'1111111------aaaaaaaa')
+    props.setChartData(chartData)
 
     // 设置图表Legend数据
     props.setLegendData(value)
@@ -149,7 +177,7 @@ const SelectData3: React.FC = (props:any) => {
   }
 
   const onSelectTreeData = (value:any)=> {
-    console.log(value)
+    console.log(value,'ssssssssss')
   }
 
   const tProps = {
@@ -160,15 +188,25 @@ const SelectData3: React.FC = (props:any) => {
     treeCheckable: true,
     showCheckedStrategy: SHOW_PARENT,
     placeholder: '点击或者搜索输入你要展示数据',
+    listHeight: 500,
     style: {
-      width: '100%',
+      width: '100%'
     },
   };
 
   return(
     <div className={styles.selectData}>
       <Button type="primary" onClick={showModal} style={{marginLeft: '20px'}}>选择展示数据</Button>
-        <Modal title="选择展示数据" visible={state.visible} onOk={handleOkModal} onCancel={handleCancelModal} okText={'确定'} cancelText={'取消'}>
+        <Modal 
+          width={600}
+          title="选择展示数据"
+          visible={state.visible}
+          onOk={handleOkModal}
+          onCancel={handleCancelModal}
+          okText={'确定'}
+          cancelText={'取消'}
+          maskClosable={false}
+        >
           <TreeSelect {...tProps} />
         </Modal>
     </div>
