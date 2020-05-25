@@ -1,9 +1,10 @@
 const seriesCommon = (legendData:any[], chartData:any, timeData:any, chartColorList:any, SelectedData:any)=> {
 	let optionDataAll:any[] = []
 	// let selectNameAll = []
-	for (let i = 0; i < legendData.length; i++) {
+	/*for (let i = 0; i < legendData.length; i++) {
 		let arrayData:any = []
 		arrayData = new Array(timeData.length)
+		console.log(arrayData,'arrayData')
 		for (let j = 0; j < chartData.length; j++) {
 			// 把图表数据中的名字字段加到一起，然后去重判断有没有数据，给出提示
 			// selectNameAll.push(chartData[j].selectName)
@@ -18,6 +19,20 @@ const seriesCommon = (legendData:any[], chartData:any, timeData:any, chartColorL
 					}
 				}
 			}
+		}*/
+	
+	for (let i = 0; i < legendData.length; i++) {
+		let emptyData:any = []
+		emptyData = new Array(timeData.length)
+
+		for (let j = 0; j < chartData.length; j++) {
+			if (chartData[j].selectName === legendData[i]) {
+				for (let k = 0; k < timeData.length; k++) {
+					if (chartData[j].time === timeData[k]) {
+						emptyData[k] = chartData[j].data
+					}
+				}
+			}
 		}
 
 		// series 配置项
@@ -26,7 +41,7 @@ const seriesCommon = (legendData:any[], chartData:any, timeData:any, chartColorL
 		    name: legendData[i],
 		    type:'line',
 		    yAxisIndex: i, //使用第一个y轴，序号从0开始
-		    data: arrayData,
+		    data: emptyData,
 		    connectNulls: true, //是否连接空数据
 		    lineStyle: { width: 1 },
 		    itemStyle: {

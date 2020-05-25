@@ -17,11 +17,11 @@ const computeFileData = (fileData:any[])=>{
 	// 遍历对应CSV里面的数据
 	let filterColumnData:any[] = []
 	for (let m = 0; m < selectAllData.length; m++) {
-		let selectAllDataCanId = selectAllData[m].can_id.toString().toLowerCase()
+		let can_id = selectAllData[m].can_id.toString().toLowerCase()
 		for (let n = 0; n < fileData.length; n++) {
 			let fileDataCanID = fileData[n].CanID
 			let fileDataMerge = {}
-			if (fileDataCanID === selectAllDataCanId) {
+			if (fileDataCanID === can_id) {
 				// 加入一个选择框，selectName字段，用作判断
 				fileDataMerge = {...fileData[n], selectName: selectAllData[m].name}
 				filterColumnData.push(fileDataMerge)
@@ -38,18 +38,18 @@ const computeFileData = (fileData:any[])=>{
 		let formatData
 		for (let j = 0; j < selectAllData.length; j++) {
 			let filterColumnDataCanID = filterColumnData[i].CanID
-			let selectAllDataCanId = selectAllData[j].can_id.toString().toLowerCase()
-			if (filterColumnDataCanID === selectAllDataCanId) {
+			let can_id = selectAllData[j].can_id.toString().toLowerCase()
+			if (filterColumnDataCanID === can_id) {
 				// debugger
 				let computeBaseData = (baseData / Math.pow(2, Number(selectAllData[j].start_bit))) & (Math.pow(2, Number(selectAllData[j].bit_size)) - 1)
 				formatData = computeBaseData * Number(selectAllData[j].scale) + Number(selectAllData[j].value_offset)
 			}
 		}
-
+		// .substr(0,8)
 		let data = {
 			canId: filterColumnData[i].CanID,
 			data: formatData,
-			time: filterColumnData[i].TimeID.substr(0,8),
+			time: filterColumnData[i].TimeID,
 			selectName: filterColumnData[i].selectName
 		}
 		columnData.push(data)

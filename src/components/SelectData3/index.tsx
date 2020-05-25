@@ -34,6 +34,7 @@ const SelectData3: React.FC = (props:any) => {
     if (props.fileData.length > 0) {
       console.time()
       let fileData = props.fileData
+      console.log(fileData,'fileData')
       // 删选初始数据里的重复数据
       let newArr:any = {}
       let selectMonitorRule = monitorRule.reduce((item:any, next:any)=> {

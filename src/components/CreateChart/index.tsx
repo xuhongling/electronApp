@@ -88,12 +88,18 @@ export default class CreateChart extends React.Component<Props,State> {
   // 获取时间轴数据
   getTimeData = ()=> {
     let chartData:any = this.state.chartData
+    let legendDataArr = this.state.legendData
+    console.log(legendDataArr,'legendDataArr')
     let timeData:any = []
     if (typeof(chartData) === 'undefined' || chartData.length < 1) {
       return timeData
     }
-    for (let i = 0; i < chartData.length; i++) {
-      timeData.push(chartData[i].time)
+    for (let j = 0; j < legendDataArr.length; j++) {
+      for (let i = 0; i < chartData.length; i++) {
+        if (legendDataArr[j] === chartData[i].selectName) {
+          timeData.push(chartData[i].time)
+        }
+      }
     }
     if (timeData.length > 1) {
       // 时间排序
@@ -101,7 +107,7 @@ export default class CreateChart extends React.Component<Props,State> {
         return a > b ? 1 : - 1
       })
     }
-    return timeData
+    return [...new Set(timeData)]
   }
 
   // 初始化图表
@@ -131,6 +137,7 @@ export default class CreateChart extends React.Component<Props,State> {
   // 图表配置
   setChartOption = ( SelectedData = {} )=>{
     let chartData = this.state.chartData
+    console.log(chartData,'chartData')
     let timeData = this.getTimeData()
     if (typeof(chartData) === 'undefined') {
       return
