@@ -89,7 +89,6 @@ export default class CreateChart extends React.Component<Props,State> {
   getTimeData = ()=> {
     let chartData:any = this.state.chartData
     let legendDataArr = this.state.legendData
-    console.log(legendDataArr,'legendDataArr')
     let timeData:any = []
     if (typeof(chartData) === 'undefined' || chartData.length < 1) {
       return timeData
@@ -127,6 +126,7 @@ export default class CreateChart extends React.Component<Props,State> {
     /* 选中图例 */
     myChart.on("legendselectchanged", (params:any)=> {
       // 得到当前的图例显示隐藏状态分别有哪些
+      console.log(params,'1111111')
       let SelectedData = params.selected
       let option = this.setChartOption(SelectedData)
       if (option && typeof option === "object") {
@@ -137,7 +137,6 @@ export default class CreateChart extends React.Component<Props,State> {
   // 图表配置
   setChartOption = ( SelectedData = {} )=>{
     let chartData = this.state.chartData
-    console.log(chartData,'chartData')
     let timeData = this.getTimeData()
     if (typeof(chartData) === 'undefined') {
       return
@@ -176,7 +175,7 @@ export default class CreateChart extends React.Component<Props,State> {
       grid: {
         top: 60,
         left: this.state.legendData.length * 38,
-        right: 50,
+        right: 30,
         bottom: 40,
         containLabel: true
       },

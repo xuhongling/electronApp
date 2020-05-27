@@ -49,7 +49,7 @@ const computeFileData = (fileData:any[])=>{
 		let data = {
 			canId: filterColumnData[i].CanID,
 			data: formatData,
-			time: filterColumnData[i].TimeID,
+			time: filterColumnData[i].TimeID.substr(0,8),
 			selectName: filterColumnData[i].selectName
 		}
 		columnData.push(data)
