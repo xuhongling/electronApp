@@ -1,8 +1,51 @@
-.wrapper {
+.setProperty {
 	display: flex;
 	flex-direction: column;
-	padding: 0 24%;
-	button{
+	padding: 0 20%;
+	li.listItem{
+		background: #fff;
+		padding: 10px 10px;
 		margin-bottom: 10px;
+		display: flex;
+		align-items: center;
+		cursor: pointer;
+		&:hover{
+			box-shadow: 0 0 6px rgba(0,0,0,0.1);
+		}
+		i{
+			font-size: 30px;
+			width: 46px;
+			margin-left: 10px;
+		}
+		section{
+			display: flex;
+			flex-direction: column;
+			h2{
+				line-height: 30px;
+				font-size: 15px;
+				margin-bottom: 0;
+				color: #333;
+			}
+			p{
+				margin-bottom: 0;
+				color: #999;
+				font-size: 12px;
+			}
+		}
+	}
+	li.listItem:nth-child(1){
+		i{
+			color: #fb6a6a;
+		}
+	}
+	li.listItem:nth-child(2){
+		i{
+			color: #9e64ea;
+		}
+	}
+	li.listItem:nth-child(3){
+		i{
+			color: #4f9def;
+		}
 	}
 }
