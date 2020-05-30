@@ -169,7 +169,7 @@ export default class CreateChart extends React.Component<Props,State> {
       },
       legend: {
         data: legendData(),
-        top: 16,
+        top: 10,
         selected: SelectedData,
       },
       grid: {
@@ -206,21 +206,27 @@ export default class CreateChart extends React.Component<Props,State> {
       dataZoom: [
         {
           type: 'inside',
+          backgroundColor:"#fff",
           realtime: true,
           xAxisIndex: 0,
+          fillerColor:"rgba(150, 170, 200, 0.24)",
+          borderColor:"#f0f1f8",
           bottom: 16,
           start: 0,
           end: 100,
-          height: 14
+          height: 15
         }, {
           type: 'slider',
+          backgroundColor:"#fff",
           show: true,
           realtime: true,
+          fillerColor:"rgba(150, 170, 200, 0.24)",
+          borderColor:"#f0f1f8",
           xAxisIndex: 0,
           bottom: 16,
           start: 0,
           end: 100,
-          height: 14
+          height: 15
         }
       ]
     }

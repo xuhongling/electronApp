@@ -3,7 +3,7 @@ import { ActionType, getType } from 'typesafe-actions'
 import { ChartColorList } from './types'
 
 const defaultState: ChartColorList = {
-  chartColorList: ['#5793f3', '#d14a61', '#675bba', '#66bbee','#dd6b66','#759aa0','#e69d87','#ea7e53']
+  chartColorList: ['#4260ff', '#fc7194', '#08c05e', '#f02354', '#673af6', '#fc853f','#00acdc','#61a94f']
 }
 
 export type ChartColorListAction = ActionType<typeof actions>

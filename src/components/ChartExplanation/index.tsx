@@ -18,27 +18,6 @@ const ChartExplanation = (legendData:any) => {
     }]
   })
 
-  /*bit_size: "1"
-  can_id: "0xCF011D1"
-  car_type: "11"
-  convert_mode: "1"
-  display_style: "10"
-  error_value: ""
-  high_limit: "0"
-  id: "1"
-  is_custom: ""
-  is_used: "1"
-  low_limit: "0.0"
-  name: "驱动电机1使能MCU"
-  scale: "1"
-  start_bit: "0"
-  type: "1"
-  type_name: "整车"
-  unit: ""
-  value_array: "0:关闭;1:打开"
-  value_offset: "0.0"*/
-
-
   useEffect(()=>{
     let legendDataArr = legendData.legendData
     let tableDataArr:any[] = []
@@ -76,7 +55,6 @@ const ChartExplanation = (legendData:any) => {
     console.log(record)
   }
 
-
   return (
     <div className={styles.chartExplanation}>
       <div className={styles.tableMain}>
@@ -91,12 +69,12 @@ const ChartExplanation = (legendData:any) => {
             }
           }}
         >
-          <Column title="名称" dataIndex="name" width="200px" />
-          <Column title="Can ID" dataIndex="can_id" align='center' width="80px" />
-          <Column title="起始BIT位" dataIndex="start_bit" align='center' width="80px" />
-          <Column title="BIT长度" dataIndex="bit_size" align='center' width="80px" />
-          <Column title="缩放比例" dataIndex="scale" align='center' width="80px" />
-          <Column title="偏移量" dataIndex="value_offset" align='center' width="80px" />
+          <Column title="名称" dataIndex="name" width="220px" />
+          <Column title="Can ID" dataIndex="can_id" align='center' width="110px" />
+          <Column title="起始BIT位" dataIndex="start_bit" align='center' width="110px" />
+          <Column title="BIT长度" dataIndex="bit_size" align='center' width="110px" />
+          <Column title="缩放比例" dataIndex="scale" align='center' width="110px" />
+          <Column title="偏移量" dataIndex="value_offset" align='center' width="110px" />
           <Column
             title="数据状态"
             dataIndex="value_array"
