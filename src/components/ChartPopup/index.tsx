@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { Modal } from 'antd'
+import { Button, Modal, InputNumber } from 'antd'
 import { RootState, actions } from '@/store'
 import { bindActionCreators } from 'redux'
 import { SketchPicker } from 'react-color'
@@ -12,6 +12,10 @@ const ChartPopup: React.FC<Props> = (props:any) => {
   const [state, setState] = useState({
     visible: false,
     chartParams: null,
+    seriesName: '设置图表属性',
+    isShowProperty: true,
+    isShowLineWidth: false,
+    isShowSizeValue: false,
     isShowColorPickers: false,
     background: '#fff',
     seriesIndex: 0
@@ -22,10 +26,15 @@ const ChartPopup: React.FC<Props> = (props:any) => {
   		let myChart = props.globalChart
   		myChart.on('contextmenu', (params:any)=> {
         params.event.event.preventDefault()
+        console.log(params.seriesName,'params')
 	      setState(state => ({
 		      ...state,
 		      visible: true,
-          chartParams: params
+          chartParams: params,
+          seriesName:`设置 ${params.seriesName} 属性`,
+          isShowProperty: true,
+          isShowLineWidth: false,
+          isShowSizeValue: false
 		    }))
 	    })
   	}
@@ -47,6 +56,11 @@ const ChartPopup: React.FC<Props> = (props:any) => {
   // 点击折线线宽
   const handleClickLineWidth = ()=> {
     console.log('handleClickLineWidth')
+    setState(state => ({
+      ...state,
+      isShowProperty: false,
+      isShowLineWidth: true
+    }))
   }
   // 点击折线颜色
   const handleClickColour = ()=> {
@@ -61,6 +75,11 @@ const ChartPopup: React.FC<Props> = (props:any) => {
   // 点击坐标大小值
   const handleClickSizeValue = ()=> {
     console.log('handleClickSizeValue')
+    setState(state => ({
+      ...state,
+      isShowProperty: false,
+      isShowSizeValue: true
+    }))
   }
 
   // 修改chart颜色函数方法
@@ -80,10 +99,20 @@ const ChartPopup: React.FC<Props> = (props:any) => {
     props.setChartColorList(chartColor)
   }
 
+  const handleChangeInputNumber = (value: number|undefined)=> {
+    console.log('handleChangeInputNumber', value)
+  }
+  const handleChangeSizeValueMin = (value: number|undefined)=> {
+    console.log('handleChangeSizeValueMin', value)
+  }
+  const handleChangeSizeValueMax = (value: number|undefined)=> {
+    console.log('handleChangeSizeValueMax', value)
+  }
+
   return(
     <>
-      <Modal title="设置图表属性" visible={state.visible} onOk={handleModalOk} onCancel={handleModalCancel} footer={null} bodyStyle={{background:'#f4f4f4'}}>
-        <ul className={styles.setProperty}>
+      <Modal title={state.seriesName} visible={state.visible} onOk={handleModalOk} onCancel={handleModalCancel} footer={null} bodyStyle={{background:'#f4f4f4'}}>
+        <ul className={classnames(styles.setProperty, {[`${styles.showProperty}`]: state.isShowProperty})}>
         	<li className={styles.listItem} onClick={handleClickLineWidth}>
         		<i className='iconfont icon-xiansuo'></i>
         		<section>
@@ -106,6 +135,28 @@ const ChartPopup: React.FC<Props> = (props:any) => {
         		</section>
 	        </li>
         </ul>
+        {/*设置当前图表线宽*/}
+        <div className={classnames(styles.lineWidth, {[`${styles.showLineWidth}`]: state.isShowLineWidth})}>
+          <section>
+            <span className={styles.title}>当前图表线宽：</span>
+            <InputNumber size='large' min={1} max={5} defaultValue={1} onChange={handleChangeInputNumber} />
+          </section>
+          <Button type="primary" size='large'>确定设置</Button>
+        </div>
+        {/*设置当前图表坐标大小值*/}
+        <div className={classnames(styles.sizeValue, {[`${styles.showSizeValue}`]: state.isShowSizeValue})}>
+          <ul className={styles.sizeValueList}>
+            <li className={styles.sizeValueListItem}>
+              <span className={styles.title}>当前图表坐标最小值：</span>
+              <InputNumber size='large' defaultValue={1} onChange={handleChangeSizeValueMin} />
+            </li>
+            <li className={styles.sizeValueListItem}>
+              <span className={styles.title}>当前图表坐标最大值：</span>
+              <InputNumber size='large' defaultValue={1} onChange={handleChangeSizeValueMax} />
+            </li>
+          </ul>
+          <Button type="primary" size='large'>确定设置</Button>
+        </div>
       </Modal>
 
       {/*ColorPickers*/}

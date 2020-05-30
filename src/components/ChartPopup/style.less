@@ -1,6 +1,5 @@
 .setProperty {
-	display: flex;
-	flex-direction: column;
+	display: none;
 	padding: 0 20%;
 	li.listItem{
 		background: #fff;
@@ -49,6 +48,52 @@
 		}
 	}
 }
+.showProperty{
+	display: flex;
+	flex-direction: column;
+}
+.lineWidth{
+	width: 100%;
+	height: 130px;
+	display: none;
+	section{
+		margin-bottom: 20px;
+	}
+	span.title{
+		font-size: 15px;
+	}
+}
+.showLineWidth{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.sizeValue{
+	width: 100%;
+	height: 160px;
+	display: none;
+	.sizeValueList{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+	.sizeValueListItem{
+		padding: 10px 0;
+		span.title{
+			font-size: 15px;
+		}
+	}
+}
+.showSizeValue{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
 
 .colorPickers{
 	width: 220px;

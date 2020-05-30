@@ -10,7 +10,7 @@ const Header:React.FC = () => {
     <div className={styles.header}>
     	<div className={styles.leftWrap}>
     		<svg className="icon" aria-hidden="true">
-          <use href="#icon-jiexi"></use>
+          <use href="#icon-jiexi2"></use>
         </svg>
         <h3>车辆诊断解析</h3>
     	</div>
