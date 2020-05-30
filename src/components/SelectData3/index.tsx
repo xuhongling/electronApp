@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { RootState, actions } from '@/store'
 import { bindActionCreators } from 'redux'
-import { Modal, Button, TreeSelect, message, notification } from 'antd'
+import { Modal, Popover, TreeSelect, message, notification } from 'antd'
 import monitorRule from 'static/monitorRule'
 import computeFileData from 'utils/computeFileData'
 import styles from './style.less'
@@ -247,19 +247,22 @@ const SelectData3: React.FC = (props:any) => {
 
   return(
     <div className={styles.selectData}>
-      <Button type="primary" onClick={showModal} style={{marginLeft: '20px'}}>选择展示数据</Button>
-        <Modal 
-          width={600}
-          title="选择展示数据"
-          visible={state.visible}
-          onOk={handleOkModal}
-          onCancel={handleCancelModal}
-          okText={'确定'}
-          cancelText={'取消'}
-          maskClosable={false}
-        >
-          <TreeSelect {...tProps} />
-        </Modal>
+      {/*<Button type="primary" onClick={showModal} style={{marginLeft: '20px'}}>选择展示数据</Button>*/}
+      <Popover placement="bottom" content={<div className={styles.tips}>勾选要展示的数据项</div>}>
+        <div className={styles.button} onClick={showModal}><i className='iconfont icon-xuanze'></i><span>选择数据</span></div>
+      </Popover>
+      <Modal 
+        width={600}
+        title="选择展示数据"
+        visible={state.visible}
+        onOk={handleOkModal}
+        onCancel={handleCancelModal}
+        okText={'确定'}
+        cancelText={'取消'}
+        maskClosable={false}
+      >
+        <TreeSelect {...tProps} />
+      </Modal>
     </div>
   )
 }

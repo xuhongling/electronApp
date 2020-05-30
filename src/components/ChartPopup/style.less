@@ -10,7 +10,7 @@
 		align-items: center;
 		cursor: pointer;
 		&:hover{
-			box-shadow: 0 0 6px rgba(0,0,0,0.1);
+			box-shadow: 0 0 6px rgba(20,50,200,.2);
 		}
 		i{
 			font-size: 30px;
@@ -48,4 +48,29 @@
 			color: #4f9def;
 		}
 	}
+}
+
+.colorPickers{
+	width: 220px;
+	height: 310px;
+	position: absolute;
+	top: -2000px;
+	left: -2000px;
+	z-index: 1000;
+	display: none;
+	color: #333;
+	.cover{
+	  position: fixed;
+	  top: 0px;
+	  right: 0px;
+	  bottom: 0px;
+	  left: 0px;
+	}
+}
+.showColorPickers{
+	display: block;
+	top: 50%;
+	left: 50%;
+	margin-left: -110px;
+	margin-top: -250px;
 }

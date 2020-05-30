@@ -30,11 +30,9 @@ type State = {
   })
 )
 export default class ColorPickers extends React.Component<Props,State> {
-	colorPickers: React.RefObject<HTMLDivElement>
 
 	constructor(props:any) {
 		super(props)
-		this.colorPickers = React.createRef()
 		this.state = {
 			isShowColorPickers: false,
 			background: '#fff',
@@ -62,16 +60,12 @@ export default class ColorPickers extends React.Component<Props,State> {
 	handleGlobalChart = ()=>{
 	  let globalChart:any = this.props.globalChart
 	  globalChart.on('contextmenu', (params:any)=> {
+	  	console.log(params,'colorPickers')
       params.event.event.preventDefault()
       this.setState({
       	isShowColorPickers: true,
       	seriesIndex: params.seriesIndex
       })
-      
-      let pointInPixel= [params.offsetX, params.offsetY]
-      if (globalChart.containPixel('grid',pointInPixel)) {
-        console.log('dasda')
-      }
     })
 	}
 	handleClose = ()=> {
@@ -86,7 +80,7 @@ export default class ColorPickers extends React.Component<Props,State> {
 
 	public render() {
 		return (
-			<div className={classnames(styles.colorPickers, {[`${styles.showColorPickers}`]: this.state.isShowColorPickers})} ref={this.colorPickers}>
+			<div className={classnames(styles.colorPickers, {[`${styles.showColorPickers}`]: this.state.isShowColorPickers})}>
 				<div className={styles.cover} onClick={ this.handleClose }/>
 				<SketchPicker color={this.state.background} onChange={ this.handleChangeColor }/>
 			</div>
