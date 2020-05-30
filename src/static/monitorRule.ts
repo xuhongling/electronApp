@@ -778,7 +778,7 @@ let monitorRule = [
 	},
 	{
 	  "id": "38",
-	  "name": "充放电模式",
+	  "name": "整车-充放电模式",
 	  "type": "1",
 	  "type_name": "整车",
 	  "can_id": "0x18FF45F3",
@@ -4887,7 +4887,7 @@ let monitorRule = [
 	},
 	{
 	  "id": "245",
-	  "name": "充放电模式2",
+	  "name": "电池-充放电模式",
 	  "type": "4",
 	  "type_name": "电池",
 	  "can_id": "0x18FFF345",

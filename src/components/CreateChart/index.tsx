@@ -174,7 +174,7 @@ export default class CreateChart extends React.Component<Props,State> {
       },
       grid: {
         top: 60,
-        left: this.state.legendData.length * 38,
+        left: this.state.legendData.length * 40,
         right: 30,
         bottom: 40,
         containLabel: true
@@ -201,7 +201,7 @@ export default class CreateChart extends React.Component<Props,State> {
           }
         },
       },
-      yAxis: yAxisOption(this.state.legendData, this.state.chartColorList, SelectedData),
+      yAxis: yAxisOption(this.state.legendData, this.state.chartColorList, SelectedData, chartData),
       series: seriesOption(this.state.legendData, chartData, timeData, this.state.chartColorList, SelectedData),
       dataZoom: [
         {

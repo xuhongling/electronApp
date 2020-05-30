@@ -1,15 +1,27 @@
 import monitorRule from 'static/monitorRule'
-const yAxisOption = (data:any[], chartColorList:any, SelectedData:any)=> {
+const yAxisOption = (data:any[], chartColorList:any, SelectedData:any, chartData:any)=> {
 	let legendData:any[] = data
 	let yAxisOptionData:any[] = []
+
 	for (let i = 0; i < legendData.length; i++) {
+    let intervalData:number = 0
+    let chartDataMax = []
     let unitName:any = ''
-    for (var j = 0; j < monitorRule.length; j++) {
+    for (let j = 0; j < monitorRule.length; j++) {
       if (monitorRule[j].name === legendData[i]) {
         unitName = monitorRule[j].unit
       }
     }
 
+    for (let n = 0; n < chartData.length; n++) {
+      if (chartData[n].selectName === legendData[i]) {
+        chartDataMax.push(chartData[n].data)
+      }
+    }
+    intervalData = Number((Math.max(...chartDataMax) * 1.2).toFixed(2))
+    if (intervalData === -Infinity || intervalData === 0) {
+      intervalData = 2
+    }
     let option = {
       type: 'value',
       name: legendData[i],
@@ -39,28 +51,38 @@ const yAxisOption = (data:any[], chartColorList:any, SelectedData:any)=> {
           color: "#ddd"
         }
       },
-      min: (value:any)=> {
+      /*min: (value:any)=> {
         if (value.min === Infinity) {
           return 0
         }else{
           return value.min
         }
-      },
+      },*/
       max: (value:any)=> {
-        if (value.max === -Infinity) {
-          return 10
+        if (value.max === -Infinity || value.max === 0) {
+          return 2
         }else{
-          return (value.max * 1.2).toFixed(2)
+          return Number((value.max * 1.2).toFixed(2))
         }
       },
+      splitNumber: 10,
+      interval: intervalData / 10,
       nameRotate: 90,
       axisLabel: {
         rotate: 90,
         formatter: (value:any)=> {
-          if (unitName === '°') {
-            return value + '度'
-          } else {
-            return `${value} ${unitName}`
+          if (Number.isInteger(value)) {
+            if (unitName === '°') {
+              return value + '度'
+            } else {
+              return `${value} ${unitName}`
+            }
+          }else{
+            if (unitName === '°') {
+              return `${value}度`
+            } else {
+              return `${value.toFixed(2)} ${unitName}`
+            }
           }
         }
       }
@@ -75,4 +97,4 @@ const yAxisOption = (data:any[], chartColorList:any, SelectedData:any)=> {
 	)
 }
 
-export default yAxisOption 
+export default yAxisOption

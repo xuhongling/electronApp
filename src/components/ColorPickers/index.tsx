@@ -63,28 +63,12 @@ export default class ColorPickers extends React.Component<Props,State> {
 	  let globalChart:any = this.props.globalChart
 	  globalChart.on('contextmenu', (params:any)=> {
       params.event.event.preventDefault()
-      let colorPickers:any = this.colorPickers.current
-      let clientWidth = document.body.clientWidth
-			let clientHeight = document.body.clientHeight
-			let rangeWidth = clientWidth - params.event.offsetX
-			let rangeHeight = clientHeight - params.event.offsetY
-
-			if (rangeWidth < 300) {
-				colorPickers.style.left = params.event.offsetX-200 + 'px'
-			}else {
-				colorPickers.style.left = params.event.offsetX+10 + 'px'
-			}
-			if (rangeHeight < 300) {
-      	 colorPickers.style.top = params.event.offsetY-200 + 'px'
-      }else{
-      	 colorPickers.style.top = params.event.offsetY+50 + 'px'
-      }
       this.setState({
       	isShowColorPickers: true,
       	seriesIndex: params.seriesIndex
       })
       
-      var pointInPixel= [params.offsetX, params.offsetY]
+      let pointInPixel= [params.offsetX, params.offsetY]
       if (globalChart.containPixel('grid',pointInPixel)) {
         console.log('dasda')
       }

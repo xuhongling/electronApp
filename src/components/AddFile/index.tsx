@@ -118,6 +118,7 @@ export default class AddFile extends React.Component<Props> {
 	public render() {
 		return (
 			<div className={styles.addFile}>
+				<div className={styles.logo}></div>
 				<div className={styles.main}>
 					<svg className="icon" aria-hidden="true">
 				    <use href="#icon-csv"></use>

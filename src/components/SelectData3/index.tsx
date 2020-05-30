@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { RootState, actions } from '@/store'
 import { bindActionCreators } from 'redux'
-import { Modal, Button, TreeSelect, message } from 'antd'
+import { Modal, Button, TreeSelect, message, notification } from 'antd'
 import monitorRule from 'static/monitorRule'
 import computeFileData from 'utils/computeFileData'
 import styles from './style.less'
@@ -72,6 +72,7 @@ const SelectData3: React.FC = (props:any) => {
   // 设置树的数据
   const setTreeData = (fileDataArr:any)=>{
     let treeData:any[] = []
+    let validData:any = []
     for (let i = 0; i < sidebarList.length; i++) {
       let childrenData = []
       for (let j = 0; j < monitorRule.length; j++) {
@@ -84,13 +85,14 @@ const SelectData3: React.FC = (props:any) => {
           if (fileDataArr[can_id] !== undefined) {
             if (fileDataArr[can_id].length > 0) {
               isDisabled = false
+              validData.push(monitorRule[j].name)
             }else{
               isDisabled = true
             }
           }else{
             isDisabled = true
           }
-
+          
           childrenData.push({
             ...monitorRule[j],
             title: monitorRule[j].name,
@@ -111,10 +113,23 @@ const SelectData3: React.FC = (props:any) => {
       }
       treeData.push(treeChildrenData)
     }
+    if (validData.length < 1) {
+      notification['error']({
+        message: '温馨提示',
+        description:
+          '您传入的数据有误，没有找到可以解析的数据，请检查一下数据格式。',
+      })
+      return
+    }
+    let treeValue:any = []
+    treeValue.push(validData[0])
     setState(state => ({
       ...state,
-      treeData
+      treeData,
+      treeValue
     }))
+    // 初始化显示数据
+    onChangeTreeData2(treeValue,fileDataArr)
   }
 
   const showModal = ()=> {
@@ -135,6 +150,7 @@ const SelectData3: React.FC = (props:any) => {
       visible: false
     }))
   }
+
   const onChangeTreeData = (value:any)=> {
     if (value.length > 8) {
       message.warning('为了图表展示效果，建议最多勾选八组数据进行查看对比！')
@@ -161,20 +177,54 @@ const SelectData3: React.FC = (props:any) => {
     }
     getDataCanID = [...new Set(getDataCanID)]
     let fileDataArr = state.fileDataArr
+    
     let fileDataAll = []
-
     for (let i = 0; i < getDataCanID.length; i++) {
       fileDataAll.push(...fileDataArr[getDataCanID[i]])
     }
 
-
     let chartData = computeFileData(fileDataAll)
-    console.log(chartData,'1111111------aaaaaaaa')
     props.setChartData(chartData)
 
     // 设置图表Legend数据
     props.setLegendData(value)
-    //props.setChartData(chartData)
+  }
+  const onChangeTreeData2 = (value:any, fileData:any)=> {
+    if (value.length > 8) {
+      message.warning('为了图表展示效果，建议最多勾选八组数据进行查看对比！')
+      return
+    }
+    setState(state => ({
+      ...state,
+      treeValue: value
+    }))
+
+    if (value.length === 0) {
+      message.warning('为了图表展示效果，最少勾选一组数据进行查看！')
+      return
+    }
+
+    let getDataCanID = []
+    for (let i = 0; i < value.length; i++) {
+      for (let j = 0; j < monitorRule.length; j++) {
+        let can_id = monitorRule[j].can_id.toString().toLowerCase()
+        if (monitorRule[j].name === value[i]) {
+          getDataCanID.push(can_id)
+        }
+      }
+    }
+    getDataCanID = [...new Set(getDataCanID)]
+    let fileDataArr = fileData
+    
+    let fileDataAll = []
+    for (let i = 0; i < getDataCanID.length; i++) {
+      fileDataAll.push(...fileDataArr[getDataCanID[i]])
+    }
+    let chartData = computeFileData(fileDataAll)
+    props.setChartData(chartData)
+
+    // 设置图表Legend数据
+    props.setLegendData(value)
   }
 
   const onSelectTreeData = (value:any)=> {
