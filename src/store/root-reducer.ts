@@ -8,6 +8,7 @@ import chartColorList from './chartColorList/reducer'
 import selectData from './selectData/reducer'
 import chartData from './chartData/reducer'
 import chartLineWidth from './chartLineWidth/reducer'
+import chartSizeValue from './chartSizeValue/reducer'
 
 const rootReducer = combineReducers({
 	user,
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
 	chartColorList,
 	selectData,
 	chartData,
-	chartLineWidth
+	chartLineWidth,
+	chartSizeValue
 })
 
 export default rootReducer

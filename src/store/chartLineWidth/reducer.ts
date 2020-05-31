@@ -6,9 +6,9 @@ const defaultState: ChartLineWidth = {
   chartLineWidth: [1,1,1,1,1,1,1,1]
 }
 
-export type ChartParamsAction = ActionType<typeof actions>
+export type ChartLineWidthAction = ActionType<typeof actions>
 
-export default (state = defaultState, action: ChartParamsAction): ChartLineWidth => {
+export default (state = defaultState, action: ChartLineWidthAction): ChartLineWidth => {
   switch (action.type) {
     case getType(actions.setChartLineWidth):
       return { ...state, chartLineWidth: action.payload }

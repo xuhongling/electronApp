@@ -1,5 +1,5 @@
 import monitorRule from 'static/monitorRule'
-const yAxisOption = (data:any[], chartColorList:any, SelectedData:any, chartData:any)=> {
+const yAxisOption = (data:any[], chartColorList:any, SelectedData:any, chartData:any, chartSizeValue:any[])=> {
 	let legendData:any[] = data
 	let yAxisOptionData:any[] = []
 
@@ -22,11 +22,17 @@ const yAxisOption = (data:any[], chartColorList:any, SelectedData:any, chartData
     if (intervalData === -Infinity || intervalData === 0) {
       intervalData = 2
     }
+    if (chartSizeValue.length > 0) {
+      intervalData = chartSizeValue[i][1]
+    }
+
     if (unitName === '°') {unitName = '度'}
+    if (unitName === '') {unitName = ' '}
     let option = {
       type: 'value',
-      name: `${legendData[i]}    ${unitName}`,
+      name: `${legendData[i]}     (${unitName})`,
       nameLocation: 'middle',
+      triggerEvent: true,
       nameTextStyle:{
         color: chartColorList[i], 
         verticalAlign: 'bottom',
@@ -52,18 +58,27 @@ const yAxisOption = (data:any[], chartColorList:any, SelectedData:any, chartData
           color: "#ddd"
         }
       },
-      /*min: (value:any)=> {
-        if (value.min === Infinity) {
+      min: (value:any)=> {
+        if (chartSizeValue.length > 0) {
+          return chartSizeValue[i][0]
+        }else{
+
+        }
+        /*if (value.min === Infinity) {
           return 0
         }else{
           return value.min
-        }
-      },*/
+        }*/
+      },
       max: (value:any)=> {
-        if (value.max === -Infinity || value.max === 0) {
-          return 2
+        if (chartSizeValue.length > 0) {
+          return chartSizeValue[i][1]
         }else{
-          return Number((value.max * 1.2).toFixed(2))
+          if (value.max === -Infinity || value.max === 0) {
+            return 2
+          }else{
+            return Number((value.max * 1.2).toFixed(2))
+          }
         }
       },
       splitNumber: 10,

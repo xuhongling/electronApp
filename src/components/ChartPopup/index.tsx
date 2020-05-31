@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { Button, Modal, InputNumber } from 'antd'
+import { Button, Modal, InputNumber, message } from 'antd'
 import { RootState, actions } from '@/store'
 import { bindActionCreators } from 'redux'
 import { SketchPicker } from 'react-color'
@@ -10,6 +10,7 @@ import styles from './style.less'
 type Props = {}
 let chartColourValue = ['#4260ff', '#fc7194', '#08c05e', '#f02354', '#673af6', '#fc853f','#00acdc','#61a94f']
 let chartLineWidthValue = [1,1,1,1,1,1,1,1]
+let chartSizeValueValue:any[] = []
 const ChartPopup: React.FC<Props> = (props:any) => {
   const [state, setState] = useState({
     visible: false,
@@ -19,6 +20,8 @@ const ChartPopup: React.FC<Props> = (props:any) => {
     isShowLineWidth: false,
     isShowSizeValue: false,
     isShowColorPickers: false,
+    sizeValueMin: 0,
+    sizeValueMax: 1,
     background: '#fff',
     lineWidthInputValue: 1,
     seriesIndexColour: 0,
@@ -29,17 +32,34 @@ const ChartPopup: React.FC<Props> = (props:any) => {
   useEffect(()=>{
   	if (props.globalChart !== null) {
   		let myChart = props.globalChart
-  		myChart.on('contextmenu', (params:any)=> {
-        params.event.event.preventDefault()
-	      setState(state => ({
-		      ...state,
-		      visible: true,
-          chartParams: params,
-          seriesName:`设置 ${params.seriesName} 属性`,
-          isShowProperty: true,
-          isShowLineWidth: false,
-          isShowSizeValue: false
-		    }))
+  		myChart.on('click', (params:any)=> {
+        if (params.componentType === "yAxis") {
+          // eCharts 里面的最大最小值
+          let yAxisScale = myChart.getModel()._componentsMap.data.yAxis[params.yAxisIndex].axis.scale._extent
+          let leng = myChart.getModel()._componentsMap.data.yAxis.length
+          for (let i = 0; i < leng; i++) {
+            let yAxisScaleValue = myChart.getModel()._componentsMap.data.yAxis[i].axis.scale._extent
+            chartSizeValueValue.push(yAxisScaleValue)
+          }
+          let seriesName:any[] = []
+          console.log(params,'params.name')
+          if (params.name.indexOf('(') !== -1) {
+            seriesName = params.name.split('(')
+          }else{
+            seriesName = [params.name]
+          }
+          setState(state => ({
+            ...state,
+            visible: true,
+            chartParams: params,
+            seriesName:`设置 ${seriesName[0]} 属性`,
+            sizeValueMin: yAxisScale[0],
+            sizeValueMax: yAxisScale[1],
+            isShowProperty: true,
+            isShowLineWidth: false,
+            isShowSizeValue: false
+          }))
+        }
 	    })
   	}
 	},[props.globalChart])
@@ -60,13 +80,12 @@ const ChartPopup: React.FC<Props> = (props:any) => {
   // 点击折线线宽
   const handleClickLineWidth = ()=> {
     let chartParams:any = state.chartParams
-    console.log(chartParams,'chartParams')
     setState(state => ({
       ...state,
       isShowProperty: false,
       isShowLineWidth: true,
       lineWidthInputValue: 1,
-      seriesIndexLineWidth: chartParams.seriesIndex
+      seriesIndexLineWidth: chartParams.yAxisIndex
     }))
   }
   // 点击折线颜色
@@ -76,7 +95,7 @@ const ChartPopup: React.FC<Props> = (props:any) => {
       ...state,
       visible: false,
       isShowColorPickers: true,
-      seriesIndexColour: chartParams.seriesIndex
+      seriesIndexColour: chartParams.yAxisIndex
     }))
   }
   // 点击坐标大小值
@@ -86,7 +105,7 @@ const ChartPopup: React.FC<Props> = (props:any) => {
       ...state,
       isShowProperty: false,
       isShowSizeValue: true,
-      seriesIndexSizeValue: chartParams.seriesIndex
+      seriesIndexSizeValue: chartParams.yAxisIndex
     }))
   }
 
@@ -122,10 +141,35 @@ const ChartPopup: React.FC<Props> = (props:any) => {
     }
   }
   const handleChangeSizeValueMin = (value: number|undefined)=> {
-    console.log('handleChangeSizeValueMin', value)
+    if (value !== undefined) {
+      setState(state => ({
+        ...state,
+        sizeValueMin: value
+      }))
+    }
   }
   const handleChangeSizeValueMax = (value: number|undefined)=> {
-    console.log('handleChangeSizeValueMax', value)
+    if (value !== undefined && value <= state.sizeValueMin) {
+      message.warning('不能设置最大值小于最小值！')
+      return
+    }
+    if (value !== undefined) {
+      setState(state => ({
+        ...state,
+        sizeValueMax: value
+      }))
+    }
+  }
+  const handleClickSaveSizeValue = ()=> {
+    setState(state => ({
+      ...state,
+      visible: false
+    }))
+    let sizeValue = [state.sizeValueMin, state.sizeValueMax]
+    let chartSizeValue:any[] = chartSizeValueValue
+    chartSizeValue[state.seriesIndexSizeValue] = sizeValue
+    let changeChartSizeValue = [...chartSizeValue]
+    props.setChartSizeValue(changeChartSizeValue)
   }
 
   return(
@@ -158,22 +202,22 @@ const ChartPopup: React.FC<Props> = (props:any) => {
         <div className={classnames(styles.lineWidth, {[`${styles.showLineWidth}`]: state.isShowLineWidth})}>
           <section>
             <span className={styles.title}>当前图表线宽：</span>
-            <InputNumber size='large' min={1} max={5} defaultValue={1} value={state.lineWidthInputValue} onChange={handleChangeInputNumber} />
+            <InputNumber size='large' min={1} max={5} value={state.lineWidthInputValue} onChange={handleChangeInputNumber} />
           </section>
         </div>
         {/*设置当前图表坐标大小值*/}
         <div className={classnames(styles.sizeValue, {[`${styles.showSizeValue}`]: state.isShowSizeValue})}>
           <ul className={styles.sizeValueList}>
             <li className={styles.sizeValueListItem}>
-              <span className={styles.title}>当前图表坐标最小值：</span>
-              <InputNumber size='large' defaultValue={1} onChange={handleChangeSizeValueMin} />
+              <span className={styles.title}>当前图表坐标最大值：</span>
+              <InputNumber size='large' value={state.sizeValueMax} onChange={handleChangeSizeValueMax} />
             </li>
             <li className={styles.sizeValueListItem}>
-              <span className={styles.title}>当前图表坐标最大值：</span>
-              <InputNumber size='large' defaultValue={1} onChange={handleChangeSizeValueMax} />
+              <span className={styles.title}>当前图表坐标最小值：</span>
+              <InputNumber size='large' value={state.sizeValueMin} onChange={handleChangeSizeValueMin} />
             </li>
           </ul>
-          <Button type="primary" size='large'>确定设置</Button>
+          <Button type="primary" size='large' onClick={handleClickSaveSizeValue}>确定设置</Button>
         </div>
       </Modal>
 
@@ -194,7 +238,8 @@ const mapStateToProps = (state: RootState) => ({
 const mapDispatchToProps = (dispatch:any)=> ({
   ...bindActionCreators({
     setChartColorList: (chartColor: string[]) => actions.chartColorList.setChartColorList(chartColor),
-    setChartLineWidth: (chartLineWidth: number[]) => actions.chartLineWidth.setChartLineWidth(chartLineWidth)
+    setChartLineWidth: (chartLineWidth: number[]) => actions.chartLineWidth.setChartLineWidth(chartLineWidth),
+    setChartSizeValue: (chartSizeValue: number[]) => actions.chartSizeValue.setChartSizeValue(chartSizeValue)
   },dispatch)
 })
 
