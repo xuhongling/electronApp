@@ -2,10 +2,12 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { RootState, actions } from '@/store'
-import { message } from 'antd'
+import { message, Select } from 'antd'
 // import computeFileData from 'utils/computeFileData'
 import monitorRule from 'static/monitorRule'
 import styles from './style.less'
+
+const { Option } = Select
 
 type Props = ReturnType<typeof bindActionCreators> & {
   history: any
@@ -77,6 +79,7 @@ export default class AddFile extends React.Component<Props> {
 					fileDataArr.push(obj)
 				}
 			}
+			//console.log(JSON.stringify(fileDataArr))
 
 			// 删选初始数据里的重复数据
 			let newArr:any = {}
@@ -94,7 +97,7 @@ export default class AddFile extends React.Component<Props> {
 			}, [])
 			
 			// 调用，在Web Worker里面处理计算
-			this.setWebWorker(selectFileData, monitorRule)
+			// this.setWebWorker(selectFileData, monitorRule)
 			// 把 fileData 数据设置全局访问
 			this.props.setFileData(selectFileData)
 			// 跳转展示图表页面
@@ -115,15 +118,30 @@ export default class AddFile extends React.Component<Props> {
 		}
 	}
 
+	handleChangeSelect = (value:any)=>{
+		console.log(`selected ${value}`)
+	}
+
 	public render() {
 		return (
 			<div className={styles.addFile}>
 				<div className={styles.logo}></div>
 				<div className={styles.main}>
-					<svg className="icon" aria-hidden="true">
-				    <use href="#icon-csv"></use>
-					</svg>
-					<p>请选择要车辆诊断的数据文件</p>
+					<div className={styles.csvIcon}>
+						<svg className="icon" aria-hidden="true">
+					    <use href="#icon-csv"></use>
+						</svg>
+					</div>
+					<div className={styles.explain}>
+						<p>请先要解析的数据规则</p>
+						<p>再根据规则数据选择要车辆诊断的CSV数据文件</p>
+					</div>
+					<div className={styles.rules}>
+						<span className={styles.title}>解析规则：</span>
+						<Select defaultValue="t_monitor29" style={{ width: 230 }} size='large' onChange={this.handleChangeSelect}>
+				      <Option value="t_monitor29">t_monitor29度混动AGV</Option>
+				    </Select>
+					</div>
 					<div className={styles.btnWrapper}>
 						<button>选择文件</button>
 						<input type="file" id="csvFile" ref={this.myRefInput} onChange={this.uploadCSVFile} accept=".csv"/>

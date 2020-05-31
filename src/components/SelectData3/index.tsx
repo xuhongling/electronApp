@@ -34,7 +34,6 @@ const SelectData3: React.FC = (props:any) => {
     if (props.fileData.length > 0) {
       console.time()
       let fileData = props.fileData
-      console.log(fileData,'fileData')
       // 删选初始数据里的重复数据
       let newArr:any = {}
       let selectMonitorRule = monitorRule.reduce((item:any, next:any)=> {
@@ -237,6 +236,7 @@ const SelectData3: React.FC = (props:any) => {
     onChange: onChangeTreeData,
     onSelect: onSelectTreeData,
     treeCheckable: true,
+    treeDefaultExpandAll: true,
     showCheckedStrategy: SHOW_PARENT,
     placeholder: '点击或者搜索输入你要展示数据',
     listHeight: 500,

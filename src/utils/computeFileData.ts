@@ -45,7 +45,7 @@ const computeFileData = (fileData:any[])=>{
 				formatData = computeBaseData * Number(selectAllData[j].scale) + Number(selectAllData[j].value_offset)
 			}
 		}
-		// .substr(0,8)
+		
 		let data = {
 			canId: filterColumnData[i].CanID,
 			data: formatData,

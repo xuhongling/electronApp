@@ -22,9 +22,10 @@ const yAxisOption = (data:any[], chartColorList:any, SelectedData:any, chartData
     if (intervalData === -Infinity || intervalData === 0) {
       intervalData = 2
     }
+    if (unitName === '°') {unitName = '度'}
     let option = {
       type: 'value',
-      name: legendData[i],
+      name: `${legendData[i]}    ${unitName}`,
       nameLocation: 'middle',
       nameTextStyle:{
         color: chartColorList[i], 
@@ -72,16 +73,12 @@ const yAxisOption = (data:any[], chartColorList:any, SelectedData:any, chartData
         rotate: 90,
         formatter: (value:any)=> {
           if (Number.isInteger(value)) {
-            if (unitName === '°') {
-              return value + '度'
-            } else {
-              return `${value} ${unitName}`
-            }
+            return value
           }else{
-            if (unitName === '°') {
-              return `${value}度`
-            } else {
-              return `${value.toFixed(2)} ${unitName}`
+            if (value > 100) {
+              return parseInt(value)
+            }else {
+              return value.toFixed(2)
             }
           }
         }

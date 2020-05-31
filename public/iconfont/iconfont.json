@@ -1,0 +1,128 @@
+{
+  "id": "1625142",
+  "name": "车辆下线诊断系统",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "15025546",
+      "name": "解析",
+      "font_class": "jiexi",
+      "unicode": "e66f",
+      "unicode_decimal": 58991
+    },
+    {
+      "icon_id": "15025303",
+      "name": "选择",
+      "font_class": "xuanze",
+      "unicode": "e66d",
+      "unicode_decimal": 58989
+    },
+    {
+      "icon_id": "15025304",
+      "name": "添加",
+      "font_class": "tianjia",
+      "unicode": "e66e",
+      "unicode_decimal": 58990
+    },
+    {
+      "icon_id": "4529766",
+      "name": "图表设计/Chart",
+      "font_class": "chart",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "5387495",
+      "name": "主题_调色盘",
+      "font_class": "tiaose",
+      "unicode": "eaec",
+      "unicode_decimal": 60140
+    },
+    {
+      "icon_id": "6043856",
+      "name": "线索",
+      "font_class": "xiansuo",
+      "unicode": "e63f",
+      "unicode_decimal": 58943
+    },
+    {
+      "icon_id": "9616330",
+      "name": "解析",
+      "font_class": "jiexi2",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "8172050",
+      "name": "遥控机",
+      "font_class": "yaokong",
+      "unicode": "e638",
+      "unicode_decimal": 58936
+    },
+    {
+      "icon_id": "357103",
+      "name": "仪器仪表",
+      "font_class": "yibiao",
+      "unicode": "e6da",
+      "unicode_decimal": 59098
+    },
+    {
+      "icon_id": "1263298",
+      "name": "车辆",
+      "font_class": "che",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "13086806",
+      "name": "装配信息",
+      "font_class": "guzhang",
+      "unicode": "e664",
+      "unicode_decimal": 58980
+    },
+    {
+      "icon_id": "13086807",
+      "name": "汽车信息",
+      "font_class": "xinxi",
+      "unicode": "e665",
+      "unicode_decimal": 58981
+    },
+    {
+      "icon_id": "2678576",
+      "name": "变压器",
+      "font_class": "bianyaqi",
+      "unicode": "e63c",
+      "unicode_decimal": 58940
+    },
+    {
+      "icon_id": "8152368",
+      "name": "电机",
+      "font_class": "dianji",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    },
+    {
+      "icon_id": "2207212",
+      "name": "电池",
+      "font_class": "battery",
+      "unicode": "e761",
+      "unicode_decimal": 59233
+    },
+    {
+      "icon_id": "1768280",
+      "name": "远程控制",
+      "font_class": "kongzi",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "10566279",
+      "name": "csv",
+      "font_class": "csv",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    }
+  ]
+}

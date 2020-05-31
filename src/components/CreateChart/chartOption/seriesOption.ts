@@ -1,4 +1,4 @@
-const seriesCommon = (legendData:any[], chartData:any, timeData:any, chartColorList:any, SelectedData:any)=> {
+const seriesCommon = (legendData:any[], chartData:any, timeData:any, chartColorList:any, SelectedData:any, chartLineWidth:number[])=> {
 	let optionDataAll:any[] = []
 	// let selectNameAll = []
 	/*for (let i = 0; i < legendData.length; i++) {
@@ -34,7 +34,6 @@ const seriesCommon = (legendData:any[], chartData:any, timeData:any, chartColorL
 				}
 			}
 		}
-
 		// series 配置项
 		if (SelectedData[legendData[i]] !== false) {
 			let option = {
@@ -43,7 +42,7 @@ const seriesCommon = (legendData:any[], chartData:any, timeData:any, chartColorL
 		    yAxisIndex: i, //使用第一个y轴，序号从0开始
 		    data: emptyData,
 		    connectNulls: true, //是否连接空数据
-		    lineStyle: { width: 1 },
+		    lineStyle: { width: chartLineWidth[i] },
 		    itemStyle: {
 		      color: (params:any)=> {
 		        let colorList = chartColorList
@@ -59,7 +58,7 @@ const seriesCommon = (legendData:any[], chartData:any, timeData:any, chartColorL
 		    yAxisIndex: i, //使用第一个y轴，序号从0开始
 		    data: [],
 		    connectNulls: true, //是否连接空数据
-		    lineStyle: { width: 1 },
+		    lineStyle: { width: chartLineWidth[i] },
 		    itemStyle: {
 		      color: (params:any)=> {
 		        let colorList = chartColorList

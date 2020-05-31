@@ -3,7 +3,7 @@ import { ActionType, getType } from 'typesafe-actions'
 import { ChartLineWidth } from "./types"
 
 const defaultState: ChartLineWidth = {
-  chartLineWidth: 1
+  chartLineWidth: [1,1,1,1,1,1,1,1]
 }
 
 export type ChartParamsAction = ActionType<typeof actions>

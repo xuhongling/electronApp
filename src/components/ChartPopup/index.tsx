@@ -8,6 +8,8 @@ import classnames from 'classnames'
 import styles from './style.less'
 
 type Props = {}
+let chartColourValue = ['#4260ff', '#fc7194', '#08c05e', '#f02354', '#673af6', '#fc853f','#00acdc','#61a94f']
+let chartLineWidthValue = [1,1,1,1,1,1,1,1]
 const ChartPopup: React.FC<Props> = (props:any) => {
   const [state, setState] = useState({
     visible: false,
@@ -18,7 +20,10 @@ const ChartPopup: React.FC<Props> = (props:any) => {
     isShowSizeValue: false,
     isShowColorPickers: false,
     background: '#fff',
-    seriesIndex: 0
+    lineWidthInputValue: 1,
+    seriesIndexColour: 0,
+    seriesIndexLineWidth: 0,
+    seriesIndexSizeValue: 0
   })
 
   useEffect(()=>{
@@ -26,7 +31,6 @@ const ChartPopup: React.FC<Props> = (props:any) => {
   		let myChart = props.globalChart
   		myChart.on('contextmenu', (params:any)=> {
         params.event.event.preventDefault()
-        console.log(params.seriesName,'params')
 	      setState(state => ({
 		      ...state,
 		      visible: true,
@@ -55,11 +59,14 @@ const ChartPopup: React.FC<Props> = (props:any) => {
 	}
   // 点击折线线宽
   const handleClickLineWidth = ()=> {
-    console.log('handleClickLineWidth')
+    let chartParams:any = state.chartParams
+    console.log(chartParams,'chartParams')
     setState(state => ({
       ...state,
       isShowProperty: false,
-      isShowLineWidth: true
+      isShowLineWidth: true,
+      lineWidthInputValue: 1,
+      seriesIndexLineWidth: chartParams.seriesIndex
     }))
   }
   // 点击折线颜色
@@ -69,16 +76,17 @@ const ChartPopup: React.FC<Props> = (props:any) => {
       ...state,
       visible: false,
       isShowColorPickers: true,
-      seriesIndex: chartParams.seriesIndex
+      seriesIndexColour: chartParams.seriesIndex
     }))
   }
   // 点击坐标大小值
   const handleClickSizeValue = ()=> {
-    console.log('handleClickSizeValue')
+    let chartParams:any = state.chartParams
     setState(state => ({
       ...state,
       isShowProperty: false,
-      isShowSizeValue: true
+      isShowSizeValue: true,
+      seriesIndexSizeValue: chartParams.seriesIndex
     }))
   }
 
@@ -94,13 +102,24 @@ const ChartPopup: React.FC<Props> = (props:any) => {
       ...state,
       background: color.hex
     }))
-    let chartColor = ['#dd6b66','#759aa0','#e69d87','#8dc1a9','#ea7e53','#eedd78','#73a373','#73b9bc','#7289ab', '#91ca8c','#f49f42']
-    chartColor[state.seriesIndex] = `${color.hex}`
-    props.setChartColorList(chartColor)
+    let chartColor:string[] = chartColourValue
+    chartColor[state.seriesIndexColour] = `${color.hex}`
+    let changeChartColor = [...chartColor]
+    props.setChartColorList(changeChartColor)
   }
 
+  // 修改chart折线宽度函数方法
   const handleChangeInputNumber = (value: number|undefined)=> {
-    console.log('handleChangeInputNumber', value)
+    if (value !== undefined) {
+      setState(state => ({
+        ...state,
+        lineWidthInputValue: value
+      }))
+      let chartLineWidth:number[] = chartLineWidthValue
+      chartLineWidth[state.seriesIndexLineWidth] = value
+      let changeChartLineWidth = [...chartLineWidth]
+      props.setChartLineWidth(changeChartLineWidth)
+    }
   }
   const handleChangeSizeValueMin = (value: number|undefined)=> {
     console.log('handleChangeSizeValueMin', value)
@@ -139,9 +158,8 @@ const ChartPopup: React.FC<Props> = (props:any) => {
         <div className={classnames(styles.lineWidth, {[`${styles.showLineWidth}`]: state.isShowLineWidth})}>
           <section>
             <span className={styles.title}>当前图表线宽：</span>
-            <InputNumber size='large' min={1} max={5} defaultValue={1} onChange={handleChangeInputNumber} />
+            <InputNumber size='large' min={1} max={5} defaultValue={1} value={state.lineWidthInputValue} onChange={handleChangeInputNumber} />
           </section>
-          <Button type="primary" size='large'>确定设置</Button>
         </div>
         {/*设置当前图表坐标大小值*/}
         <div className={classnames(styles.sizeValue, {[`${styles.showSizeValue}`]: state.isShowSizeValue})}>
@@ -175,7 +193,8 @@ const mapStateToProps = (state: RootState) => ({
 
 const mapDispatchToProps = (dispatch:any)=> ({
   ...bindActionCreators({
-    setChartColorList: (chartColor: string[]) => actions.chartColorList.setChartColorList(chartColor)
+    setChartColorList: (chartColor: string[]) => actions.chartColorList.setChartColorList(chartColor),
+    setChartLineWidth: (chartLineWidth: number[]) => actions.chartLineWidth.setChartLineWidth(chartLineWidth)
   },dispatch)
 })
 

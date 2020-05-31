@@ -1,3 +1,3 @@
 export interface ChartLineWidth {
-	chartLineWidth: number
+	chartLineWidth: number[]
 }

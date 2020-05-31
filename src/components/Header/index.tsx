@@ -9,10 +9,7 @@ const Header:React.FC = () => {
   return (
     <div className={styles.header}>
     	<div className={styles.leftWrap}>
-    		<svg className="icon" aria-hidden="true">
-          <use href="#icon-jiexi2"></use>
-        </svg>
-        <h3>车辆诊断解析</h3>
+    		<div className={styles.logo}></div>
     	</div>
 			<div className={styles.rightWrap}>
         <Popover placement="bottom" content={<div className={styles.tips}>重新选择新CSV数据文件</div>}>

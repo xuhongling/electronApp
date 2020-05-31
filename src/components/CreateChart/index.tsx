@@ -14,7 +14,8 @@ type State = {
   legendData: any[],
   chartData: any[],
   chartColorList: any[],
-  chartOption: any
+  chartOption: any,
+  chartLineWidth: number[]
 }
 
 // @ts-ignore: 不可达代码错误。 用装饰器简写方式
@@ -22,7 +23,8 @@ type State = {
   (state: RootState) => ({ 
     legendData: state.legendData.legendData,
     chartData: state.chartData.chartData,
-    chartColorList: state.chartColorList.chartColorList
+    chartColorList: state.chartColorList.chartColorList,
+    chartLineWidth: state.chartLineWidth.chartLineWidth
   }),
   dispatch => ({
     ...bindActionCreators(
@@ -44,7 +46,8 @@ export default class CreateChart extends React.Component<Props,State> {
       legendData: [],
       chartData: [],
       chartColorList: [],
-      chartOption: null
+      chartOption: null,
+      chartLineWidth: []
     }
   }
 
@@ -61,13 +64,14 @@ export default class CreateChart extends React.Component<Props,State> {
   }
 
   static getDerivedStateFromProps(props:any, state:any) {
-    const { legendData, chartData, chartColorList } = props
+    const { legendData, chartData, chartColorList, chartLineWidth } = props
     // 当传入的type发生变化的时候，更新state
     if (typeof(legendData) !== 'undefined' && legendData.length > 0) {
       return {
         legendData: legendData,
         chartData: chartData,
-        chartColorList: chartColorList
+        chartColorList: chartColorList,
+        chartLineWidth: chartLineWidth
       }
     }
     // 否则，对于state不进行任何操作
@@ -75,9 +79,9 @@ export default class CreateChart extends React.Component<Props,State> {
   }
 
   componentDidUpdate(prevProps:any, prevState:any) {
-    const { chartColorList } = prevProps
+    const { chartColorList, chartLineWidth } = prevProps
     // 判断legendData跟颜色有没有改变，有就更新图表
-    if (this.state.myChart !== null || this.props.chartColorList !== chartColorList) {
+    if (this.state.myChart !== null || chartColorList !== this.state.chartColorList || chartLineWidth !== this.state.chartLineWidth) {
       let option = this.setChartOption()
       if (option && typeof option === "object") {
         this.state.myChart.setOption(option, true)
@@ -126,18 +130,23 @@ export default class CreateChart extends React.Component<Props,State> {
     /* 选中图例 */
     myChart.on("legendselectchanged", (params:any)=> {
       // 得到当前的图例显示隐藏状态分别有哪些
-      console.log(params,'1111111')
       let SelectedData = params.selected
       let option = this.setChartOption(SelectedData)
       if (option && typeof option === "object") {
         myChart.setOption(option, true)
       }
     })
+
+    myChart.on('click',{element:'a'}, (params:any)=> {
+      console.log(params.info,'myChart click params')
+    })
   }
   // 图表配置
   setChartOption = ( SelectedData = {} )=>{
     let chartData = this.state.chartData
     let timeData = this.getTimeData()
+    let chartColorList = this.state.chartColorList
+    let chartLineWidth = this.state.chartLineWidth
     if (typeof(chartData) === 'undefined') {
       return
     }
@@ -153,7 +162,7 @@ export default class CreateChart extends React.Component<Props,State> {
         let legendOption = {
           name: legendDataArr[i],
           textStyle:{
-            color: this.state.chartColorList[i]
+            color: chartColorList[i]
           }
         }
         legendDataOption.push(legendOption)
@@ -163,7 +172,7 @@ export default class CreateChart extends React.Component<Props,State> {
 
     let option:any = null
     option = {
-      color: this.state.chartColorList,
+      color: chartColorList,
       tooltip: {
         trigger: 'axis' 
       },
@@ -171,15 +180,35 @@ export default class CreateChart extends React.Component<Props,State> {
         data: legendData(),
         top: 10,
         selected: SelectedData,
+        /*formatter: [
+          '{aaa|这段文本采用样式a}',
+          '{xxx|这段用样式x}'
+        ].join('\n'),
+        textStyle: {
+          rich: {
+            aaa: {
+              color: 'red',
+              lineHeight: 10
+            },
+            xxx: {
+              fontSize: 18,
+              fontFamily: 'Microsoft YaHei',
+              borderColor: '#449933',
+              borderRadius: 4
+            }
+          }
+        }*/
       },
       grid: {
         top: 60,
         left: this.state.legendData.length * 40,
-        right: 30,
+        right: 36,
         bottom: 40,
         containLabel: true
       },
       toolbox: {
+        top: 10,
+        right: 40,
         show: true,
         feature: {
           dataZoom: {
@@ -201,8 +230,8 @@ export default class CreateChart extends React.Component<Props,State> {
           }
         },
       },
-      yAxis: yAxisOption(this.state.legendData, this.state.chartColorList, SelectedData, chartData),
-      series: seriesOption(this.state.legendData, chartData, timeData, this.state.chartColorList, SelectedData),
+      yAxis: yAxisOption(this.state.legendData, chartColorList, SelectedData, chartData),
+      series: seriesOption(this.state.legendData, chartData, timeData, chartColorList, SelectedData, chartLineWidth),
       dataZoom: [
         {
           type: 'inside',

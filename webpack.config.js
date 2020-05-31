@@ -163,7 +163,7 @@ module.exports = {
 	plugins: [
 		// html 模板插件
 		new htmlWebpackPlugin({
-			title: '车辆下线诊断系统',
+			title: '车辆数据诊断系统',
 			favicon: __dirname + '/public/favicon.ico',
 			template: __dirname + '/public/index.html'
 		}),

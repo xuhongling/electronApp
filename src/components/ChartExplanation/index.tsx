@@ -69,12 +69,12 @@ const ChartExplanation = (legendData:any) => {
             }
           }}
         >
-          <Column title="名称" dataIndex="name" width="220px" />
-          <Column title="Can ID" dataIndex="can_id" align='center' width="110px" />
-          <Column title="起始BIT位" dataIndex="start_bit" align='center' width="110px" />
-          <Column title="BIT长度" dataIndex="bit_size" align='center' width="110px" />
-          <Column title="缩放比例" dataIndex="scale" align='center' width="110px" />
-          <Column title="偏移量" dataIndex="value_offset" align='center' width="110px" />
+          <Column title="名称" dataIndex="name" width="250px" />
+          <Column title="Can ID" dataIndex="can_id" align='center' width="120px" />
+          <Column title="起始BIT位" dataIndex="start_bit" align='center' width="120px" />
+          <Column title="BIT长度" dataIndex="bit_size" align='center' width="120px" />
+          <Column title="缩放比例" dataIndex="scale" align='center' width="120px" />
+          <Column title="偏移量" dataIndex="value_offset" align='center' width="120px" />
           <Column
             title="数据状态"
             dataIndex="value_array"
