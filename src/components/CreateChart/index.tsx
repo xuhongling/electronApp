@@ -183,7 +183,19 @@ export default class CreateChart extends React.Component<Props,State> {
       color: chartColorList,
       tooltip: {
         trigger: 'axis',
-        // axisPointer: {type: 'cross'}
+        backgroundColor: 'rgba(245, 245, 245, 0.85)',
+        borderWidth: 1,
+        borderColor: '#f4f4f4',
+        padding: 16,
+        textStyle: {
+          color: '#000'
+        },
+        position: function (pos:any, params:any, el:any, elRect:any, size:any) {
+          let obj = {top: 10}
+          obj[['left', 'right'][+(pos[0] < size.viewSize[0] / 2)]] = 30
+          return obj
+        },
+        extraCssText: 'box-shadow: 0 0 6px rgba(20,50,200,0.2);'
       },
       legend: {
         data: legendData(),

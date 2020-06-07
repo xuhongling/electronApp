@@ -40,6 +40,7 @@ const ChartExplanation = (legendData:any) => {
             scale: monitorRule[j].scale,
             value_offset: monitorRule[j].value_offset,
             value_array: valueArray,
+            unit: monitorRule[j].unit
           }
           tableDataArr.push(formatData)
         }
@@ -71,10 +72,11 @@ const ChartExplanation = (legendData:any) => {
         >
           <Column title="名称" dataIndex="name" width="250px" />
           <Column title="Can ID" dataIndex="can_id" align='center' width="120px" />
-          <Column title="起始BIT位" dataIndex="start_bit" align='center' width="120px" />
-          <Column title="BIT长度" dataIndex="bit_size" align='center' width="120px" />
-          <Column title="缩放比例" dataIndex="scale" align='center' width="120px" />
-          <Column title="偏移量" dataIndex="value_offset" align='center' width="120px" />
+          <Column title="起始BIT位" dataIndex="start_bit" align='center' width="100px" />
+          <Column title="BIT长度" dataIndex="bit_size" align='center' width="100px" />
+          <Column title="缩放比例" dataIndex="scale" align='center' width="100px" />
+          <Column title="偏移量" dataIndex="value_offset" align='center' width="100px" />
+          <Column title="单位" dataIndex="unit" align='center' width="120px" />
           <Column
             title="数据状态"
             dataIndex="value_array"
