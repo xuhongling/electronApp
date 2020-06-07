@@ -171,10 +171,10 @@ export default class CreateChart extends React.Component<Props,State> {
       return legendDataOption
     }
 
-    let gridleft = []
+    let gridLeft = []
     for (let i = 0; i < legendDataArr.length; i++) {
       if (JSON.stringify(SelectedData) !== "{}" && SelectedData[legendDataArr[i]]) {
-        gridleft.push(legendDataArr[i])
+        gridLeft.push(legendDataArr[i])
       }
     }
 
@@ -192,7 +192,7 @@ export default class CreateChart extends React.Component<Props,State> {
       },
       grid: {
         top: 60,
-        left: gridleft.length===0 ? legendDataArr.length * 38 : gridleft.length * 38,
+        left: gridLeft.length===0 ? legendDataArr.length * 38 : gridLeft.length * 38,
         right: 36,
         bottom: 40,
         containLabel: true
