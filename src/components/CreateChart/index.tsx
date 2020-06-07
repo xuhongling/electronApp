@@ -148,6 +148,7 @@ export default class CreateChart extends React.Component<Props,State> {
     let chartColorList = this.state.chartColorList
     let chartLineWidth = this.state.chartLineWidth
     let chartSizeValue = this.state.chartSizeValue
+    let legendDataArr = this.state.legendData
     if (typeof(chartData) === 'undefined') {
       return
     }
@@ -157,7 +158,6 @@ export default class CreateChart extends React.Component<Props,State> {
     }
 
     let legendData = ()=>{
-      let legendDataArr = this.state.legendData
       let legendDataOption = []
       for (let i = 0; i < legendDataArr.length; i++) {
         let legendOption = {
@@ -169,6 +169,13 @@ export default class CreateChart extends React.Component<Props,State> {
         legendDataOption.push(legendOption)
       }
       return legendDataOption
+    }
+
+    let gridleft = []
+    for (let i = 0; i < legendDataArr.length; i++) {
+      if (JSON.stringify(SelectedData) !== "{}" && SelectedData[legendDataArr[i]]) {
+        gridleft.push(legendDataArr[i])
+      }
     }
 
     let option:any = null
@@ -185,7 +192,7 @@ export default class CreateChart extends React.Component<Props,State> {
       },
       grid: {
         top: 60,
-        left: this.state.legendData.length * 38,
+        left: gridleft.length===0 ? legendDataArr.length * 38 : gridleft.length * 38,
         right: 36,
         bottom: 40,
         containLabel: true
@@ -214,8 +221,8 @@ export default class CreateChart extends React.Component<Props,State> {
           }
         },
       },
-      yAxis: yAxisOption(this.state.legendData, chartColorList, SelectedData, chartData, chartSizeValue),
-      series: seriesOption(this.state.legendData, chartData, timeData, chartColorList, SelectedData, chartLineWidth),
+      yAxis: yAxisOption(legendDataArr, chartColorList, SelectedData, chartData, chartSizeValue),
+      series: seriesOption(legendDataArr, chartData, timeData, chartColorList, SelectedData, chartLineWidth),
       dataZoom: [
         {
           type: 'inside',
