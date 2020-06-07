@@ -206,7 +206,7 @@ export default class CreateChart extends React.Component<Props,State> {
         top: 60,
         left: gridLeft.length===0 ? legendDataArr.length * 38 : gridLeft.length * 38,
         right: 36,
-        bottom: 40,
+        bottom: 42,
         containLabel: true
       },
       toolbox: {
@@ -246,7 +246,7 @@ export default class CreateChart extends React.Component<Props,State> {
           bottom: 16,
           start: 0,
           end: 100,
-          height: 15
+          height: 16
         }, {
           type: 'slider',
           backgroundColor:"#fff",
@@ -258,7 +258,7 @@ export default class CreateChart extends React.Component<Props,State> {
           bottom: 16,
           start: 0,
           end: 100,
-          height: 15
+          height: 16
         }
       ]
     }
