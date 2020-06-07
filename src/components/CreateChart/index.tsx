@@ -185,7 +185,7 @@ export default class CreateChart extends React.Component<Props,State> {
       },
       grid: {
         top: 60,
-        left: this.state.legendData.length * 40,
+        left: this.state.legendData.length * 38,
         right: 36,
         bottom: 40,
         containLabel: true

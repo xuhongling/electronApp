@@ -3,6 +3,24 @@ const yAxisOption = (data:any[], chartColorList:any, SelectedData:any, chartData
 	let legendData:any[] = data
 	let yAxisOptionData:any[] = []
 
+  // 计算Y轴显示数据，设置每个的 offset
+  let offsetData = []
+  for (let i = 0; i < legendData.length; i++) {
+    if (JSON.stringify(SelectedData) !== "{}" && SelectedData[legendData[i]]) {
+      let data = {
+        title: legendData[i],
+        num: i
+      }
+      offsetData.push(data)
+    }
+  }
+  let offsetIndex = {}
+  for (let i = 0; i < offsetData.length; i++) {
+    let title = offsetData[i].title
+    offsetIndex[title] = i
+  }
+
+  // 设置 Y轴 的 Option
 	for (let i = 0; i < legendData.length; i++) {
     let intervalData:number = 0
     let chartDataMax = []
@@ -28,21 +46,20 @@ const yAxisOption = (data:any[], chartColorList:any, SelectedData:any, chartData
 
     if (unitName === '°') {unitName = '度'}
     if (unitName === '') {unitName = ' '}
+
     let option = {
       type: 'value',
-      name: `${legendData[i]}     (${unitName})`,
+      name: `${legendData[i]}     ${unitName}`,
       nameLocation: 'middle',
       triggerEvent: true,
       nameTextStyle:{
         color: chartColorList[i], 
         verticalAlign: 'bottom',
         fontSize: 12,  
-        padding: [8, 8, 10, 8],
-        /*backgroundColor: chartColorList[i] + '20',
-        borderRadius: 4,*/
+        padding: [8, 8, 10, 8]
       },
       position: 'left',
-      offset: i*58,
+      offset: i * 58,
       show: SelectedData[legendData[i]] !== false ? true : false, // 显示隐藏 图例 跟 Y轴
       axisLine: {
         lineStyle: {
@@ -64,11 +81,6 @@ const yAxisOption = (data:any[], chartColorList:any, SelectedData:any, chartData
         }else{
 
         }
-        /*if (value.min === Infinity) {
-          return 0
-        }else{
-          return value.min
-        }*/
       },
       max: (value:any)=> {
         if (chartSizeValue.length > 0) {
@@ -98,6 +110,16 @@ const yAxisOption = (data:any[], chartColorList:any, SelectedData:any, chartData
           }
         }
       }
+    }
+    // 设置Y轴的位置间隔
+    if (offsetData.length !== 0) {
+      let num = 0
+      if (offsetIndex[legendData[i]] !== undefined) {
+        num = offsetIndex[legendData[i]]
+      }
+      option.offset = num * 58
+    }else{
+      option.offset = i * 58
     }
     yAxisOptionData.push(option)
   }
