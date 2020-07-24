@@ -42,7 +42,6 @@ const ChartPopup: React.FC<Props> = (props:any) => {
             chartSizeValueValue.push(yAxisScaleValue)
           }
           let seriesName:any[] = []
-          console.log(params,'params.name')
           if (params.name.indexOf('  ') !== -1) {
             seriesName = params.name.split('  ')
           }else{
