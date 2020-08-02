@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import { RootState, actions } from '@/store'
 import { message, Select } from 'antd'
 // import computeFileData from 'utils/computeFileData'
-import monitorRule from 'static/monitorRule'
+// import monitorRule from 'static/monitorRule'
 import styles from './style.less'
 
 const { Option } = Select
@@ -48,13 +48,13 @@ export default class AddFile extends React.Component<Props> {
 		reader.onload = () => {		//读取成功完成后出发事件
 			console.time()
 			let fileData:any = reader.result	 //获取读取的数据
-			let relArr = fileData.split("\r\n")
+			let relArr = fileData.split("\n")
 			let fileDataArr = []
 			if(relArr.length > 1) {
 				// fileTiele: ["序号", "传输方向", "时间标识", "名称", "帧ID(靠右对齐)", "帧格式", "帧类型", "数据长度", "数据(HEX)"]
 				let fileTiele = relArr[0].split(',')
 				for (let i = 0; i < fileTiele.length; i++) {
-					if (fileTiele[i].indexOf('时间') !== -1) {
+					if (fileTiele[i].indexOf('时间') !== -1 || fileTiele[i].indexOf('ime(ms)') !== -1) {
 						fileTiele[i] = 'TimeID'
 					}
 					if (fileTiele[i].indexOf('ID') !== -1 && fileTiele[i] !== 'TimeID') {
@@ -63,7 +63,32 @@ export default class AddFile extends React.Component<Props> {
 					if (fileTiele[i].indexOf('数据') !== -1 && fileTiele[i].indexOf('长度') === -1) {
 						fileTiele[i] = 'DataHEX'
 					}
+					/*if (fileTiele[i].indexOf('Data0') !== -1 || fileTiele[i].indexOf('Data0 ') === -1) {
+						fileTiele[i] = 'Data0'
+					}
+					if (fileTiele[i].indexOf('Data1') !== -1 || fileTiele[i].indexOf('Data1 ') === -1) {
+						fileTiele[i] = 'Data1'
+					}
+					if (fileTiele[i].indexOf('Data2') !== -1 || fileTiele[i].indexOf('Data2 ') === -1) {
+						fileTiele[i] = 'Data2'
+					}
+					if (fileTiele[i].indexOf('Data3') !== -1 || fileTiele[i].indexOf('Data3 ') === -1) {
+						fileTiele[i] = 'Data3'
+					}
+					if (fileTiele[i].indexOf('Data4') !== -1 || fileTiele[i].indexOf('Data4 ') === -1) {
+						fileTiele[i] = 'Data4'
+					}
+					if (fileTiele[i].indexOf('Data5') !== -1 || fileTiele[i].indexOf('Data5 ') === -1) {
+						fileTiele[i] = 'Data5'
+					}
+					if (fileTiele[i].indexOf('Data6') !== -1 || fileTiele[i].indexOf('Data6 ') === -1) {
+						fileTiele[i] = 'Data6'
+					}
+					if (fileTiele[i].indexOf('Data7') !== -1 || fileTiele[i].indexOf('Data7 ') === -1) {
+						fileTiele[i] = 'Data7'
+					}*/
 				}
+
 				for (let i = 1; i < relArr.length; i++) {
 					// fileList: ["0", "接收", "15:18:28:508", "", "0x0cf401e8", "数据帧", "扩展帧", "8", "70 17 70 17 58 02 E8 03"]
 					let fileList = relArr[i].split(',')
@@ -75,11 +100,15 @@ export default class AddFile extends React.Component<Props> {
 						}else{
 							obj[fileTiele[j]] = fileList[j]
 						}
+						/*console.log(fileList[j],'fileList[j]')
+						if (fileTiele[j] === 'Data0' ) {
+							// .substr(0,8)
+							obj['DataHEX'] = `${fileList[j].Data0} ${fileList[j].Data1} ${fileList[j].Data2} ${fileList[j].Data3} ${fileList[j].Data4} ${fileList[j].Data5} ${fileList[j].Data6} ${fileList[j].Data7} `
+						}*/
 					}
 					fileDataArr.push(obj)
 				}
 			}
-			//console.log(JSON.stringify(fileDataArr))
 
 			// 删选初始数据里的重复数据
 			let newArr:any = {}
@@ -95,6 +124,8 @@ export default class AddFile extends React.Component<Props> {
 		    }
 		    return item
 			}, [])
+
+			// console.log(selectFileData,'selectFileData')
 			
 			// 调用，在Web Worker里面处理计算
 			// this.setWebWorker(selectFileData, monitorRule)

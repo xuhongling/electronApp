@@ -28,7 +28,7 @@ const getColumnData = (ruleTypeName:string, legendData:any[], fileData:any[])=>{
 	let filterColumnData:any[] = []
 	for (let i = 0; i < fileData.length; i++) {
 		for (let j = 0; j < selectAllData.length; j++) {
-			let fileDataCanID = fileData[i].CanID
+			let fileDataCanID = fileData[i].CanID.toString().toLowerCase()
 			let selectAllDataCanId = selectAllData[j].can_id.toString().toLowerCase()
 			if (fileDataCanID === selectAllDataCanId) {
 				// 加入一个选择框，selectName字段，用作判断
@@ -40,8 +40,48 @@ const getColumnData = (ruleTypeName:string, legendData:any[], fileData:any[])=>{
 
 	// 解析的数据
 	let columnData:any[] = []
+	console.log(filterColumnData,'filterColumnData1111111')
 	for (let i = 0; i < filterColumnData.length; i++) {
-		let arrData = filterColumnData[i].DataHEX.replace(/^\s+|\s+$/g,"").split(" ")
+		
+	console.log(filterColumnData,'filterColumnData')
+	for (let i = 0; i < filterColumnData.length; i++) {
+		let arrData
+		// 另一种数据 判断下
+		if (filterColumnData[i].Data0) {
+			let object = filterColumnData[i]
+			let Data0, Data1, Data2, Data3, Data4, Data5, Data6, Data7;
+			for (let item in object) {
+				if (item.indexOf('Data0') !== -1) {
+			  	Data0 = object[item].length === 2 ? object[item]: `0${object[item]}`
+			  }
+			  if (item.indexOf('Data1') !== -1) {
+			  	Data1 = object[item].length === 2 ? object[item]: `0${object[item]}`
+			  }
+			  if (item.indexOf('Data2') !== -1) {
+			  	Data2 = object[item].length === 2 ? object[item]: `0${object[item]}`
+			  }
+			  if (item.indexOf('Data3') !== -1) {
+			  	Data3 = object[item].length === 2 ? object[item]: `0${object[item]}`
+			  }
+			  if (item.indexOf('Data4') !== -1) {
+			  	Data4 = object[item].length === 2 ? object[item]: `0${object[item]}`
+			  }
+			  if (item.indexOf('Data5') !== -1) {
+			  	Data5 = object[item].length === 2 ? object[item]: `0${object[item]}`
+			  }
+			  if (item.indexOf('Data6') !== -1) {
+			  	Data6 = object[item].length === 2 ? object[item]: `0${object[item]}`
+			  }
+			  if (item.indexOf('Data7') !== -1) {
+			  	let Data7Str = object[item].replace(/\s+/g,"")
+			  	Data7 = Data7Str.length === 2 ? Data7Str: `0${Data7Str}`
+			  }
+			}
+			let DataHEX = `${Data0} ${Data1} ${Data2} ${Data3} ${Data4} ${Data5} ${Data6} ${Data7}`
+			arrData = DataHEX.replace(/^\s+|\s+$/g,"").split(" ")
+		}else{
+			arrData = filterColumnData[i].DataHEX.replace(/^\s+|\s+$/g,"").split(" ")
+		}
 		arrData.push(...['0x'])
 		let baseData = arrData.reverse().join("")
 		let formatData
