@@ -111,7 +111,11 @@ export default class CreateChart extends React.Component<Props,State> {
     if (timeData.length > 1) {
       // 时间排序
       timeData.sort((a:any, b:any) => {
-        return a > b ? 1 : - 1
+        if (a.indexOf(':') !== -1) {
+          return a > b ? 1 : - 1
+        }else{
+          return parseFloat(a) > parseFloat(b) ? 1 : - 1
+        }
       })
     }
     return [...new Set(timeData)]
