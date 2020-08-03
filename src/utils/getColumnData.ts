@@ -30,6 +30,12 @@ const getColumnData = (ruleTypeName:string, legendData:any[], fileData:any[])=>{
 		for (let j = 0; j < selectAllData.length; j++) {
 			let fileDataCanID = fileData[i].CanID.toString().toLowerCase()
 			let selectAllDataCanId = selectAllData[j].can_id.toString().toLowerCase()
+			if (fileDataCanID && fileDataCanID.length === 9) {
+				fileDataCanID = `0x0${fileDataCanID.slice(-7)}`
+			}
+			if (selectAllDataCanId && selectAllDataCanId.length === 9) {
+				selectAllDataCanId = `0x0${selectAllDataCanId.slice(-7)}`
+			}
 			if (fileDataCanID === selectAllDataCanId) {
 				// 加入一个选择框，selectName字段，用作判断
 				let fileDataMerge = {...fileData[i], selectName: selectAllData[j].name}

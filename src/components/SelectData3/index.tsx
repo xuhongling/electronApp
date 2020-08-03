@@ -51,9 +51,15 @@ const SelectData3: React.FC = (props:any) => {
 
       for (let i = 0; i < selectMonitorRule.length; i++) {
         let can_id = selectMonitorRule[i].can_id.toString().toLowerCase()
+        if (can_id && can_id.length === 9) {
+          can_id = `0x0${can_id.slice(-7)}`
+        }
         let fileDataObjItem = []
         for (let j = 0; j < fileData.length; j++) {
           let CanID:string = fileData[j].CanID
+          if (CanID && CanID.length === 9) {
+            CanID = `0x0${CanID.slice(-7)}`
+          }
           if (CanID && can_id === CanID.toLowerCase()) {
              fileDataObjItem.push(fileData[j])
            }

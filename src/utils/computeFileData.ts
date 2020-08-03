@@ -18,8 +18,14 @@ const computeFileData = (fileData:any[])=>{
 	let filterColumnData:any[] = []
 	for (let m = 0; m < selectAllData.length; m++) {
 		let can_id = selectAllData[m].can_id.toString().toLowerCase()
+		if (can_id && can_id.length === 9) {
+			can_id = `0x0${can_id.slice(-7)}`
+		}
 		for (let n = 0; n < fileData.length; n++) {
 			let fileDataCanID = fileData[n].CanID.toString().toLowerCase()
+			if (fileDataCanID && fileDataCanID.length === 9) {
+				fileDataCanID = `0x0${fileDataCanID.slice(-7)}`
+			}
 			let fileDataMerge = {}
 			if (fileDataCanID === can_id) {
 				// 加入一个选择框，selectName字段，用作判断
