@@ -164,10 +164,11 @@ const computeFileData = (fileData:any[])=>{
 			}
 		}
 		
+		// time: filterColumnData[i].TimeID.substr(0,8),
 		let data = {
 			canId: filterColumnData[i].CanID,
 			data: formatData,
-			time: filterColumnData[i].TimeID.substr(0,8),
+			time: filterColumnData[i].TimeID,
 			selectName: filterColumnData[i].selectName
 		}
 		columnData.push(data)
