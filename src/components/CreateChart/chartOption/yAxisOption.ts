@@ -1,7 +1,18 @@
-import monitorRule from 'static/monitorRule'
+import monitorRuleData from 'static/monitorRule'
+import monitorRuleSH from 'static/monitorRuleSH'
+
 const yAxisOption = (data:any[], chartColorList:any, SelectedData:any, chartData:any, chartSizeValue:any[])=> {
 	let legendData:any[] = data
 	let yAxisOptionData:any[] = []
+  
+  // 解析规则
+  let monitorRule:any[] = []
+  let rule = sessionStorage.getItem('monitorRule')
+  if (rule === 'monitorRuleSH') {
+    monitorRule = monitorRuleSH
+  }else{
+    monitorRule = monitorRuleData
+  }
 
   // 计算Y轴显示数据，设置每个的 offset
   let offsetData = []

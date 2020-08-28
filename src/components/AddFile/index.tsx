@@ -4,7 +4,8 @@ import { bindActionCreators } from 'redux'
 import { RootState, actions } from '@/store'
 import { message, Select } from 'antd'
 // import computeFileData from 'utils/computeFileData'
-// import monitorRule from 'static/monitorRule'
+import monitorRule from 'static/monitorRule'
+import monitorRuleSH from 'static/monitorRuleSH'
 import styles from './style.less'
 
 const { Option } = Select
@@ -19,7 +20,8 @@ type Props = ReturnType<typeof bindActionCreators> & {
   dispatch => ({
     ...bindActionCreators(
       {
-        setFileData: (fileData: any[]) => actions.fileData.setFileData(fileData)
+        setFileData: (fileData: any[]) => actions.fileData.setFileData(fileData),
+        setMonitorRule: (monitorRule: any[]) => actions.monitorRule.setMonitorRule(monitorRule)
       },
       dispatch
     )
@@ -31,6 +33,11 @@ export default class AddFile extends React.Component<Props> {
 	constructor(props:Props) {
 		super(props)
 		this.myRefInput = React.createRef()
+	}
+
+	componentDidMount(){
+		this.props.setMonitorRule(monitorRule)
+		sessionStorage.setItem('monitorRule', JSON.stringify('monitorRule'))
 	}
 
 	uploadCSVFile = ()=> {
@@ -149,8 +156,15 @@ export default class AddFile extends React.Component<Props> {
 		}
 	}
 
+	// 解析规则
 	handleChangeSelect = (value:any)=>{
-		console.log(`selected ${value}`)
+		if (value === 't_monitorSH') {
+			this.props.setMonitorRule(monitorRuleSH)
+			sessionStorage.setItem('monitorRule', JSON.stringify('monitorRuleSH'))
+		}else{
+			this.props.setMonitorRule(monitorRule)
+			sessionStorage.setItem('monitorRule', JSON.stringify('monitorRule'))
+		}
 	}
 
 	public render() {
@@ -171,6 +185,7 @@ export default class AddFile extends React.Component<Props> {
 						<span className={styles.title}>解析规则：</span>
 						<Select defaultValue="t_monitor29" style={{ width: 230 }} size='large' onChange={this.handleChangeSelect}>
 				      <Option value="t_monitor29">t_monitor29度混动AGV</Option>
+				      <Option value="t_monitorSH">t_monitor（散货）</Option>
 				    </Select>
 					</div>
 					<div className={styles.btnWrapper}>

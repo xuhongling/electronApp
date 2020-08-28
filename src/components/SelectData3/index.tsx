@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { RootState, actions } from '@/store'
 import { bindActionCreators } from 'redux'
 import { Modal, Popover, TreeSelect, message, notification } from 'antd'
-import monitorRule from 'static/monitorRule'
+// import monitorRule from 'static/monitorRule'
 import computeFileData from 'utils/computeFileData'
 import styles from './style.less'
 
@@ -34,6 +34,7 @@ const SelectData3: React.FC = (props:any) => {
     if (props.fileData.length > 0) {
       console.time()
       let fileData = props.fileData
+      let monitorRule = props.monitorRule
       // 删选初始数据里的重复数据
       let newArr:any = {}
       let selectMonitorRule = monitorRule.reduce((item:any, next:any)=> {
@@ -48,7 +49,7 @@ const SelectData3: React.FC = (props:any) => {
       }, [])
 
       let fileDataObj = {}
-
+      
       for (let i = 0; i < selectMonitorRule.length; i++) {
         let can_id = selectMonitorRule[i].can_id.toString().toLowerCase()
         if (can_id && can_id.length === 9) {
@@ -79,6 +80,7 @@ const SelectData3: React.FC = (props:any) => {
   const setTreeData = (fileDataArr:any)=>{
     let treeData:any[] = []
     let validData:any = []
+    let monitorRule = props.monitorRule
     for (let i = 0; i < sidebarList.length; i++) {
       let childrenData = []
       for (let j = 0; j < monitorRule.length; j++) {
@@ -173,6 +175,7 @@ const SelectData3: React.FC = (props:any) => {
     }
 
     let getDataCanID = []
+    let monitorRule = props.monitorRule
     for (let i = 0; i < value.length; i++) {
       for (let j = 0; j < monitorRule.length; j++) {
         let can_id = monitorRule[j].can_id.toString().toLowerCase()
@@ -211,6 +214,7 @@ const SelectData3: React.FC = (props:any) => {
     }
 
     let getDataCanID = []
+    let monitorRule = props.monitorRule
     for (let i = 0; i < value.length; i++) {
       for (let j = 0; j < monitorRule.length; j++) {
         let can_id = monitorRule[j].can_id.toString().toLowerCase()
@@ -234,7 +238,7 @@ const SelectData3: React.FC = (props:any) => {
   }
 
   const onSelectTreeData = (value:any)=> {
-    console.log(value,'ssssssssss')
+    console.log(value,'onSelectTreeData')
   }
 
   const tProps = {
@@ -277,7 +281,8 @@ const SelectData3: React.FC = (props:any) => {
 
 const mapStateToProps = (state: RootState) => ({
   fileData: state.fileData.fileData,
-  selectData: state.selectData.selectData
+  selectData: state.selectData.selectData,
+  monitorRule: state.monitorRule.monitorRule
 })
 
 const mapDispatchToProps = (dispatch:any)=> ({

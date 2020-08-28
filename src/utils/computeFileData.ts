@@ -1,10 +1,20 @@
-import monitorRule from 'static/monitorRule'
+import monitorRuleData from 'static/monitorRule'
+import monitorRuleSH from 'static/monitorRuleSH'
 
 // 获取每个列表的数据集合
 const computeFileData = (fileData:any[])=>{
 	if (fileData.length===0) {
 		return
 	}
+
+	// 解析规则
+  let monitorRule:any[] = []
+  let rule = sessionStorage.getItem('monitorRule')
+  if (rule === 'monitorRuleSH') {
+    monitorRule = monitorRuleSH
+  }else{
+    monitorRule = monitorRuleData
+  }
 
 	// 规则的数据
 	let selectAllData:any[] = []

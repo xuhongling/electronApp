@@ -1,11 +1,21 @@
-import monitorRule from 'static/monitorRule'
+import monitorRuleData from 'static/monitorRule'
+import monitorRuleSH from 'static/monitorRuleSH'
 // import DateFormat from './DateFormat'
 
 // 获取每个列表的数据集合
-const getColumnData = (ruleTypeName:string, legendData:any[], fileData:any[])=>{
+const getColumnData = (ruleTypeName:string, legendData:any[], fileData:any[]) => {
 	if (legendData===null || legendData.length===0 || fileData.length===0) {
 		return
 	}
+
+	// 解析规则
+  let monitorRule:any[] = []
+  let rule = sessionStorage.getItem('monitorRule')
+  if (rule === 'monitorRuleSH') {
+    monitorRule = monitorRuleSH
+  }else{
+    monitorRule = monitorRuleData
+  }
 
 	let ruleTypeData:any[] = []
 	for (let i = 0; i < monitorRule.length; i++) {
@@ -46,8 +56,6 @@ const getColumnData = (ruleTypeName:string, legendData:any[], fileData:any[])=>{
 
 	// 解析的数据
 	let columnData:any[] = []
-	console.log(filterColumnData,'filterColumnData1111111')
-	for (let i = 0; i < filterColumnData.length; i++) {
 		
 	console.log(filterColumnData,'filterColumnData')
 	for (let i = 0; i < filterColumnData.length; i++) {

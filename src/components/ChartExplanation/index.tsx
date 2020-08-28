@@ -3,12 +3,12 @@ import { connect } from 'react-redux'
 import { RootState, actions } from '@/store'
 import { bindActionCreators } from 'redux'
 import { Table, Tag } from 'antd'
-import monitorRule from 'static/monitorRule'
+// import monitorRule from 'static/monitorRule'
 import styles from './style.less'
 
 const { Column } = Table
 
-const ChartExplanation = (legendData:any) => {
+const ChartExplanation = (data:any) => {
   const [state, setState] = useState({
     tableData: [{
       key: 0,
@@ -19,7 +19,10 @@ const ChartExplanation = (legendData:any) => {
   })
 
   useEffect(()=>{
-    let legendDataArr = legendData.legendData
+    let legendDataArr = data.legendData
+    // 解析规则
+    let monitorRule = data.monitorRule
+    
     let tableDataArr:any[] = []
     let valueArray:any = []
     for (let i = 0; i < legendDataArr.length; i++) {
@@ -50,7 +53,7 @@ const ChartExplanation = (legendData:any) => {
       ...state,
       tableData: tableDataArr
     }))
-  },[legendData])
+  },[data.legendData])
 
   const handleClickTableRow = (record:any)=> {
     console.log(record)
@@ -97,7 +100,8 @@ const ChartExplanation = (legendData:any) => {
 }
 
 const mapStateToProps = (state: RootState) => ({
-  legendData: state.legendData.legendData
+  legendData: state.legendData.legendData,
+  monitorRule: state.monitorRule.monitorRule
 })
 
 const mapDispatchToProps = (dispatch:any)=> ({

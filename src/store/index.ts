@@ -11,6 +11,7 @@ import * as selectData from './selectData/actions'
 import * as chartData from './chartData/actions'
 import * as chartLineWidth from './chartLineWidth/actions'
 import * as chartSizeValue from './chartSizeValue/actions'
+import * as monitorRule from './monitorRule/actions'
 
 export { default } from './store'
 export { default as rootReducer } from './root-reducer'
@@ -24,6 +25,7 @@ export const actions = {
 	selectData: selectData,
 	chartData: chartData,
 	chartLineWidth: chartLineWidth,
-	chartSizeValue: chartSizeValue
+	chartSizeValue: chartSizeValue,
+	monitorRule: monitorRule
 }
 export type RootState = StateType<typeof rootReducer>

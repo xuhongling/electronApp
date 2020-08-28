@@ -9,6 +9,7 @@ import selectData from './selectData/reducer'
 import chartData from './chartData/reducer'
 import chartLineWidth from './chartLineWidth/reducer'
 import chartSizeValue from './chartSizeValue/reducer'
+import monitorRule from './monitorRule/reducer'
 
 const rootReducer = combineReducers({
 	user,
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
 	selectData,
 	chartData,
 	chartLineWidth,
-	chartSizeValue
+	chartSizeValue,
+	monitorRule
 })
 
 export default rootReducer
